@@ -2,6 +2,7 @@ import nltk
 import re
 from nltk.corpus import wordnet, stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
+import SparqlQueryParser
 
 
 def nltkWordFreq(tokens):
@@ -13,7 +14,7 @@ def nltkWordFreq(tokens):
 
 def sentenceTokenize(textInput):
     resultSentence = sent_tokenize(textInput)
-    print(type(resultSentence))
+    return resultSentence
 
 
 #Stopwords need to be cleared out
@@ -58,4 +59,47 @@ def parsingFunc():
 
     print(tokens)
 
-parsingFunc()
+#tagged sentence in case of who
+def taggedWhoQuestion(tagged_words):
+    if(tagged_words[0][1] == 'WP'):
+        name = ''
+        counter = 0
+        for word in tagged_words:
+            if(word[1] == 'NNP'):
+                if(counter == 0 ):
+                    name += word[0]
+                else:
+                    name += ' ' + word[0]
+
+                counter +=1
+        SparqlQueryParser.WhoIsFunc(name)
+
+#tagged sentence in case of where
+def taggedWhereQuestion(tagged_words):
+    if(tagged_words[0][1] == 'WRB'):
+        place = ''
+        counter = 0
+        for word in tagged_words:
+            if(word[1] != 'WRB' and word[1] != '.'):
+                if(counter == 0):
+                    place += word[0]
+                else:
+                    place += ' ' + word[0]
+
+                counter += 1
+        SparqlQueryParser.whereIsFunc(place)
+
+def taggedWhatQuestion(tagged_words):#
+    if(tagged_words[0][1] == 'WP' and tagged_words[0][0] == 'What'):
+        item = ''
+        counter = 0
+        for word in tagged_words:
+            if(word[1] != 'WP' and word[1] != '.'):
+                if(counter == 0):
+                    item += word[0]
+                else:
+                    item += ' ' + word[0]
+
+                counter += 1
+        SparqlQueryParser.whatIsFunc(item)
+

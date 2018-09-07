@@ -64,4 +64,3 @@ def describeQuery(paramDescribe):
     g.parse(data=results, format="n3")
     print(g.serialize(format='n3'))
 
-describeQuery(predefinedDescribeQuery)
