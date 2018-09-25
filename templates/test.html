@@ -6,12 +6,45 @@
 
 <body>
 <p> Hello Test Page </p>
-<p>Form is below</p>
 
 <form method="POST">
-	<input name="text">
-	<input type="submit">
+	Question: <input name="text">
+	<input type="submit" value="Initial Parse Algorithm">
 </form>
+
+<form method="POST">
+	Question: <input type="text" name="Algorithm Neural Network">
+	<input type="submit" value="Algorithm Type: Neural Network">
+</form>
+
+<form method="POST">
+	Question: <input type="text" name="Algorithm Neural Network">
+	<input type="submit" value="Algorithm Type: Reinforcement Learning">
+</form>
+
+<form method="POST">
+	Dbpedia Question: <input type="text" name="Dbpedia Question" id="dbpediaQuestion">
+	<input type="submit" value="Dbpedia Question Template Based" onclick="UserAction()">
+	<script>
+		function UserAction()
+		{
+		    var dataDbpedia = document.getElementById("dbpediaQuestion");
+		    console.log(dataDbpedia);
+		    var xhttp  = new XMLHttpRequest();
+		    xhttp.onreadystatechange = function() {
+		        if(this.readyState == 4 && this.status == 200)
+				{
+				    alert(this.responseText);
+				}
+			};
+			xhttp.open("POST", "/dbpedia", true);
+			xhttp.setRequestHeader("Content-type", "application/json");
+			xhttp.send(dataDbpedia);
+		}
+	</script>
+</form>
+
+
 </body>
 
 

@@ -2,13 +2,13 @@ from SPARQLWrapper import SPARQLWrapper, JSON, XML, N3
 #We should add following library. Otherwise, there will be an exception
 from rdflib import Graph
 
-endpoint = "http://dbpedia.org/sparql"
 
 predefinedSelectQuery = """PREFIX rdfs: <http://www.w3.org//2000/01/rdf-schema#>
-                      SELECT ?label  
+                      SELECT ?label  endpoint = "http://dbpedia.org/sparql"
+
                       WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label ?label }"""
 
-predefinedAskQuery = """ ASK WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label "Asturias"@es }"""
+predefinedAskQuery = """ ASK WHERE { <http://dbpedia.org/resource/Asturias> rdfs:label "Asturias"@en }"""
 
 predefinedConstructQuery = """PREFIX dbo: <http://dbpedia.org/ontology/>
                               PREFIX schema: <http://schema.org/>

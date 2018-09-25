@@ -12,7 +12,6 @@ predefined_SPARQL_Who_Is = """PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
                                     ?person rdfs:comment ?comment.
                                     ?person rdfs:label ?label
                                     FILTER regex(?label, "^%s", "i")
-                                    FILTER (LANG(?comment) = 'en')
                               }
                               LIMIT 1
                             """
@@ -28,7 +27,6 @@ predefined_SPARQL_Where_Born = """ PREFIX dbo: <http://dbpedia.org/ontology/>
                                         ?person dbo:birthPlace ?country.
                                         ?country rdfs:label ?birthPlace.
                                         FILTER regex(?label, "^%s", "i")
-                                        FILTER (LANG(?comment) = 'en')
 
                                    }
                                    LIMIT 1
@@ -41,7 +39,6 @@ predefined_SPARQL_What_Is = """ PREFIX w3-owl: <http://www.w3.org/2002/07/owl#>
                                         ?thing rdfs:comment ?comment.
                                         ?thing rdfs:label ?label.
                                         FILTER regex(?label, "^%s", "i")
-                                        FILTER (LANG(?comment) = 'en')
                                     }
                                     LIMIT 1
                     """
@@ -61,7 +58,6 @@ predefined_SPARQL_Where = """     PREFIX geo: <http://www.w3.org/2003/01/geo/wgs
                                     }
                                     ?country rdfs:label ?countryLabel.
                                     FILTER regex(?label, "^%s", "i")
-                                    FILTER (LANG(?comment) = 'en')  
                                   }
                                   LIMIT 1
                     """
