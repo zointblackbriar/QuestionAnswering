@@ -87,6 +87,11 @@ class HandlerClient:
         logger.info("retrieve node is started")
         return self.client.get_node(nodeId)
 
+    def retrieve_root_node(self, clientObject):
+        logger.info("retrieve root node immediately")
+        root = clientObject.get_root_node()
+        return root
+
     def disconnect(self):
         if self._connected:
             logger.info("Disconnecting from server")
