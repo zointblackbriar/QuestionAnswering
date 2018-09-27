@@ -1,0 +1,18 @@
+.container {
+    display:flex;
+    justify-content: center;
+}
+.center {
+    width:800px;
+    margin:auto;
+}
+
+#page-wrap {
+    width: 600px;
+    background: bisque;
+    padding: 20px 50px 20px 50px;
+    margin: 20px auto;
+    min-height: 500px;
+    height: auto !important;
+    height: 500px,
+}
