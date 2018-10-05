@@ -3,17 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello Sender Page</title>
-    <link rel="stylesheet" href="sender.css">
+    <link rel="stylesheet" href="../static/sender.css" src="{{ url_for('static', filename = 'sender.css') }}">
+    <link rel="stylesheet" href="../static/input.css"  src="{{ url_for('static', filename = 'input.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../static/button.css"  src="{{ url_for('static', filename = 'button.css') }}">
+
+
 </head>
 <body>
-<div class="container">
-    <div class="center">Center</div>
-    <div class="formcontainer">
-         <form method="POST">
-        <input name="text">
-        <input type="submit">
-         </form>
+
+<div id="header">
+    <a href="/" id="logo">Question Answering</a>
+    <ul id="menu">
+        <li><a href="https://www.iwu.fraunhofer.de/"><span>About the Company</span></a></li>
+    </ul>
+    <div class="Wrapper">
+        <br> <br> <br> <br> <br> <br> <br>
+
+        <h1 class="Title">Your Question!</h1>
+
+        <div class="nlqueryengineInput">
+            <form method="POST" action="/nlqueryengine">
+                <input type="text" name="nlquery" id="input" class="Input-text" placeholder="Who is Angela Merkel?">
+                <label for="input" class="Input-label">Please ask a question</label>
+            </form>
+        </div>
+        <br> <br>
+        <div class="parseDataInput">
+            <form method="POST" action="/parseData">
+                <input type="text" name="parseData" id="input" class="Input-text" placeholder="What is the age of Obama?">
+                <label for="input" class="Input-label">Please ask a question</label>
+            </form>
+        </div>
+    <br> <br>
     </div>
+    <div class="button">
+        <form method="POST" method="POST" action="quepy">
+            <a href="/quepy" class="action-button shadow animate blue" type="submit" name="quepy" >Quepy</a>
+        </form>
+        <!--<p><button type="button">Click me</button></p>-->
+    </div>
+
 </div>
+
+
+
+<!--<div></div>-->
+<!--<br> <br> <br> <br> <br> <br>
+<br> <br> <br> <br> <br> <br>
+<div class="formcontainer" align="left">
+     <form method="POST">
+    <p><input name="text" size="35" ></p>
+    <p><input type="submit" size="35" align="center"></p>
+     </form>
+</div> -->
+
+
 </body>
 </html>

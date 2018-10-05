@@ -141,7 +141,7 @@ if __name__ == "__main__":
         "Who is Angela Merkel?",
         "When Angela Merkel born?",
         "Name Volkswagen cars",
-        "time in turkey",
+        "time in Turkey",
         "What time is it in Ankara?",
         "List movies directed by Quantin Tarantino",
         "How long is Kill Bill 2",

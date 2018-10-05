@@ -24,6 +24,7 @@ from webapp.ModelWebApp import User
 
 #routes
 
+#User Registration Service
 @RestService.route('/')
 def flaskDevelopment():
     logger.warn(" render template is active")
@@ -74,43 +75,11 @@ def status():
 
 
 #To take info from text box
-@RestService.route('/dbpedia', methods =['GET', 'POST'])
+@RestService.route('/opcua', methods =['GET', 'POST'])
 def my_form_post():
     print(request.is_json)
     content = request.get_json()
     print(content)
-    #text = request.form['text']
-    #processed_text = text.lower()
-    #nltkWordFreq(processed_text)
-    #clearTokenAndStopWords(processed_text)
-    #You should return a response
-    #return processed_text
-
-
-@RestService.route('/', methods=['GET', 'POST' ])
-def indexRestService():
-    return render_template('test.html')
-
-
-@RestService.route('/helloworld')
-def helloWorld():
-    return 'Hello World'
-
-
-@RestService.route('/test/')
-def test_list():
-    return 'List all of items'
-
-
-@RestService.route('/test/<int:test_id>/')
-def getWithID(test_id):
-    return 'Detail of Item  #{}.'.format(test_id)
-
-
-@RestService.route('/test/<int:test_id>/delete/', methods=  ['DELETE'])
-def test_delete(test_id):
-    raise NotImplementedError('DELETE')
-
 
 if __name__ == '__main__':
-    RestService.run(debug = True)
+    RestService.run(debug = True, host="0.0.0.0")

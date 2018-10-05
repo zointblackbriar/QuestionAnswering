@@ -16,25 +16,25 @@ class User(db.Model):
     admin = db.Column(db.Boolean, nullable=False, default=False)
 
     def __init__(self, email, password, admin):
-        logger("User constructor")
+        logger.info("User constructor")
         self.email = email
         self.password = password
         self.admin = admin
 
     def is_authenticated(self):
-        logger("is_authenticated")
+        logger.info("is_authenticated")
         return True
 
     def is_active(self):
-        logger("is_active function")
+        logger.info("is_active function")
         return True
 
     def is_anonymous(self):
-        logger("is_anonymous function")
+        logger.info("is_anonymous function")
         return False
 
     def get_id(self):
-        logger("get_id function")
+        logger.info("get_id function")
         return self.id
     def __repr__(self):
         return '<User {0}>'.format(self.email)

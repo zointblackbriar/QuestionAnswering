@@ -1,0 +1,16 @@
+@prefix : <http://linkedfactory.iwu.fraunhofer.de/models/e3fabrik/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Container a owl:Class ;
+	rdfs:subClassOf <http://enilink.net/vocab/manufacturing#Resource> .
+
+:Robot a owl:Class ;
+	rdfs:subClassOf <http://enilink.net/vocab/manufacturing#Resource> .
+
+:defaultLayer a :Layer .
+
+:e3-fabrik <http://linkedfactory.iwu.fraunhofer.de/vocab/factory#hasLayer> :defaultLayer ;
+	a :Factory .

@@ -1,0 +1,933 @@
+@prefix lf: <http://linkedfactory.org/vocab/> .
+@prefix lf-plc: <http://linkedfactory.org/vocab/plc/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<http://example.org/SIMATIC_300(1)> a lf-plc:Station ;
+	rdfs:label "SIMATIC 300(1)" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP> a lf-plc:CPU ;
+	rdfs:label "CPU 317-2 PN/DP" .
+
+<http://example.org/SIMATIC_300(1)> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP> ;
+	lf-plc:networkInterface <http://example.org/SIMATIC_300(1)/3> .
+
+<http://example.org/SIMATIC_HMI-Station(1)> a lf-plc:Station ;
+	rdfs:label "SIMATIC HMI-Station(1)" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager> a lf-plc:CPU ;
+	rdfs:label "Stationmanager" .
+
+<http://example.org/SIMATIC_HMI-Station(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/HMI_IE> a lf-plc:CPU ;
+	rdfs:label "HMI IE" .
+
+<http://example.org/SIMATIC_HMI-Station(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/HMI_IE> ;
+	lf-plc:networkInterface <http://example.org/SIMATIC_HMI-Station(1)/7> .
+
+<http://example.org/SIMATIC_300(1)/3> lf-plc:ip "10.102.238.174" ;
+	lf-plc:subnetMask "255.255.255.0" ;
+	lf-plc:gateway "10.102.238.1" ;
+	lf-plc:mac "080006010000" ;
+	rdfs:label "PN-IO" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> a lf-plc:BlocksFolder ;
+	rdfs:label "Bausteine" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "70"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/MaxIndex> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "MaxIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/MaxIndex> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/AktIndex> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "AktIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/AktIndex> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Message" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "300"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf-plc:arrayLength "15"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/ID> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/ID> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Source> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Source" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Source> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Category> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Category" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Category> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Text> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "6"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Text> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/AdditionalText> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "AdditionalText" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "8"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/AdditionalText> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Timestamp> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Timestamp" ;
+	lf-plc:dataType "DATE_AND_TIME" ;
+	lf-plc:byteOffset "10"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "8"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Timestamp> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "18"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/70/Message/Comment> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "700"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/MaxIndex> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700> ;
+	a lf-plc:Item ;
+	rdfs:label "MaxIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/MaxIndex> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700> ;
+	a lf-plc:Item ;
+	rdfs:label "Messages" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "60"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages> lf-plc:arrayLength "15"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages/ID> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages/ID> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages/Text> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/700/Messages/Text> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "71"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71/ID> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71/ID> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71/ProtectionLevel> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> ;
+	a lf-plc:Item ;
+	rdfs:label "ProtectionLevel" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71/ProtectionLevel> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71/Text> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71/Text> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "6"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/71/Comment> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "710"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/MaxIndex> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "MaxIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/MaxIndex> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "OperationModes" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "24"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes> lf-plc:arrayLength "3"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes/ID> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes/ID> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes/ProtectionLevel> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "ProtectionLevel" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes/ProtectionLevel> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes/Text> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes/Text> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "6"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/710/OperationModes/Comment> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "72"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72/ID> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72/ID> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72/Text> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72/Text> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/72/Comment> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "720"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/MaxIndex> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "MaxIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/MaxIndex> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "OperationStates" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "24"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates> lf-plc:arrayLength "4"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates/ID> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates/ID> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates/Text> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates/Text> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/720/OperationStates/Comment> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "73"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_Message> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73> ;
+	a lf-plc:Item ;
+	rdfs:label "State_Message" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "0"^^xsd:int ;
+	lf-plc:bitSize "1"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_Message> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_Message> lf-plc:arrayLength "32"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_OperationState> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73> ;
+	a lf-plc:Item ;
+	rdfs:label "State_OperationState" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "1"^^xsd:int ;
+	lf-plc:byteSize "0"^^xsd:int ;
+	lf-plc:bitSize "1"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_OperationState> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_OperationState> lf-plc:arrayLength "16"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_OperationMode> lf-plc:dataBlock <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73> ;
+	a lf-plc:Item ;
+	rdfs:label "State_OperationMode" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "2"^^xsd:int ;
+	lf-plc:byteSize "0"^^xsd:int ;
+	lf-plc:bitSize "1"^^xsd:int .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73> lf:contains <http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_OperationMode> .
+
+<http://example.org/SIMATIC_300(1)/CPU_317-2_PN/DP1-S7-Programm(1)/DB/73/State_OperationMode> lf-plc:arrayLength "8"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/7> lf-plc:ip "192.168.0.1" ;
+	lf-plc:subnetMask "255.255.255.0" ;
+	lf-plc:gateway "192.168.0.1" ;
+	lf-plc:mac "080006010000" ;
+	rdfs:label "HMI IE" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> a lf-plc:BlocksFolder ;
+	rdfs:label "Bausteine" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "70"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/MaxIndex> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "MaxIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/MaxIndex> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/AktIndex> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "AktIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/AktIndex> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Message" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "300"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf-plc:arrayLength "15"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/ID> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/ID> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Source> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Source" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Source> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Category> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Category" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Category> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Text> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "6"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Text> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/AdditionalText> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "AdditionalText" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "8"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/AdditionalText> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Timestamp> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Timestamp" ;
+	lf-plc:dataType "DATE_AND_TIME" ;
+	lf-plc:byteOffset "10"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "8"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Timestamp> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "18"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/70/Message/Comment> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "700"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/MaxIndex> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700> ;
+	a lf-plc:Item ;
+	rdfs:label "MaxIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/MaxIndex> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700> ;
+	a lf-plc:Item ;
+	rdfs:label "Messages" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "60"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages> lf-plc:arrayLength "15"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages/ID> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages/ID> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages/Text> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/700/Messages/Text> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "71"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71/ID> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71/ID> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71/ProtectionLevel> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> ;
+	a lf-plc:Item ;
+	rdfs:label "ProtectionLevel" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71/ProtectionLevel> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71/Text> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71/Text> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "6"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/71/Comment> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "710"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/MaxIndex> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "MaxIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/MaxIndex> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "OperationModes" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "24"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes> lf-plc:arrayLength "3"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes/ID> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes/ID> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes/ProtectionLevel> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "ProtectionLevel" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes/ProtectionLevel> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes/Text> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes/Text> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "6"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/710/OperationModes/Comment> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "72"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72/ID> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72/ID> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72/Text> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72/Text> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/72/Comment> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "720"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/MaxIndex> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "MaxIndex" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/MaxIndex> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "OperationStates" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "24"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates> lf-plc:arrayLength "4"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates/ID> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "ID" ;
+	lf-plc:dataType "INT" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates/ID> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates/Text> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "Text" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "2"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates/Text> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates/Comment> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720> ;
+	a lf-plc:Item ;
+	rdfs:label "Comment" ;
+	lf-plc:dataType "STRING" ;
+	lf-plc:byteOffset "4"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "2"^^xsd:int ;
+	lf-plc:bitSize "0"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/720/OperationStates/Comment> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73> a lf-plc:DataBlock ;
+	lf-plc:blockNumber "73"^^xsd:int ;
+	lf-plc:blockName "" .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_Message> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73> ;
+	a lf-plc:Item ;
+	rdfs:label "State_Message" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "0"^^xsd:int ;
+	lf-plc:byteSize "0"^^xsd:int ;
+	lf-plc:bitSize "1"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_Message> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_Message> lf-plc:arrayLength "32"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_OperationState> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73> ;
+	a lf-plc:Item ;
+	rdfs:label "State_OperationState" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "1"^^xsd:int ;
+	lf-plc:byteSize "0"^^xsd:int ;
+	lf-plc:bitSize "1"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_OperationState> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_OperationState> lf-plc:arrayLength "16"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_OperationMode> lf-plc:dataBlock <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73> ;
+	a lf-plc:Item ;
+	rdfs:label "State_OperationMode" ;
+	lf-plc:dataType "ARRAY" ;
+	lf-plc:byteOffset "0"^^xsd:int ;
+	lf-plc:bitOffset "2"^^xsd:int ;
+	lf-plc:byteSize "0"^^xsd:int ;
+	lf-plc:bitSize "1"^^xsd:int .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73> lf:contains <http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_OperationMode> .
+
+<http://example.org/SIMATIC_HMI-Station(1)/Stationmanager1-S7-Programm(1)/DB/73/State_OperationMode> lf-plc:arrayLength "8"^^xsd:int .

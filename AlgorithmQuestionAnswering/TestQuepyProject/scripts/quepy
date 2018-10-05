@@ -78,7 +78,7 @@ def startapp(name):
     os.mkdir(folder)
     os.mkdir(os.path.join(folder, folder))
 
-    main_filename = os.path.join(folder, "main.py")
+    main_filename = os.path.join(folder, "QuepyTest.py")
     parsing_filename = os.path.join(folder, folder, "basic.py")
     init_filename = os.path.join(folder, folder, "__init__.py")
     dsl_filename = os.path.join(folder, folder, "dsl.py")

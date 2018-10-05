@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e7568eda-9ba4-4852-aca3-c14f157be759" name="Default Changelist" comment="" />
+    <list default="true" id="e7568eda-9ba4-4852-aca3-c14f157be759" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/basic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/country.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/dsl.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/movies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/music.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/people.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/populated_place.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/tvshows.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PropertyMapper/writers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../static/sender.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/AlgorithmQuestionAnswering.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/AlgorithmQuestionAnswering.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbpedia/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbpedia/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/quepy" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/quepy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../QuepyTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/sender.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../templates/sender.html" beforeDir="false" afterPath="$PROJECT_DIR$/../templates/sender.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../MainTemplateBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OPCUA.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../OPCUA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../OPCUAUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../OPCUAUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SparqlIntegrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SparqlIntegrator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../SparqlQueryParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SparqlQueryParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webapp/ModelWebApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../webapp/ModelWebApp.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/TestQuepyProject$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1538054162598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/freebase" />
-    <SUITE FILE_PATH="coverage/TestQuepyProject$Quepy.coverage" NAME="Quepy Coverage Results" MODIFIED="1538055348768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples/dbpedia" />
-    <SUITE FILE_PATH="coverage/TestQuepyProject$main.coverage" NAME="main Coverage Results" MODIFIED="1538056413992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dbpedia" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-574443654">
@@ -46,22 +71,40 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-1410572387">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbpedia/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="139" column="32" lean-forward="true" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
-              <folding>
-                <element signature="e#388#398#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="2533">
+              <caret line="155" column="44" selection-start-line="155" selection-start-column="44" selection-end-line="155" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/quepy/nltktagger.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -79,17 +122,17 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1784" />
-    <option name="y" value="599" />
-    <option name="width" value="1366" />
-    <option name="height" value="646" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="662" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -105,12 +148,6 @@
             <path>
               <item name="TestQuepyProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="TestQuepyProject" type="462c0819:PsiDirectoryNode" />
-              <item name="dbpedia" type="462c0819:PsiDirectoryNode" />
-              <item name="PropertyMapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestQuepyProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestQuepyProject" type="462c0819:PsiDirectoryNode" />
               <item name="quepy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -122,11 +159,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/git-bash.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -148,7 +186,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.Quepy">
     <configuration name="Quepy" type="PythonConfigurationType" factoryName="Python">
       <module name="TestQuepyProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,7 +200,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/dbpedia/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dbpedia/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -219,11 +257,6 @@
       <item itemvalue="Python.Quepy" />
       <item itemvalue="Python.main" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -235,13 +268,19 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538052358534</updated>
+      <workItem from="1538236640273" duration="612000" />
+      <workItem from="1538326455044" duration="1618000" />
+      <workItem from="1538563058544" duration="666000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2896000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1135" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="662" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25869894" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -275,13 +314,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/quepy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#590#599#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -310,19 +343,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#357#388#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbpedia/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="139" column="32" lean-forward="true" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
-          <folding>
-            <element signature="e#388#398#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2533">
+          <caret line="155" column="44" selection-start-line="155" selection-start-column="44" selection-end-line="155" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quepy/nltktagger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
         </state>
       </provider>
     </entry>
