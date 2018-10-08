@@ -50,7 +50,7 @@ class testConnectionCoreNLP(object):
 
 
 nlpCore = testConnectionCoreNLP()
-TestInput = 'A blog post using Stanford CoreNLP Server. Visit www.khalidalnajjar.com for more details.'
+TestInput = 'How many BHKW have we got?'
 print('Tokenize', nlpCore.word_tokenize(TestInput))
 print('Part of Speech Tagger', nlpCore.posTagger(TestInput))
 print('Named Entities', nlpCore.ner(TestInput))

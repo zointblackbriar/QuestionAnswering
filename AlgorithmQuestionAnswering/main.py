@@ -1,20 +1,32 @@
 # coding: utf-8
 import nltk
 from flask  import Flask, request, render_template, redirect, url_for
+from flask_debugtoolbar import DebugToolbarExtension
 import Utils
 import QuepyTest
 import nlquery
-
+import logging
+from threading import Thread
 
 app = Flask(__name__)
+app.debug = True
+app.config['SECRET_KEY'] = 'development key'
+toolbar = DebugToolbarExtension(app)
+toolbar.init_app(app)
+
+share_var_quepySender = None
+share_var_nlQueryHandler = None
+
 
 @app.route('/')
-@app.route('/index')
+#@app.route('/index')
 def my_form():
+    logging.warning("See this message in Flask Debug Toolbar!")
     return render_template('sender.html')
 
 @app.route('/parseData', methods=['GET', 'POST'])
 def my_form_post():
+    logging.warning("parseData!")
     text = request.form['question']
     processed_text = text.lower()
     print(processed_text)
@@ -32,8 +44,9 @@ def my_form_post():
         print("An Exception caught")
     return redirect(url_for('index'))
 
-@app.route('/quepy', methods=['GET', 'POST'])
-def quepyForm():
+def quepySender():
+    logging.warning("quepy!")
+    global share_var_quepySender
     try:
         default_questions = [
             "Where is Fraunhofer ?",
@@ -77,6 +90,7 @@ def quepyForm():
             "literal": QuepyTest.print_literal,
             "age": QuepyTest.print_age,
         }
+        outputPython = questions
 
         for question in questions:
             print question
@@ -112,23 +126,53 @@ def quepyForm():
 
             print_handlers[query_type](results, target, metadata)
             print
-        #return redirect(url_for('index'))
-        return 'result is ok'
-    except(RuntimeError, TypeError, NameError):
-        pass
+            print("Output Python", outputPython)
+            share_var_quepySender = outputPython
+    except Exception as ex:
+        app.logger.error("Handler is not working correctly: ", str(ex))
 
-
-@app.route('/nlqueryengine', methods=['GET', 'POST'])
+@app.route('/quepy', methods=['GET', 'POST'])
 def quepyForm():
-    engine = nlquery.NLQueryEngine('localhost', 9000)
+    # If you want to give an argument please use as follow
+    # t = Thread(target=quepySender, args=(url, data))
+
+    t = Thread(target=quepySender)
+    t.daemon = True
+    t.start()
+    if share_var_quepySender:
+        return render_template('quepy.html', output = str(share_var_quepySender))
+
+    return redirect('/', code=302)
+
+def nlQueryHandler():
+    logging.warning("nlQueryEngine!")
+    global share_var_nlQueryHandler
+    outputText = ""
     try:
+        engine = nlquery.NLQueryEngine('localhost', 9000)
+        app.logger.warning("Query Engine: %s", engine)
+        print("engine", engine)
         line = request.form['nlquery']
         line = line.lower()
-        print engine.query(line, format_='plain')
-    except(RuntimeError, TypeError, NameError):
-        pass
-    #return redirect(url_for('/'))
-    return 'result is ok'
+        app.logger.info("Show the query: %s", line)
+        print("line", line)
+        outputText = engine.query(line, format_='plain')
+        app.logger.info("Output the query: %s", outputText)
+        share_var_nlQueryHandler = outputText
+        print outputText
+
+    except(RuntimeError, TypeError, NameError, Exception):
+        app.logger.error("Handler is not working correctly: ", exc_info=True)
+
+@app.route('/nlqueryengine', methods=['GET', 'POST'])
+def nlQueryEngine():
+    t = Thread(target=nlQueryHandler)
+    t.daemon = True
+    t.start()
+    if share_var_nlQueryHandler:
+        return render_template('nlqueryengine.html', output = str(share_var_nlQueryHandler))
+
+    return redirect('/', code=302)
 
 if __name__ == '__main__':
    app.run(debug = True, host="0.0.0.0", port=8999)

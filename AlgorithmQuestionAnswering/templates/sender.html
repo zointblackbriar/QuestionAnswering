@@ -24,21 +24,21 @@
 
         <div class="nlqueryengineInput">
             <form method="POST" action="/nlqueryengine">
-                <input type="text" name="nlquery" id="input" class="Input-text" placeholder="Who is Angela Merkel?">
+                <p> NL Query Engine Question: <input type="text" name="nlquery" id="input" class="Input-text" placeholder="Who is Angela Merkel?"></p>
                 <label for="input" class="Input-label">Please ask a question</label>
             </form>
         </div>
         <br> <br>
         <div class="parseDataInput">
             <form method="POST" action="/parseData">
-                <input type="text" name="parseData" id="input" class="Input-text" placeholder="What is the age of Obama?">
+                <p> parseData Question: <input type="text" name="question" id="input" class="Input-text" placeholder="What is the age of Obama?"></p>
                 <label for="input" class="Input-label">Please ask a question</label>
             </form>
         </div>
     <br> <br>
     </div>
     <div class="button">
-        <form method="POST" method="POST" action="quepy">
+        <form method="POST"  action="/quepy">
             <a href="/quepy" class="action-button shadow animate blue" type="submit" name="quepy" >Quepy</a>
         </form>
         <!--<p><button type="button">Click me</button></p>-->
