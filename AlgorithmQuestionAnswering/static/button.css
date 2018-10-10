@@ -13,8 +13,8 @@ body
 {
 	position: relative;
 	padding: 10px 40px;
-  margin: 0px 10px 10px 0px;
-  float: left;
+  	margin: 0px 10px 10px 0px;
+  	float: left;
 	border-radius: 10px;
 	font-family: 'Pacifico', cursive;
 	font-size: 25px;
@@ -50,9 +50,33 @@ body
 	text-shadow: 0px -2px #D1B358;
 }
 
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button1 {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
 .action-button:active
 {
 	transform: translate(0px,5px);
-  -webkit-transform: translate(0px,5px);
+  	-webkit-transform: translate(0px,5px);
 	border-bottom: 1px solid;
 }

@@ -1,4 +1,5 @@
-lango==0.13.2
-pattern==2.6
-arrow==0.7.0
-grequests==0.3.0
+Flask
+Flask-Admin
+Flask-SQLAlchemy
+Flask-Security>=1.7.5
+enum34==1.1.6

@@ -6,6 +6,8 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+#This class can be used for CSV to RDF parser
+
 class CSV2RDF():
     def __init__(self, filename):
         self._filename = filename

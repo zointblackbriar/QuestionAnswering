@@ -48,8 +48,10 @@ class HandlerClient(object):
             print("Write object node here", self._objects)
             self._serverNodes = self._client.get_server_node()
             print("Server node is here", self._serverNodes)
-            getNode = self.get_node("42")
+            getNode = self.get_node(85)
             print("Specific Node is here", getNode)
+            objectNodes = self.root.get_child(["0:Objects"])
+            print("MyObject is: ", objectNodes)
 
             #Read Custom Structure
             #self.readCustomStructures()

@@ -73,7 +73,7 @@ class SPARQLEndpoint(object):
             graph.load(self._filename, format=param_format)
             #graph.parse(self._filename)
             qresult = graph.query(self._setQuery, initNs={ 'foaf': FOAF })
-            qresult = prepare
+            #qresult = prepare
             print(qresult)
             # for row in qresult:
             #     print (rdflib.term.Literal(row).value)

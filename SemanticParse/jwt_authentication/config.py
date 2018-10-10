@@ -1,4 +1,0 @@
-DEFAULT_CONFIG = {
-    "HASH_ALGORITHM" : "HS512",
-    "JWT_COOKIE_NAME" : "token"
-}
