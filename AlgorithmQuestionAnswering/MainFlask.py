@@ -8,6 +8,8 @@ import nlquery
 import logging
 from threading import Thread
 import time
+import pdb
+import json
 
 app = Flask(__name__)
 # app.debug = True
@@ -17,12 +19,13 @@ app = Flask(__name__)
 
 share_var_quepySender = None
 share_var_nlQueryHandler = None
+share_var_sparql_queries = None
 
 
 @app.route('/')
 def my_form():
     logging.warning("See this message in Flask Debug Toolbar!")
-    return render_template('sender.html')
+    return render_template('index.html')
 
 @app.route('/parseData', methods=['GET', 'POST'])
 def my_form_post():
@@ -44,44 +47,33 @@ def my_form_post():
         print("An Exception caught")
     return redirect(url_for('index'))
 
-def quepySender():
+def quepySender(quepyQuestion):
     logging.warning("quepy!")
     global share_var_quepySender
+    global share_var_sparql_queries
     try:
-        default_questions = [
-            "Where is Fraunhofer ?",
-            "Who is Angela Merkel?",
-            "When Angela Merkel born?",
-            # "Name Volkswagen cars",
-            # "time in Turkey",
-            # "What time is it in Ankara?",
-            # "List movies directed by Quantin Tarantino",
-            # "How long is Kill Bill 2",
+            # The following question can be asked against DBpedia open domain resource
+            # "Who is Fraunhofer ?",
+            # "Who is Angela Merkel?",
+            # "What is the language of Argentina?",
+            # "what language is spoken in Argentina?",
+            # "What is the population of China?",
+            # "What is a car?",
+            # "Who is Tom Cruise?",
+            # "Who is George Lucas?",
+            # "Who is Mirtha Legrand?",
+            # "Name Fiat cars",
+            # "time in argentina",
+            # "what time is it in Chile?",
+            # "List movies directed by Martin Scorsese",
+            # "How long is Pulp Fiction",
             # "which movies did Mel Gibson starred?",
             # "When was Gladiator released?",
+            # "who directed Pocahontas?",
             # "actors of Fight Club",
-            "What is the language of Argentina?",
-            "what language is spoken in Argentina?",
-            "What is the population of China?",
-            "What is a car?",
-            "Who is Tom Cruise?",
-            "Who is George Lucas?",
-            "Who is Mirtha Legrand?",
-            # "List Microsoft software",
-            "Name Fiat cars",
-            "time in argentina",
-            "what time is it in Chile?",
-            "List movies directed by Martin Scorsese",
-            "How long is Pulp Fiction",
-            "which movies did Mel Gibson starred?",
-            "When was Gladiator released?",
-            "who directed Pocahontas?",
-            "actors of Fight Club",
             # "How many people live in China?",
             # "What is the capital of Bolivia?",
             # "Who is the president of Argentina?"
-        ]
-        questions = default_questions
 
         print_handlers = {
             "define": QuepyTest.print_define,
@@ -90,44 +82,48 @@ def quepySender():
             "literal": QuepyTest.print_literal,
             "age": QuepyTest.print_age,
         }
-        outputPython = questions
+        # outputPython = questions
 
-        for question in questions:
-            print question
-            print "-" * len(question)
+        # for question in questions:
 
-            target, query, metadata =QuepyTest.dbpedia.get_query(question)
+        print quepyQuestion
+        print "-" * len(quepyQuestion)
 
-            if isinstance(metadata, tuple):
-                print 'Hello metadata'
-                query_type = metadata[0]
-                metadata = metadata[1]
-            else:
-                print 'Hello quepy type'
-                query_type = metadata
-                metadata = None
+        target, query, metadata =QuepyTest.dbpedia.get_query(quepyQuestion)
+        #time.sleep(3)
 
-            if query is None:
-                print "Query not generated :(\n"
-                continue
+        if isinstance(metadata, tuple):
+            query_type = metadata[0]
+            metadata = metadata[1]
+        else:
+            query_type = metadata
+            metadata = None
 
-            print query
+        if query is None:
+            print "Query could not be generated \n"
 
-            if target.startswith("?"):
-                target = target[1:]
-            if query:
-                QuepyTest.sparql.setQuery(query)
-                QuepyTest.sparql.setReturnFormat(QuepyTest.JSON)
-                results = QuepyTest.sparql.query().convert()
+        print query
+        share_var_sparql_queries = query
 
-                if not results["results"]["bindings"]:
-                    print "No answer found :("
-                    continue
+        if target.startswith("?"):
+            target = target[1:]
+        if query:
+            QuepyTest.sparql.setQuery(query)
+            QuepyTest.sparql.setReturnFormat(QuepyTest.JSON)
+            results = QuepyTest.sparql.query().convert()
+            with open('data.json', 'w+') as outfile:
+                json.dump(results["results"]["bindings"], outfile)
 
-            print_handlers[query_type](results, target, metadata)
-            print
-            print("Output Python", outputPython)
-            share_var_quepySender = outputPython
+            if not results["results"]["bindings"]:
+                share_var_quepySender = "No answer from wikidata"
+
+            share_var_quepySender = results["results"]["bindings"]
+
+        print_handlers[query_type](results, target, metadata)
+        #print
+        # share_var_quepySender = outputPython
+        #share_var_sparql_queries = results
+
     except Exception as ex:
         app.logger.error("Handler is not working correctly: ", str(ex))
 
@@ -135,45 +131,45 @@ def quepySender():
 def quepyForm():
     # If you want to give an argument please use as follow
     # t = Thread(target=quepySender, args=(url, data))
-
-    t = Thread(target=quepySender)
-    t.daemon = True
-    t.start()
-    time.sleep(3)
-    if share_var_quepySender:
-        return render_template('quepy.html', output = str(share_var_quepySender))
+    # pdb.set_trace()
+    param_Question = request.form['quepyEngine']
+    quepySender(param_Question)
+    #print('share_var_sparql_queries', share_var_sparql_queries)
+    #tuple format
+    #return  '{} {} {}'.format(firstname, lastname, cellphone)
+    if share_var_sparql_queries:
+        return render_template('quepy.html', queryResult = share_var_sparql_queries, answer = share_var_quepySender)
 
     return redirect('/', code=302)
 
-def nlQueryHandler():
+
+@app.route('/nlqueryengine', methods=['GET', 'POST'])
+def nlQueryEngine():
+
     logging.warning("nlQueryEngine!")
     global share_var_nlQueryHandler
     outputText = ""
+    engine = nlquery.NLQueryEngine('localhost', 9000)
+
     try:
-        engine = nlquery.NLQueryEngine('localhost', 9000)
-        time.sleep(3)
         app.logger.warning("Query Engine: %s", engine)
         print("engine", engine)
-        line = request.form['nlquery']
-        print(line)
-        line = line.lower()
-        app.logger.info("Show the query: %s", line)
-        print("line", line)
-        outputText = engine.query(line, format_='plain')
+
+        textNL = request.form['nlqueryengine']
+        textNL = textNL.encode('utf-8')
+        print(textNL)
+        #line = line.lower()
+        #app.logger.info("Show the query: %s", line)
+        outputText = engine.query(textNL, format_='plain')
         app.logger.info("Output the query: %s", outputText)
         share_var_nlQueryHandler = outputText
         print outputText
+        if share_var_nlQueryHandler:
+            return render_template('nlqueryengine.html', queryResultNLQuery=share_var_nlQueryHandler)
 
     except(RuntimeError, TypeError, NameError, Exception):
         app.logger.error("Handler is not working correctly: ", exc_info=True)
 
-@app.route('/nlqueryengine', methods=['GET', 'POST'])
-def nlQueryEngine():
-    t = Thread(target=nlQueryHandler)
-    t.daemon = True
-    t.start()
-    if share_var_nlQueryHandler:
-        return render_template('nlqueryengine.html', output = str(share_var_nlQueryHandler))
 
     return redirect('/', code=302)
 

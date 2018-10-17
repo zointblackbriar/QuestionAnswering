@@ -37,9 +37,6 @@ class NaturalProcess:
         new_tokens = [w for w in words if not w in defaultEnglishStopwords]
         return new_tokens
 
-
-
-
 def takeASentenceInput():
     sentence = input("Enter your sentence")
 

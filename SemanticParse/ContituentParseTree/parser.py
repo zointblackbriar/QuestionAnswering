@@ -2,58 +2,69 @@ from nltk.parse.stanford import StanfordParser, GenericStanfordParser
 from nltk.internals import find_jars_within_path
 from nltk.tree import Tree
 from pycorenlp import StanfordCoreNLP
-#The above mentioned library is to use for nltk-os comm. java library
-import logging
-logger = logging.getLogger(__name__)
 
 
 class Parser:
-
-    def __init__(self):
+    """Abstract Parser class"""
+    def __init__():
         pass
 
     def parse(self, sent):
         pass
 
-class TreeLibParser(Parser):
+
+class OldStanfordLibParser(Parser):
+    """For StanfordParser < 3.6.0"""
+
     def __init__(self):
         self.parser = StanfordParser()
 
     def parse(self, line):
-        """Tree objects from a sentence"""
+        """Returns tree objects from a sentence
+        Args:
+            line: Sentence to be parsed into a tree
+        Returns:
+            Tree object representing parsed sentence
+            None if parse fails
+        """
         tree = list(self.parser.raw_parse(line))[0]
-        logger.info("The results of the tree from a sentence %s", str(tree))
         tree = tree[0]
         return tree
 
 
-class StanfordLibParser(TreeLibParser):
+class StanfordLibParser(OldStanfordLibParser):
+    """For StanfordParser == 3.6.0"""
     def __init__(self):
         self.parser = StanfordParser(
-            model_path= 'edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz')
-        stanford_dir = self.parser._classpath.rpartition('/')[0]
-        logger("stanford directory is here: %s", str(stanford_dir))
+            model_path='edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz')
+        stanford_dir = self.parser._classpath[0].rpartition('/')[0]
         self.parser._classpath = tuple(find_jars_within_path(stanford_dir))
 
-class StanfordServerConnection(Parser, GenericStanfordParser):
-    def __init__(self, host="http://localhost", port=9000):
-        self.nlp = StanfordCoreNLP(host, port=port, timeout=3000) # quiet = False, logging_level = logging.DEBUG
 
-        self.props = {
-            'annotators': 'tokenize,ssplit,pos,lemma,ner,parse,depparse,dcoref,relation',
-            'pipelineLanguage' : 'en',
-            'outputFormat' : 'json'
-        }
+class StanfordServerParser(Parser, GenericStanfordParser):
+    """Follow the readme to setup the Stanford CoreNLP server"""
+    def __init__(self, host='localhost', port=9000, properties={}):
+        url = 'http://{0}:{1}'.format(host, port)
+        self.nlp = StanfordCoreNLP(url)
 
-    def treeConstruct(self, result):
+        if not properties:
+            self.properties = {
+                'annotators': 'parse',
+                'outputFormat': 'json',
+            }
+        else:
+            self.properties = properties
+
+    def _make_tree(self, result):
         return Tree.fromstring(result)
 
     def parse(self, sent):
-        output = self.nlp.annotate(sent, properties=self.props)
+        output = self.nlp.annotate(sent, properties=self.properties)
 
+        # Got random html, return empty tree
         if isinstance(output, str):
             return Tree('', [])
 
-        parse_output = output['sentences'][0]['parser'] + '\n\n'
-        logger.info("Output of parsing: %s", parse_output)
-        tree = next(next(self._parse_trees_output(parse_output)))
+        parse_output = output['sentences'][0]['parse'] + '\n\n'
+        tree = next(next(self._parse_trees_output(parse_output)))[0]
+        return tree

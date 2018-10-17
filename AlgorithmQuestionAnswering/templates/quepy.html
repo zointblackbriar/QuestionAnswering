@@ -1,7 +1,36 @@
 <!DOCTYPE html>
-<title>Hello from Flask</title>
-{% if output %}
-  <h1>Hello {{ output }}!</h1>
-{% else %}
-  <h1>Hello, World!</h1>
-{% endif %}
+ <link rel="stylesheet" href="../static/sender.css" src="{{ url_for('static', filename = 'sender.css') }}">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script>
+function goBack() {
+    window.history.back()
+}
+</script>
+
+<body>
+
+<div class="row-fluid">
+<button class="action-button shadow animate blue" onclick="goBack()">Go Back</button>
+    <title>Hello from Flask</title>
+    {#{% if output %}#}
+    {#  <h1>Hello {{ output }}!</h1>#}
+    {#{% else %}#}
+    {#  <h1>Hello, World!</h1>#}
+    {#{% endif %}#}
+
+    <div class="codeclass">
+        <p> Query Result is here</p>
+        <code class="prettyprint">
+            {{ queryResult }}
+        </code>
+
+        <p>Answer in json format is here</p>
+        <code class="prettyprint">
+            {{ answer }}
+        </code>
+
+    </div>
+</div>
+
+</body>

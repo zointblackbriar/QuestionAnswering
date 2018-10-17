@@ -8,6 +8,7 @@
     <data-source name="sample_db" uuid="81b82fff-9983-4502-af2b-2703478cad3d">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="SQLITE" exact-version="0.0" />
       <auth-required>false</auth-required>
+      <introspection-schemas>*:</introspection-schemas>
     </data-source>
   </component>
 </project>

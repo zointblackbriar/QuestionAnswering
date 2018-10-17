@@ -48,10 +48,9 @@ html {
 }
 
 body {
-  display: flex;
+  /*display: flex; */
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   width: 100vw;
   height: 100vh;
   color: #455A64;
@@ -61,10 +60,10 @@ body {
   line-height: var(--lineHeightMd);
 }
 
-.Wrapper {
+/*.Wrapper {
   flex: 0 0 80%;
-  max-width: 80%;
-}
+  max-width: 100%;
+}*/
 
 .Title {
   margin: 0 0 var(--gutterXx) 0;

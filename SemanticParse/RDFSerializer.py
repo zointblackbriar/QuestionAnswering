@@ -6,6 +6,9 @@ import os
 import argparse
 import fnmatch
 
+#It is a parse library that we can use
+#Try to integrate Web Service
+
 plugin.register("rdf-json", Parser, "rdflib_rdfjson.rdfjson_parser", "RdfJsonParser")
 plugin.register("rdf-json", Serializer, "rdflib_rdfjson.rdfjson_serializer", "RdfJsonSerializer")
 

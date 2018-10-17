@@ -25,6 +25,8 @@
 body {
   padding: 20px 80px;
   background: #eee url(https://subtlepatterns.com/patterns/extra_clean_paper.png);
+  overflow:auto;
+
 }
 #logo {
   font-family: 'Open Sans', sans-serif;
@@ -127,6 +129,7 @@ body {
   top: -4px;
 }
 #menu li:before {
-  left: 0;
-  bottom: -4px;
-    background-image: -webkit-linear-gradient(right, transparent 0%, rgba(0,0,0,.4) 100%);
+    left: 0;
+    bottom: -4px;
+    background-image: -webkit-linear-gradient(right, transparent 0%, rgba(0, 0, 0, .4) 100%);
+}

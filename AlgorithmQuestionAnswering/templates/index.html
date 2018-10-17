@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sender Page</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../static/input.css"  src="{{ url_for('static', filename = 'input.css') }}">
+    <link rel="stylesheet" href="../static/button.css"  src="{{ url_for('static', filename = 'button.css') }}">
+    <link rel="stylesheet" href="../static/sender.css" src="{{ url_for('static', filename = 'sender.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+</head>
+<body class="body">
+
+<div class="col-6">
+
+    <div class="col-12" >
+        <a class="col-12" href="/" id="logo">Question Answering</a>
+        <ul id="menu">
+            <li><a href="https://www.iwu.fraunhofer.de/"><span>About the Company</span></a></li>
+        </ul>
+        <br><br><br>
+        <!--<div class="wrapper"> -->
+            <br><br><br><br>
+                    <div class="col-md-6">
+                        <form method="POST" action="/nlqueryengine">
+                            <p> Wikidata Question Engine: <input type="text" name="nlqueryengine" id="nlqueryInput" class="Input-text" placeholder="Who is Angela Merkel?"></p>
+                            <label for="input" class="Input-label">Please ask a question</label>
+                            <button  class="action-button shadow animate blue" type="submit" name="wikidataEngine" >Wikidata Question</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form method="POST"  action="/quepy">
+                            <p> Quepy Engine: <input type="text"  name="quepyEngine" id="quepyInput" class="Input-text" placeholder="Who is Fraunhofer?"></p>
+                            <label for="input" class="Input-label" >Ask a question to quepy</label>
+                            <button  class="action-button shadow animate blue" type="submit" name="quepyEngine" >Quepy</button>
+                            <!-- href="/quepy" -->
+                        </form>
+                    </div>
+            <br> <br>
+            </div>
+</div>
+
+
+</body>
+</html>

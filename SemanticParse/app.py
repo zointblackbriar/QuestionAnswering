@@ -104,6 +104,12 @@ class CustomView(BaseView):
 def index():
     return render_template('index.html')
 
+#Test is ok
+#No token based authentication
+@app.route('/sendAMessage')
+def sendAMessage():
+    return 'Hello World'
+
 # Create admin
 admin = flask_admin.Admin(
     app,
