@@ -27,7 +27,7 @@ def my_form():
     logging.warning("See this message in Flask Debug Toolbar!")
     return render_template('index.html')
 
-@app.route('/parseData', methods=['GET', 'POST'])
+@app.route('/testForOtherAlg', methods=['GET', 'POST'])
 def my_form_post():
     logging.warning("parseData!")
     text = request.form['question']
@@ -90,7 +90,6 @@ def quepySender(quepyQuestion):
         print "-" * len(quepyQuestion)
 
         target, query, metadata =QuepyTest.dbpedia.get_query(quepyQuestion)
-        #time.sleep(3)
 
         if isinstance(metadata, tuple):
             query_type = metadata[0]
@@ -131,7 +130,6 @@ def quepySender(quepyQuestion):
 def quepyForm():
     # If you want to give an argument please use as follow
     # t = Thread(target=quepySender, args=(url, data))
-    # pdb.set_trace()
     param_Question = request.form['quepyEngine']
     quepySender(param_Question)
     #print('share_var_sparql_queries', share_var_sparql_queries)
@@ -158,8 +156,6 @@ def nlQueryEngine():
         textNL = request.form['nlqueryengine']
         textNL = textNL.encode('utf-8')
         print(textNL)
-        #line = line.lower()
-        #app.logger.info("Show the query: %s", line)
         outputText = engine.query(textNL, format_='plain')
         app.logger.info("Output the query: %s", outputText)
         share_var_nlQueryHandler = outputText
