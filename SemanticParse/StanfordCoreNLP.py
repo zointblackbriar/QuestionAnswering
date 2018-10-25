@@ -6,7 +6,7 @@ import json
 import logging
 import colored_logs, AppLogger
 
-class testConnectionCoreNLP(object):
+class ConnectionCoreNLP(object):
     def __init__(self, host="http://localhost", port=9000):
         self.nlp = StanfordCoreNLP(host, port=port, timeout=3000) # quiet = False, logging_level = logging.DEBUG
 
@@ -36,6 +36,10 @@ class testConnectionCoreNLP(object):
         AppLogger.log.info("dependency parser activated")
         return self.nlp.dependency_parse(sentence)
 
+    def deterministic_coreference(self, sentence):
+        AppLogger.log.info("deterministic coreference activated")
+        return self.nlp.coref(sentence)
+
     def annotate(self, sentence):
         AppLogger.log.info("annotator")
         return json.loads(self.nlp.annotate(sentence, properties=self.props))
@@ -48,10 +52,10 @@ class testConnectionCoreNLP(object):
                 'word' : token['word']
             }
 
-class TestPurpose(object):
+class TestConnectionCoreNLP(object):
     def runTest(self):
-        nlpCore = testConnectionCoreNLP()
-        TestInput = 'How many BHKW have we got?'
+        nlpCore = ConnectionCoreNLP()
+        TestInput = 'What is the current  voltage of sensor1  of machine1 in demofactory ?'
         print('Tokenize', nlpCore.word_tokenize(TestInput))
         print('Part of Speech Tagger', nlpCore.posTagger(TestInput))
         print('Named Entities', nlpCore.ner(TestInput))
@@ -60,5 +64,3 @@ class TestPurpose(object):
         #Tested with Server. Stanford CoreNLP server up and running
 
 
-obj = TestPurpose()
-obj.runTest()

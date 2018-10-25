@@ -1,13 +1,14 @@
 from collections import OrderedDict
-from lango.matcher import match_rules
-from lango.parser import StanfordServerParser
-#from pattern.en import singularize
+from pattern.text.en import singularize
+
 from wikidata import WikiData
 from Utils import first
 from api_adapter import LoggingInterface
 from answer import Answer
+from ParseTree.parser import StanfordServerParser
+from ParseTree.matcher import MatcherContext
 
-from threading import local
+obj = MatcherContext()
 
 class NLQueryEngine(LoggingInterface):
     """
@@ -238,7 +239,7 @@ class NLQueryEngine(LoggingInterface):
         props = [(prop, value, oper)]
 
         if pp_t:
-            prop_tuple = match_rules(pp_t, self.prop_rules, self.get_prop_tuple)
+            prop_tuple = obj.match_rules(pp_t, self.prop_rules, self.get_prop_tuple)
             if not prop_tuple:
                 return None
             props += prop_tuple
@@ -261,7 +262,7 @@ class NLQueryEngine(LoggingInterface):
         """
         props = []
         if prop_match_t:
-            prop = match_rules(prop_match_t, self.prop_rules, self.get_prop_tuple)
+            prop = obj.match_rules(prop_match_t, self.prop_rules, self.get_prop_tuple)
 
             if not prop:
                 return
@@ -269,7 +270,7 @@ class NLQueryEngine(LoggingInterface):
             props += prop
 
         if prop_match2_t:
-            prop = match_rules(prop_match2_t, self.prop_rules, self.get_prop_tuple)
+            prop = obj.match_rules(prop_match2_t, self.prop_rules, self.get_prop_tuple)
 
             if not prop:
                 return
@@ -335,8 +336,8 @@ class NLQueryEngine(LoggingInterface):
         context = {'query': sent, 'tree': tree}
         self.info(tree)
         ans = first([
-            match_rules(tree, self.find_entity_rules, self.find_entity_query),
-            match_rules(tree, self.subject_prop_rules, self.subject_query),
+            obj.match_rules(tree, self.find_entity_rules, self.find_entity_query),
+            obj.match_rules(tree, self.subject_prop_rules, self.subject_query),
         ])
 
         if not ans:

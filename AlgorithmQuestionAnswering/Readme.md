@@ -11,12 +11,15 @@ You can type your question and see the result easily. Have fun
 Then you should the server with the following command
 
 `Run the server using all jars in the current directory (e.g., the CoreNLP home directory)`
+
 `java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000`
 
 ##References
 
 Reference 1: https://github.com/ayoungprogrammer/nlquery
-Reference 2: 
-Reference 3:
+
+Reference 2: http://blog.ayoungprogrammer.com/2016/10/natural-lang-query-engine.html/
+
+Reference 3: https://github.com/machinalis/quepy
 
 This project was written in Python and Flask API.

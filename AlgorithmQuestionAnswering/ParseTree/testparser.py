@@ -1,10 +1,5 @@
-from collections import OrderedDict
-import os
-import parser
-import pdb
-
-from ContituentParseTree.parser import StanfordServerParser
-from ContituentParseTree.matcher import Matcher
+from ParseTree.parser import StanfordServerParser
+from ParseTree.matcher import MatcherContext
 
 parser = StanfordServerParser()
 
@@ -30,7 +25,7 @@ rules = {
 
 keys = ['subj', 'subj_in', 'obj', 'prop', 'qtype']
 
-obj = Matcher()
+obj = MatcherContext()
 
 for sent in sents:
     tree = parser.parse(sent)

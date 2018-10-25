@@ -1,32 +1,28 @@
-from collections import OrderedDict
-import os
-from ContituentParseTree.parser import StanfordServerParser
-from ContituentParseTree.matcher import Matcher
+from ParseTree.parser import StanfordServerParser
+from ParseTree.matcher import MatcherContext
 
 parser = StanfordServerParser()
-obj = Matcher()
+obj = MatcherContext()
 
 sents = [
-    'Who is Fraunhofer?',
-    'What is BHKW?',
-    'What Energy Data contains?',
-    'What is Fraunhofer ?'
+    'What Heatmeter contains?'
 ]
 
 rules = {
-    '( SBARQ ( WHNP/WHADVP:wh_t ) ( SQ ( VBZ ) ( NP:np_t ) ) )': {
+    '(ROOT ( SBARQ ( WHNP/WDT:wh_t ) ( NP ( NN ) ( NN:np_t ) ) ) ': {
         'np_t': {
-            '( NP ( NP:subj-o ) ( PP ( IN:subj_in-o ) ( NP:obj-o ) ) )': {},
-            '( NP:subj-o )': {},
+            '( NN ( NN:subj-o ) ( PP ( IN:subj_in-o ) ( NP:obj-o ) ) )': {},
+            '( NN:subj-o )': {},
         },
         'wh_t': {
             '( WHNP:whnp ( WDT ) ( NN:prop-o ) )': {},
             '( WHNP/WHADVP:qtype-o )': {},
         }
     },
-    '( SBARQ:subj-o )': {},
+    '( SBARQ:subj-o ))': {},
 }
 
+# rules = {'( SBARQ ( WHNP/WHADVP:wh_t ) ( SQ ( VBZ ) ( NP:np_t ) ) )'}
 
 keys = ['subj', 'subj_in', 'obj', 'prop', 'qtype']
 

@@ -2,9 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f18dbd5-6dd4-41ab-9556-2d8e05e14366" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ParseTree/matcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ParseTree/parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ParseTree/testmatcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ParseTree/testparser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainFlask.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainFlask.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NaturalLanguageProcessing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuepyTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/QuepyTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SparqlIntegrator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SparqlQueryParser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlquery.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlquery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nlqueryengine.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nlqueryengine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/quepy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/quepy.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SemanticParse/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SemanticParse/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SemanticParse/CSV2RDF.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SemanticParse/ContituentParseTree/testmatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SemanticParse/ContituentParseTree/testmatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SemanticParse/ContituentParseTree/testparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SemanticParse/ContituentParseTree/testparser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SemanticParse/SparqlEndpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SemanticParse/SparqlEndpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SemanticParse/TestStanfordCoreNLP.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SemanticParse/StanfordCoreNLP.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,25 +33,32 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Unittests_in_TestNaturalLanguageProcessing_py.coverage" NAME="Unittests in TestNaturalLanguageProcessing.py Coverage Results" MODIFIED="1537975358389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$testmatcher.coverage" NAME="testmatcher Coverage Results" MODIFIED="1540156988592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$QuepyQuestion.coverage" NAME="QuepyQuestion Coverage Results" MODIFIED="1538047932323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$MainTemplateBase.coverage" NAME="MainTemplateBase Coverage Results" MODIFIED="1538514230240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$main.coverage" NAME="main Coverage Results" MODIFIED="1539036732925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$AlgorithmQuestionAnswering.coverage" NAME="AlgorithmQuestionAnswering Coverage Results" MODIFIED="1537975024628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$quepyapp.coverage" NAME="quepyapp Coverage Results" MODIFIED="1538049709027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/quepy" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Flask__MainFlask_py_.coverage" NAME="Flask (MainFlask.py) Coverage Results" MODIFIED="1539040215417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$MainFlask.coverage" NAME="MainFlask Coverage Results" MODIFIED="1539765005671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$QuepyTest.coverage" NAME="QuepyTest Coverage Results" MODIFIED="1538514572334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$TensorflowSession.coverage" NAME="TensorflowSession Coverage Results" MODIFIED="1538055021174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$testparser.coverage" NAME="testparser Coverage Results" MODIFIED="1540156829264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Utils.coverage" NAME="Utils Coverage Results" MODIFIED="1540200656853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$SparqlQueryParser.coverage" NAME="SparqlQueryParser Coverage Results" MODIFIED="1539039458096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1538513708785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestQuepyProject/dbpedia" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$TestTreeRules.coverage" NAME="TestTreeRules Coverage Results" MODIFIED="1540471867661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$MoviesDbpedia.coverage" NAME="MoviesDbpedia Coverage Results" MODIFIED="1538047587148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TemplateQuestionsDBPedia" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$SparqlEndpoint.coverage" NAME="SparqlEndpoint Coverage Results" MODIFIED="1538694895266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$FlaskRun.coverage" NAME="FlaskRun Coverage Results" MODIFIED="1539001764689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Flask__MainTemplateBase_py_.coverage" NAME="Flask (MainTemplateBase.py) Coverage Results" MODIFIED="1538514684806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$NaturalLanguageProcessing.coverage" NAME="NaturalLanguageProcessing Coverage Results" MODIFIED="1539039468018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Flask__main_py___1_.coverage" NAME="Flask (main.py) (1) Coverage Results" MODIFIED="1539039542465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1539040092835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$SPARQLGenerator.coverage" NAME="SPARQLGenerator Coverage Results" MODIFIED="1540475070024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Unittests_in_TestNaturalLanguageProcessing_py.coverage" NAME="Unittests in TestNaturalLanguageProcessing.py Coverage Results" MODIFIED="1537975358389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$testmatcher__1_.coverage" NAME="testmatcher (1) Coverage Results" MODIFIED="1540157398438" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$MainTemplateBase.coverage" NAME="MainTemplateBase Coverage Results" MODIFIED="1538514230240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$main.coverage" NAME="main Coverage Results" MODIFIED="1539036732925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$StanfordCoreNLP.coverage" NAME="StanfordCoreNLP Coverage Results" MODIFIED="1540470112420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Flask__MainFlask_py_.coverage" NAME="Flask (MainFlask.py) Coverage Results" MODIFIED="1539040215417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$MainFlask.coverage" NAME="MainFlask Coverage Results" MODIFIED="1540470954869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$QuepyTest.coverage" NAME="QuepyTest Coverage Results" MODIFIED="1538514572334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$TensorflowSession.coverage" NAME="TensorflowSession Coverage Results" MODIFIED="1538055021174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1538513708785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestQuepyProject/dbpedia" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$SparqlEndpoint.coverage" NAME="SparqlEndpoint Coverage Results" MODIFIED="1540390248901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AlgorithmQuestionAnswering$Flask__MainTemplateBase_py_.coverage" NAME="Flask (MainTemplateBase.py) Coverage Results" MODIFIED="1538514684806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-700403352">
@@ -142,80 +169,102 @@
     <session id="1635544714">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
-          <entry key="project.open.time.1" value="3" />
-          <entry key="project.open.time.11" value="2" />
+          <entry key="project.closed" value="37" />
+          <entry key="project.open.time.1" value="9" />
+          <entry key="project.open.time.10" value="4" />
+          <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.13" value="1" />
-          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.15" value="3" />
+          <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.2" value="3" />
+          <entry key="project.open.time.19" value="2" />
+          <entry key="project.open.time.2" value="6" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="16" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="5" />
+          <entry key="project.opened" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="60" />
+          <entry key="Rules" value="11" />
           <entry key="css" value="51" />
           <entry key="dummy" value="9" />
-          <entry key="html" value="1082" />
-          <entry key="py" value="1230" />
+          <entry key="html" value="1512" />
+          <entry key="py" value="12652" />
+          <entry key="ttl" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="51" />
-          <entry key="HTML" value="1082" />
-          <entry key="PLAIN_TEXT" value="9" />
-          <entry key="Python" value="1290" />
+          <entry key="HTML" value="1512" />
+          <entry key="PLAIN_TEXT" value="21" />
+          <entry key="Python" value="12712" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="Rules" value="8" />
           <entry key="css" value="13" />
-          <entry key="html" value="15" />
-          <entry key="json" value="1" />
+          <entry key="html" value="43" />
+          <entry key="json" value="5" />
+          <entry key="jsonld" value="2" />
+          <entry key="log" value="2" />
+          <entry key="md" value="8" />
           <entry key="png" value="1" />
-          <entry key="py" value="62" />
+          <entry key="py" value="205" />
+          <entry key="rdf" value="4" />
+          <entry key="ttl" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="13" />
-          <entry key="HTML" value="15" />
+          <entry key="HTML" value="43" />
           <entry key="Image" value="1" />
-          <entry key="JSON" value="1" />
-          <entry key="Python" value="62" />
+          <entry key="JSON" value="5" />
+          <entry key="Markdown" value="8" />
+          <entry key="PLAIN_TEXT" value="28" />
+          <entry key="Python" value="205" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/MainFlask.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StanfordCoreNLP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8">
-              <caret line="69" column="53" lean-forward="true" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+            <state relative-caret-position="1054">
+              <caret line="70" column="46" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
               <folding>
-                <element signature="e#16#27#0" expanded="true" />
-                <marker date="1539772341709" expanded="true" signature="4160:4165" ph="..." />
-                <marker date="1539772341709" expanded="true" signature="4687:4690" ph="..." />
+                <marker date="1540420531790" expanded="true" signature="3673:3682" ph="..." />
+                <marker date="1540420531790" expanded="true" signature="3677:3682" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SPARQLGenerator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-646">
+              <caret line="109" column="56" lean-forward="true" selection-start-line="109" selection-start-column="56" selection-end-line="109" selection-end-column="56" />
+              <folding>
+                <element signature="e#39#69#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/answer.py">
+        <entry file="file://$PROJECT_DIR$/TestTreeRules.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -223,26 +272,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            <state relative-caret-position="714">
+              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/nlqueryengine.html">
+        <entry file="file://$PROJECT_DIR$/MainFlask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+            <state relative-caret-position="2550">
+              <caret line="163" selection-start-line="161" selection-end-line="163" />
+              <folding>
+                <element signature="e#38#49#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api_adapter.py">
+        <entry file="file://$PROJECT_DIR$/AppLogger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+            <state relative-caret-position="170">
+              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -251,22 +303,44 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nlquery.py">
+        <entry file="file://$PROJECT_DIR$/SparqlEndpoint.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="679">
-              <caret line="339" column="10" lean-forward="true" selection-start-line="339" selection-start-column="10" selection-end-line="339" selection-end-column="10" />
+            <state relative-caret-position="1139">
+              <caret line="72" column="33" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="33" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#40#85#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SparqlQueryParser.py">
+        <entry file="file://$PROJECT_DIR$/QuepyTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-680">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="1411">
+              <caret line="89" column="51" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NLTKProp.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -278,32 +352,16 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nlqueryengine</find>
-      <find>question</find>
-      <find>logger</find>
-      <find>logging</find>
-      <find>wrapper</find>
-      <find>Your</find>
-      <find>button</find>
-      <find>Quepy</find>
-      <find>animate</find>
-      <find>request</find>
-      <find>Ask</find>
-      <find>nlqueryHandler</find>
-      <find>pdb.set</find>
-      <find>align</find>
-      <find>wikipedia2dbpedia</find>
       <find>wiki</find>
       <find>Hello</find>
       <find>hello</find>
-      <find>print</find>
       <find>handler</find>
       <find>--------------------</find>
       <find>continue</find>
@@ -313,8 +371,24 @@
       <find>Input-label</find>
       <find>overflow</find>
       <find>Wrapp</find>
-      <find>dbpedia</find>
       <find>Wrapper</find>
+      <find>prop-o</find>
+      <find>questions</find>
+      <find>match_rules</find>
+      <find>GenericStanfordParser</find>
+      <find>print</find>
+      <find>lango</find>
+      <find>Matcher</find>
+      <find>SBARQ</find>
+      <find>find_entity_rules</find>
+      <find>logger</find>
+      <find>str</find>
+      <find>lower()</find>
+      <find>lower</find>
+      <find>tree</find>
+      <find>energy.rdf</find>
+      <find>dbpedia</find>
+      <find>selectQueryLevel</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -323,19 +397,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/Sender.css" />
-        <option value="$PROJECT_DIR$/TestNaturalLanguageProcessing.py" />
-        <option value="$PROJECT_DIR$/QuepyProcessing.py" />
-        <option value="$PROJECT_DIR$/TemplateQuestionsDBPedia/PeopleDbpedia.py" />
-        <option value="$PROJECT_DIR$/TemplateQuestionsDBPedia/__init__.py" />
-        <option value="$PROJECT_DIR$/TemplateQuestionsDBPedia/AtributeMapper.py" />
-        <option value="$PROJECT_DIR$/TemplateQuestionsDBPedia/AttributeMapper.py" />
-        <option value="$PROJECT_DIR$/TemplateQuestionsDBPedia/PropertyMapper.py" />
-        <option value="$PROJECT_DIR$/TemplateQuestionsDBPedia/MoviesDbpedia.py" />
-        <option value="$PROJECT_DIR$/quepy/__init__.py" />
-        <option value="$PROJECT_DIR$/venv/Lib/site-packages/quepy/quepyapp.py" />
-        <option value="$PROJECT_DIR$/quepy/parsing.py" />
-        <option value="$PROJECT_DIR$/quepy/quepyapp.py" />
         <option value="$PROJECT_DIR$/quepy/settings.py" />
         <option value="$PROJECT_DIR$/dbpedia/dsl.py" />
         <option value="$PROJECT_DIR$/dbpedia/people.py" />
@@ -351,7 +412,6 @@
         <option value="$PROJECT_DIR$/templates/sender.css" />
         <option value="$PROJECT_DIR$/templates/input.css" />
         <option value="$PROJECT_DIR$/static/button.js" />
-        <option value="$PROJECT_DIR$/Utils.py" />
         <option value="$PROJECT_DIR$/answer.py" />
         <option value="$PROJECT_DIR$/wikidata.py" />
         <option value="$PROJECT_DIR$/__init__.py__.py" />
@@ -359,20 +419,35 @@
         <option value="$PROJECT_DIR$/dbpedia/__init__.py" />
         <option value="$PROJECT_DIR$/PropertyMapper/country.py" />
         <option value="$PROJECT_DIR$/MainTemplateBase.py" />
-        <option value="$PROJECT_DIR$/SparqlEndpoint.py" />
         <option value="$PROJECT_DIR$/templates/test.html" />
-        <option value="$PROJECT_DIR$/nlquery.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/templates/sender.html" />
         <option value="$PROJECT_DIR$/NaturalLanguageProcessing.py" />
-        <option value="$PROJECT_DIR$/QuepyTest.py" />
-        <option value="$PROJECT_DIR$/templates/nlqueryengine.html" />
-        <option value="$PROJECT_DIR$/templates/quepy.html" />
         <option value="$PROJECT_DIR$/static/button.css" />
         <option value="$PROJECT_DIR$/static/sender.css" />
         <option value="$PROJECT_DIR$/static/input.css" />
+        <option value="$PROJECT_DIR$/QuepyTest.py" />
+        <option value="C:/Python27/Lib/site-packages/lango/parser.py" />
+        <option value="C:/Python27/Lib/site-packages/lango/matcher.py" />
+        <option value="$PROJECT_DIR$/matcher.py" />
+        <option value="$PROJECT_DIR$/templates/quepy.html" />
+        <option value="$PROJECT_DIR$/templates/nlqueryengine.html" />
+        <option value="$PROJECT_DIR$/DataSource/Rules" />
+        <option value="$PROJECT_DIR$/testparser.py" />
+        <option value="$PROJECT_DIR$/testmatcher.py" />
+        <option value="$PROJECT_DIR$/nlquery.py" />
+        <option value="$PROJECT_DIR$/ParseTree/testmatcher.py" />
+        <option value="$PROJECT_DIR$/ParseTree/matcher.py" />
+        <option value="$PROJECT_DIR$/Utils.py" />
+        <option value="$PROJECT_DIR$/NLTKProp.py" />
+        <option value="$PROJECT_DIR$/SparqlEndpoint.py" />
+        <option value="$PROJECT_DIR$/DataSource/e3fabrik.ttl" />
         <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/StanfordCoreNLP.py" />
+        <option value="$PROJECT_DIR$/templates/fraunhoferengine.html" />
         <option value="$PROJECT_DIR$/MainFlask.py" />
+        <option value="$PROJECT_DIR$/TestTreeRules.py" />
+        <option value="$PROJECT_DIR$/SPARQLGenerator.py" />
       </list>
     </option>
   </component>
@@ -383,10 +458,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1094" />
+    <option name="width" value="1382" />
+    <option name="height" value="662" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -394,13 +469,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="AlgorithmQuestionAnswering" type="b2602c69:ProjectViewProjectNode" />
               <item name="AlgorithmQuestionAnswering" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AlgorithmQuestionAnswering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AlgorithmQuestionAnswering" type="462c0819:PsiDirectoryNode" />
+              <item name="DataSource" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AlgorithmQuestionAnswering" type="b2602c69:ProjectViewProjectNode" />
@@ -416,26 +495,31 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SemanticParse" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering" />
-      <recent name="G:\AllFiles\Projeler\Python_Projeler\AlgorithmQuestionAnswering" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParseCombined\AlgorithmQuestionAnswering\ParseTree" />
+      <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParseCombined\AlgorithmQuestionAnswering" />
       <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering" />
       <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering\dbpedia" />
       <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParseCombined\AlgorithmQuestionAnswering" />
+      <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParseCombined\AlgorithmQuestionAnswering\DataSource" />
+      <recent name="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering" />
+      <recent name="G:\AllFiles\Projeler\Python_Projeler\AlgorithmQuestionAnswering" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -450,7 +534,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Flask server.MainFlask">
+  <component name="RunManager" selected="Python.SPARQLGenerator">
     <configuration name="FlaskPython" type="PythonConfigurationType" factoryName="Python">
       <module name="AlgorithmQuestionAnswering" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -473,7 +557,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="NaturalLanguageProcessing" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="SPARQLGenerator" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AlgorithmQuestionAnswering" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -483,19 +567,19 @@
       <option name="SDK_HOME" value="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="false" />
-      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NaturalLanguageProcessing.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SPARQLGenerator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="SparqlQueryParser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="SparqlEndpoint" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="AlgorithmQuestionAnswering" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -505,13 +589,79 @@
       <option name="SDK_HOME" value="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="false" />
-      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SparqlQueryParser.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SparqlEndpoint.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="StanfordCoreNLP" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AlgorithmQuestionAnswering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/StanfordCoreNLP.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestTreeRules" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AlgorithmQuestionAnswering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestTreeRules.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Utils" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AlgorithmQuestionAnswering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="G:\AllFiles\Projeler\Python_Projeler\SemanticParse\AlgorithmQuestionAnswering\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Utils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
@@ -577,13 +727,19 @@
     <list>
       <item itemvalue="Flask server.MainFlask" />
       <item itemvalue="Python.FlaskPython" />
-      <item itemvalue="Python.SparqlQueryParser" />
-      <item itemvalue="Python.NaturalLanguageProcessing" />
+      <item itemvalue="Python.StanfordCoreNLP" />
+      <item itemvalue="Python.Utils" />
+      <item itemvalue="Python.SparqlEndpoint" />
+      <item itemvalue="Python.TestTreeRules" />
+      <item itemvalue="Python.SPARQLGenerator" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.NaturalLanguageProcessing" />
-        <item itemvalue="Python.SparqlQueryParser" />
+        <item itemvalue="Python.SPARQLGenerator" />
+        <item itemvalue="Python.TestTreeRules" />
+        <item itemvalue="Python.StanfordCoreNLP" />
+        <item itemvalue="Python.SparqlEndpoint" />
+        <item itemvalue="Python.Utils" />
       </list>
     </recent_temporary>
   </component>
@@ -636,25 +792,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1135" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="662" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13219616" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24130106" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.32882413" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5682303" visible="true" weight="0.22982635" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.56914896" weight="0.39238846" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4978678" weight="0.3272921" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6149773" weight="0.2806324" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5590015" weight="0.4486166" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.43176973" side_tool="true" visible="true" weight="0.22982635" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49733475" weight="0.3272921" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49546143" weight="0.32608697" />
-      <window_info anchor="bottom" id="TODO" order="12" sideWeight="0.4978678" weight="0.3283582" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.3850227" side_tool="true" visible="true" weight="0.2806324" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49394855" weight="0.32608697" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.494705" weight="0.32608697" />
+      <window_info anchor="bottom" id="TODO" order="12" sideWeight="0.4969743" weight="0.32806325" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -686,34 +841,17 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dbpedia/settings.py" />
-    <entry file="file://$PROJECT_DIR$/dbpedia/tvshows.py" />
-    <entry file="file://$PROJECT_DIR$/dbpedia/writers.py" />
-    <entry file="file://$PROJECT_DIR$/QuepyQuestion.py" />
-    <entry file="file://$PROJECT_DIR$/quepy/Lib/io.py" />
-    <entry file="file://$PROJECT_DIR$/dbpedia/main.py" />
-    <entry file="file://$PROJECT_DIR$/static/button.js" />
-    <entry file="file://$PROJECT_DIR$/TestQuepyProject/dbpedia/main.py">
+    <entry file="file://C:/Python27/Lib/site-packages/flask/cli.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
+        <state relative-caret-position="94">
+          <caret line="323" selection-start-line="323" selection-end-line="323" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quepy/settings.py" />
-    <entry file="file://$PROJECT_DIR$/dbpedia/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/EnilinkDataSource.py" />
-    <entry file="file://$PROJECT_DIR$/../SparqlEndpoint.py" />
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/ntpath.py" />
-    <entry file="file://$PROJECT_DIR$/../venv/Lib/site-packages/flask_debugtoolbar/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/GraphDatabase.py" />
-    <entry file="file://$PROJECT_DIR$/TensorflowSession.py" />
-    <entry file="file://$PROJECT_DIR$/TestNaturalLanguageProcessing.py" />
-    <entry file="file://$PROJECT_DIR$/quepy/parsing.py" />
-    <entry file="file://$PROJECT_DIR$/PropertyMapper/country.py">
+    <entry file="file://C:/Python27/Lib/site-packages/werkzeug/debug/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="342">
+          <caret line="288" selection-start-line="288" selection-end-line="288" />
         </state>
       </provider>
     </entry>
@@ -724,197 +862,276 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/qa.png" />
+    <entry file="file://C:/Python27/Lib/site-packages/lango/parser.py" />
+    <entry file="file://C:/Python27/Lib/site-packages/lango/matcher.py" />
     <entry file="file://C:/Python27/Lib/site-packages/pycorenlp/corenlp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="102">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/lango/parser.py">
+    <entry file="file://$PROJECT_DIR$/SparqlQueryParser.py" />
+    <entry file="file://$PROJECT_DIR$/SparqlIntegrator.py" />
+    <entry file="file://$PROJECT_DIR$/ParseTree/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/answer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="272">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/encodings/utf_8.py">
+    <entry file="file://$PROJECT_DIR$/ParseTree/matcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="782">
+          <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quepy/tagger.py" />
-    <entry file="file://$PROJECT_DIR$/quepy/encodingpolicy.py" />
-    <entry file="file://$PROJECT_DIR$/PropertyMapper/basic.py">
+    <entry file="file://$PROJECT_DIR$/ParseTree/parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret column="15" selection-end-line="1" />
+        <state relative-caret-position="170">
+          <caret line="13" selection-start-line="5" selection-end-line="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quepy/mql_generation.py" />
-    <entry file="file://$PROJECT_DIR$/quepy/nltktagger.py" />
-    <entry file="file://$PROJECT_DIR$/quepy/quepyapp.py" />
-    <entry file="file://$PROJECT_DIR$/PropertyMapper/music.py">
+    <entry file="file://$PROJECT_DIR$/ParseTree/testparser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153" />
+        <state relative-caret-position="51">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/flask/app.py">
+    <entry file="file://$PROJECT_DIR$/ParseTree/testmatcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="2291" selection-start-line="2291" selection-end-line="2291" />
+        <state relative-caret-position="187">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NaturalLanguageProcessing.py" />
+    <entry file="file://$PROJECT_DIR$/templates/nlqueryengine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Python27/Lib/logging/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="328" selection-start-line="328" selection-end-line="328" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wikidata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="112" column="15" selection-start-line="112" selection-start-column="15" selection-end-line="112" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PropertyMapper/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        <state relative-caret-position="334">
+          <caret line="740" selection-start-line="740" selection-end-line="740" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/quepy.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="154" column="13" selection-start-line="142" selection-end-line="155" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NaturalLanguageProcessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QuepyTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
-          <folding>
-            <element signature="e#39#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SparqlIntegrator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="311">
+          <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/button.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/input.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="49" column="4" selection-start-line="49" selection-end-line="49" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api_adapter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+        <state relative-caret-position="282">
+          <caret line="60" column="48" selection-start-line="60" selection-start-column="48" selection-end-line="60" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataSource/FraunhoferUsers.ttl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataSource/FraunhoferUsers.rdf">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/nltk/corpus/reader/wordnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1784">
+          <caret line="1415" selection-start-line="1415" selection-end-line="1415" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/colored_logs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-165" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/stanfordcorenlp/corenlp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="207" column="8" selection-start-line="207" selection-start-column="8" selection-end-line="207" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="64" column="4" selection-start-line="64" selection-start-column="4" selection-end-line="64" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wikidata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="127" column="77" selection-start-line="127" selection-start-column="77" selection-end-line="127" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataSource/FraunhoferData.rdf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-867" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/rdflib/parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="178" selection-start-line="178" selection-end-line="178" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/rdflib/graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="1038" selection-start-line="1038" selection-end-line="1038" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FraunhoferData.ttl" />
+    <entry file="file://$PROJECT_DIR$/DataSource/SampleValuesTimeSeries.rdf" />
+    <entry file="file://$PROJECT_DIR$/DataSource/testFraunhoferData.ttl" />
+    <entry file="file://$PROJECT_DIR$/DataSource/e3fabrik.ttl" />
+    <entry file="file://$PROJECT_DIR$/DataSource/e3fabrik.jsonld" />
+    <entry file="file://$PROJECT_DIR$/DataSource/energy.rdf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-867" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataSource/FraunhoferData.ttl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="4" column="50" lean-forward="true" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataSource/Rules">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="82" lean-forward="true" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nlquery.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2584">
+          <caret line="160" column="21" selection-start-line="160" selection-start-column="21" selection-end-line="160" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/fraunhoferengine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StanfordCoreNLP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="70" column="46" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
+          <folding>
+            <marker date="1540420531790" expanded="true" signature="3673:3682" ph="..." />
+            <marker date="1540420531790" expanded="true" signature="3677:3682" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestTreeRules.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainFlask.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2550">
+          <caret line="163" selection-start-line="161" selection-end-line="163" />
+          <folding>
+            <element signature="e#38#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AppLogger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/sender.css">
+    <entry file="file://$PROJECT_DIR$/SparqlEndpoint.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1428">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nlquery.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="339" column="10" lean-forward="true" selection-start-line="339" selection-start-column="10" selection-end-line="339" selection-end-column="10" />
+        <state relative-caret-position="1139">
+          <caret line="72" column="33" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="33" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#40#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SparqlQueryParser.py">
+    <entry file="file://$PROJECT_DIR$/QuepyTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-680">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="1411">
+          <caret line="89" column="51" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/nlqueryengine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+    <entry file="file://$PROJECT_DIR$/Readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/NLTKProp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/answer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="408">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainFlask.py">
+    <entry file="file://$PROJECT_DIR$/SPARQLGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="69" column="53" lean-forward="true" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+        <state relative-caret-position="-646">
+          <caret line="109" column="56" lean-forward="true" selection-start-line="109" selection-start-column="56" selection-end-line="109" selection-end-column="56" />
           <folding>
-            <element signature="e#16#27#0" expanded="true" />
-            <marker date="1539772341709" expanded="true" signature="4160:4165" ph="..." />
-            <marker date="1539772341709" expanded="true" signature="4687:4690" ph="..." />
+            <element signature="e#39#69#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # coding: utf-8
 import nltk
 from flask  import Flask, request, render_template, redirect, url_for
@@ -5,11 +6,14 @@ from flask  import Flask, request, render_template, redirect, url_for
 import Utils
 import QuepyTest
 import nlquery
+import os
 import logging
 from threading import Thread
 import time
 import pdb
 import json
+import StanfordCoreNLP
+from SPARQLGenerator import  SPARQLGeneratorClass
 
 app = Flask(__name__)
 # app.debug = True
@@ -27,54 +31,31 @@ def my_form():
     logging.warning("See this message in Flask Debug Toolbar!")
     return render_template('index.html')
 
-@app.route('/testForOtherAlg', methods=['GET', 'POST'])
-def my_form_post():
-    logging.warning("parseData!")
-    text = request.form['question']
-    processed_text = text.lower()
-    print(processed_text)
-    try:
-        takeWords = []
-        takeWords = Utils.clearTokenAndStopWords(processed_text)
-        print(takeWords)
-        tagged_Words = nltk.pos_tag(takeWords)
-        print(tagged_Words)
-        print("Searching...")
-        Utils.taggedWhoQuestion(tagged_Words)
-        #Utils.taggedWhereQuestion(tagged_Words)
-        #Utils.taggedWhatQuestion(tagged_Words)
-    except:
-        print("An Exception caught")
-    return redirect(url_for('index'))
+# @app.route('/testForOtherAlg', methods=['GET', 'POST'])
+# def my_form_post():
+#     logging.warning("parseData!")
+#     text = request.form['question']
+#     processed_text = text.lower()
+#     print(processed_text)
+#     try:
+#         takeWords = []
+#         takeWords = Utils.clearTokenAndStopWords(processed_text)
+#         print(takeWords)
+#         tagged_Words = nltk.pos_tag(takeWords)
+#         print(tagged_Words)
+#         print("Searching...")
+#         Utils.taggedWhoQuestion(tagged_Words)
+#         #Utils.taggedWhereQuestion(tagged_Words)
+#         #Utils.taggedWhatQuestion(tagged_Words)
+#     except:
+#         print("An Exception caught")
+#     return redirect(url_for('index'))
 
 def quepySender(quepyQuestion):
     logging.warning("quepy!")
     global share_var_quepySender
     global share_var_sparql_queries
     try:
-            # The following question can be asked against DBpedia open domain resource
-            # "Who is Fraunhofer ?",
-            # "Who is Angela Merkel?",
-            # "What is the language of Argentina?",
-            # "what language is spoken in Argentina?",
-            # "What is the population of China?",
-            # "What is a car?",
-            # "Who is Tom Cruise?",
-            # "Who is George Lucas?",
-            # "Who is Mirtha Legrand?",
-            # "Name Fiat cars",
-            # "time in argentina",
-            # "what time is it in Chile?",
-            # "List movies directed by Martin Scorsese",
-            # "How long is Pulp Fiction",
-            # "which movies did Mel Gibson starred?",
-            # "When was Gladiator released?",
-            # "who directed Pocahontas?",
-            # "actors of Fight Club",
-            # "How many people live in China?",
-            # "What is the capital of Bolivia?",
-            # "Who is the president of Argentina?"
-
         print_handlers = {
             "define": QuepyTest.print_define,
             "enum": QuepyTest.print_enum,
@@ -82,14 +63,13 @@ def quepySender(quepyQuestion):
             "literal": QuepyTest.print_literal,
             "age": QuepyTest.print_age,
         }
-        # outputPython = questions
 
-        # for question in questions:
 
         print quepyQuestion
         print "-" * len(quepyQuestion)
 
         target, query, metadata =QuepyTest.dbpedia.get_query(quepyQuestion)
+        time.sleep(4)
 
         if isinstance(metadata, tuple):
             query_type = metadata[0]
@@ -147,16 +127,16 @@ def nlQueryEngine():
     logging.warning("nlQueryEngine!")
     global share_var_nlQueryHandler
     outputText = ""
-    engine = nlquery.NLQueryEngine('localhost', 9000)
+
 
     try:
+        engine = nlquery.NLQueryEngine('localhost', 9000)
         app.logger.warning("Query Engine: %s", engine)
-        print("engine", engine)
-
         textNL = request.form['nlqueryengine']
         textNL = textNL.encode('utf-8')
         print(textNL)
         outputText = engine.query(textNL, format_='plain')
+        time.sleep(2)
         app.logger.info("Output the query: %s", outputText)
         share_var_nlQueryHandler = outputText
         print outputText
@@ -164,12 +144,43 @@ def nlQueryEngine():
             return render_template('nlqueryengine.html', queryResultNLQuery=share_var_nlQueryHandler)
 
     except(RuntimeError, TypeError, NameError, Exception):
-        app.logger.error("Handler is not working correctly: ", exc_info=True)
+        if 'CoreNLP Server' in str(Exception):
+            app.logger.error(500, message='Cannot connect to CoreNLP server')
+        else:
+            app.logger.error("Handler is not working correctly: ", exc_info=True)
 
 
     return redirect('/', code=302)
 
+@app.route('/fraunhoferengine', methods=['GET', 'POST'])
+def LinkedFactoryQuery():
+    try:
+        obj = StanfordCoreNLP.TestConnectionCoreNLP()
+        testLinkedFactory = Utils.questionMarkProcess(request.form['fraunhoferEngine'])
+        #testLinkedFactory = Utils.questionMarkProcess(testLinkedFactory)
+        resultOfConstituentParse = obj.runTest(testLinkedFactory)
+        print(resultOfConstituentParse.pretty_print())
+        print(resultOfConstituentParse.leaves())
+        sparqlQuery = SPARQLGeneratorClass.getInputQuery(testLinkedFactory, resultOfConstituentParse)
+        # for row in sparqlQuery:
+        #     item = row
+        print('sparqlQuery', sparqlQuery)
+        return render_template('fraunhoferengine.html', linkedFactoryQueryResult=resultOfConstituentParse, linkedFactorySparqlQuery = sparqlQuery)
+
+    except (RuntimeError, TypeError, NameError, Exception):
+        app.logger.exception("Fraunhofer engine search error")
+
+    return redirect('/', code=302)
+
+#Angular JS App Test Purpose
+@app.route('/question/query<string>')
+def evaluateQuery():
+    data = request.args.get('query')
+    print(data)
+    return 'hello world'
+
+
 if __name__ == '__main__':
-   app.run(debug = True, host="0.0.0.0", port=8999)
+   app.run(debug = True, host='0.0.0.0', port=8999)
 
 
