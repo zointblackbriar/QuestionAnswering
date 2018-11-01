@@ -20,7 +20,11 @@ logger = logging.getLogger(__name__)
 obj = ConnectionCoreNLP()
 nlpTask = TestConnectionCoreNLP()
 
+
 class SPARQLGeneratorClass():
+
+    def __init__(self):
+        pass
 
     def SPARQLGenerate(self, input):
         listOfPostTagger = obj.parse(input)
@@ -38,55 +42,48 @@ class SPARQLGeneratorClass():
         time.sleep(5)  # Let the user actually see something!
         driver.quit()
 
-    #sampleTestChromeDriver()
-    #Test is succesful
-
+    @staticmethod
     #We will use selenium tool to reach SPARQL Endpoint
-    def queryTestingSelenium(self):
-        queryDynamicTime = """select * where 
-                       { service <kvin:> { <http://localhost:10080/linkedfactory/demofactory/machine1/sensor1> <http://example.org/value> ?v . ?v <kvin:limit> 1 ; 
-                       <kvin:time> ?time }} """
+    def queryTestingSelenium(sparqlQuery):
+        try:
+            dictionary = {}
+            options = webdriver.ChromeOptions()
+            #headless is a chromium option for silenty working
+            options.add_argument("headless")
+            driver = webdriver.Chrome('C:\\ProgramData\\chocolatey\\lib\\chromedriver\\tools\\chromedriver.exe', chrome_options=options)  # Optional argument, if not specified will search path.
+            driver.get('http://localhost:10080/sparql')
+            time.sleep(2)
+            text_area = driver.find_element_by_id('query')
+            select = Select(driver.find_element_by_id('model'))
+            select.select_by_visible_text('<http://linkedfactory.iwu.fraunhofer.de/data/>')
+            #or you can change with the following case
+            # <enilink:model:users>
+            #select = Select(driver.find_element_by_name('<enilink:model:users>'))
+            text_area.send_keys(sparqlQuery)
+            driver.find_element_by_id('#submitBtn').click()
+            time.sleep(3)
+            print('Result is printed out')
+            #table = driver.find_element_by_css_selector(".table.table-hover")
+            table = driver.find_element_by_css_selector(".table-hover")
+            head = driver.find_element_by_tag_name('thead')
+            body=driver.find_element_by_tag_name('tbody')
+            elements = []
+            headerTag = []
+            body_line = body.find_element_by_tag_name("tr")
+            elements = [item.text.encode("utf8") for item in body_line.find_elements_by_tag_name('td')]
+            headerTag = [item.text.encode("utf8") for item in head.find_elements_by_tag_name('th')]
+            elements.append(",".join(elements))
+            headerTag.append(",".join(headerTag))
+            print("elements", elements)
+            print("headerTag", headerTag)
+            dictionary = dict(zip(headerTag, elements))
+            print("dictionary", dictionary)
+            print('Driver quit')
+            driver.quit()
 
-        #question is : What is the value of sensor1 in machine1
-        queryDynamicValue = """select * where 
-                       { service <kvin:> { <http://localhost:10080/linkedfactory/demofactory/machine1/sensor1> <http://example.org/value> ?v . ?v <kvin:limit> 1 ; 
-                       <kvin:value> ?value}} """
-
-        queryDynamicAverage = """SELECT (AVG(?value) AS ?avg) 
-       (MIN(?value) AS ?min) 
-       (MAX(?value) AS ?max) 
-WHERE { 
-
-service <kvin:> {  <http://localhost:10080/linkedfactory/demofactory/machine1/sensor1> <http://example.org/value> ?v . ?v <kvin:limit> 10000; <kvin:value> ?value}
-}"""
-
-        options = webdriver.ChromeOptions()
-        #headless is a chromium option for silenty working
-        #options.add_argument("headless")
-        driver = webdriver.Chrome('C:\\ProgramData\\chocolatey\\lib\\chromedriver\\tools\\chromedriver.exe', chrome_options=options)  # Optional argument, if not specified will search path.
-        driver.get('http://localhost:10080/sparql')
-        time.sleep(2)
-        text_area = driver.find_element_by_id('query')
-        select = Select(driver.find_element_by_id('model'))
-        select.select_by_visible_text('<http://linkedfactory.iwu.fraunhofer.de/data/>')
-        #or you can change with the following case
-        # <enilink:model:users>
-        #select = Select(driver.find_element_by_name('<enilink:model:users>'))
-        text_area.send_keys(queryDynamicAverage)
-        driver.find_element_by_id('#submitBtn').click()
-        time.sleep(1)
-        print('Result is printed out')
-        table = driver.find_element_by_css_selector(".table.table-hover")
-        head = driver.find_element_by_tag_name('thead')
-        body=driver.find_element_by_tag_name('tbody')
-        elements = []
-        head_line = head.find_element_by_tag_name("tr")
-        elements = [header.text.encode("utf8") for header in head_line.find_elements_by_tag_name('td')]
-        elements.append(",".join(elements))
-        print(elements)
-
-        #driver.quit()
-        print('Driver quit')
+        except Exception as ex:
+            logger.exception("When query sent to selenium, an error occurred")
+        return dictionary
 
     @staticmethod
     #Switch case
@@ -127,11 +124,8 @@ service <kvin:> {  <http://localhost:10080/linkedfactory/demofactory/machine1/se
 
         #print(result)
 
-
-
-
     @staticmethod
-    def getInputQuery(param_inputFromFlask, param_ConstituencyParser):
+    def getInputQuery(param_ConstituencyParser):
 
         verb = nlpTask.printSubtrees(param_ConstituencyParser, 'VP', None)
         noun = nlpTask.printSubtrees(param_ConstituencyParser, 'NN', 'NNP')
@@ -149,18 +143,12 @@ service <kvin:> {  <http://localhost:10080/linkedfactory/demofactory/machine1/se
                                           <http://linkedfactory.iwu.fraunhofer.de/"""
 
         resultSparqlQuery = ""
-        sparqlQuery = """select * where {
-                            service <kvin:> { <http://localhost:10080/linkedfactory/demofactory/machine1/sensor1> <http://example.org/value> ?v . ?v <kvin:limit> 1 ; <kvin:time> ?time }
-                            }"""
-
-        #tree = nlpTask.runTest(param_inputFromFlask)
 
         logger.info("check wordnet synonym analysis")
         #wordnet synonym analysis
         try:
             if nlpTask.simulation(verb[0], 'contains') == True:
-                logger.info("here we inside of if true")
-
+                logger.info("Contains verb analyzed")
                 parameterizedQuery = parameterizedQuery + SPARQLGeneratorClass.selectQueryLevel(noun[0]) + """>""" + """ factory:contains ?o . }"""
                 print('parameterizedQuery', parameterizedQuery)
                 endpointRemote = SPARQLEndpoint("localhost", parameterizedQuery, "ttl", filename="DataSource/FraunhoferData.ttl")
@@ -171,19 +159,57 @@ service <kvin:> {  <http://localhost:10080/linkedfactory/demofactory/machine1/se
                 if noun[0] != None:
                     #noun = nlpTask.printSubtrees(param_ConstituencyParser, 'NNP')
                     #Give me all of members linkedfactory? == linkedfactory - nn
-                    print("To do with give sentences")
                     parameterizedQuery = parameterizedQuery + SPARQLGeneratorClass.selectQueryLevel(noun[0]) + """>""" + """ factory:contains ?o . }"""
                     endpointRemote = SPARQLEndpoint("localhost", parameterizedQuery, "ttl",
                                                     filename="DataSource/FraunhoferData.ttl")
                     resultOFLocalSource = endpointRemote.sparqlQueryForLocalSource()
-                    # All of them are test codes
-                    # queryTestingSelenium()
         except (Exception):
             logger.exception("parameterized Query has some errors")
         return resultOFLocalSource
 
+    @staticmethod
+    def getDynamicQuery(input, parsedTree):
+        try:
+            queryDynamicValue = ""
+            #Selenium returns a dictionary
+            resultSelenium = {}
+            #pattern = '^[a-zA-Z]+\s+\d+\s+[\d\:]+'
+            matchedContext = nlpTask.findSpecificSubtree(parsedTree)
+            adjectiveFinder = nlpTask.printSubtrees(parsedTree, "JJ", "")
+            matchedContext = ast.literal_eval(json.dumps(matchedContext))
+            machineIndex = [i for i, item in enumerate(matchedContext) if re.search('.*machine', item)]
+            sensorIndex = [i for i, item in enumerate(matchedContext) if re.search('.*sensor', item)]
+            machineTest = re.compile(".*machine")
+            averageTest = re.compile(".*average")
+            #re.findall(pattern, "machine")
+            if filter(machineTest.match, matchedContext) and 'value' in matchedContext:
+                print("filter dynamic query")
+                path = SPARQLGeneratorClass.selectQueryLevel('demofactory')
+                queryDynamicValue = """select * where
+                               { service <kvin:> { <http://localhost:10080/""" + path + """/""" + matchedContext[machineIndex[0]] + """/""" + matchedContext[sensorIndex[0]] + """> <http://example.org/""" + matchedContext[0] + """> ?v . ?v <kvin:limit> 1 ;
+                               <kvin:value> ?value}} """
 
-obj = SPARQLGeneratorClass()
-#Test succesful
-#obj.sampleTestChromeDriver()
-obj.queryTestingSelenium()
+                print("queryDynamicValue", queryDynamicValue)
+                resultSelenium = SPARQLGeneratorClass.queryTestingSelenium(queryDynamicValue)
+                print("resultSelenium", resultSelenium)
+
+
+            elif filter(averageTest.match, adjectiveFinder) and filter(machineTest.match, matchedContext):
+                print("filter average query")
+                path = SPARQLGeneratorClass.selectQueryLevel('demofactory')
+                queryDynamicAverage = """SELECT (AVG(?value) AS ?avg)
+                       (MIN(?value) AS ?min)
+                       (MAX(?value) AS ?max)
+                WHERE {
+
+                service <kvin:> {  <http://localhost:10080/""" + path + """/""" + matchedContext[machineIndex[0]] + """/""" +  matchedContext[sensorIndex[0]] + """> <http://example.org/value> ?v . ?v <kvin:limit> 10000; <kvin:value> ?value} }"""
+
+                print("queryDynamicAverage", queryDynamicAverage)
+                resultSelenium = SPARQLGeneratorClass.queryTestingSelenium(queryDynamicAverage)
+                print("resultSelenium", resultSelenium)
+            else:
+                logger.info("This situation will be considered for other parts of linked factory")
+        except Exception as ex:
+            logger.exception("Dynamic query connection error")
+        return resultSelenium
+

@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 # coding: utf-8
 import nltk
-from flask  import Flask, request, render_template, redirect, url_for
+from flask  import Flask, request, render_template, redirect, url_for, jsonify
 #from flask_debugtoolbar import DebugToolbarExtension
 import Utils
 import QuepyTest
 import nlquery
 import os
 import logging
-from threading import Thread
+#from threading import Thread
+import threading
 import time
 import pdb
 import json
@@ -16,6 +17,7 @@ import StanfordCoreNLP
 from SPARQLGenerator import  SPARQLGeneratorClass
 
 app = Flask(__name__)
+app.logger.info('This is a log message')
 # app.debug = True
 # app.config['SECRET_KEY'] = 'development key'
 # toolbar = DebugToolbarExtension(app)
@@ -25,31 +27,43 @@ share_var_quepySender = None
 share_var_nlQueryHandler = None
 share_var_sparql_queries = None
 
+#Added a thread support before requesting
+@app.before_first_request
+def activate_job():
+    def run_job():
+        while True:
+            #print("Run recurring task")
+            time.sleep(1)
+
+    thread = threading.Thread(target=run_job)
+    thread.start()
 
 @app.route('/')
 def my_form():
     logging.warning("See this message in Flask Debug Toolbar!")
     return render_template('index.html')
 
-# @app.route('/testForOtherAlg', methods=['GET', 'POST'])
-# def my_form_post():
-#     logging.warning("parseData!")
-#     text = request.form['question']
-#     processed_text = text.lower()
-#     print(processed_text)
-#     try:
-#         takeWords = []
-#         takeWords = Utils.clearTokenAndStopWords(processed_text)
-#         print(takeWords)
-#         tagged_Words = nltk.pos_tag(takeWords)
-#         print(tagged_Words)
-#         print("Searching...")
-#         Utils.taggedWhoQuestion(tagged_Words)
-#         #Utils.taggedWhereQuestion(tagged_Words)
-#         #Utils.taggedWhatQuestion(tagged_Words)
-#     except:
-#         print("An Exception caught")
-#     return redirect(url_for('index'))
+@app.route('/testForWebService', methods=['GET', 'POST'])
+def opcuaWebService():
+    try:
+        queryResult = ""
+        connectNLP = StanfordCoreNLP.TestConnectionCoreNLP()
+        queryLinkedFactory = request.data
+        print("Posted data : {}".format(request.data))
+        resultOfConstituentParse = connectNLP.constituencyParser(str(queryLinkedFactory))
+        print(resultOfConstituentParse.pretty_print())
+        print(resultOfConstituentParse.leaves())
+        resultofDependencyParser = connectNLP.dependencyParser(str(queryLinkedFactory))
+        print(resultofDependencyParser)
+
+        queryResult = SPARQLGeneratorClass.getInputQuery(resultOfConstituentParse)
+        print('queryResult', queryResult)
+        print(type(''+str(queryResult)))
+    except (RuntimeError, TypeError, NameError, Exception):
+        app.logger.exception("Fraunhofer engine search error")
+    #return ''+str(queryResult)
+    return jsonify(queryResult)
+
 
 def quepySender(quepyQuestion):
     logging.warning("quepy!")
@@ -96,9 +110,10 @@ def quepySender(quepyQuestion):
             if not results["results"]["bindings"]:
                 share_var_quepySender = "No answer from wikidata"
 
-            share_var_quepySender = results["results"]["bindings"]
 
-        print_handlers[query_type](results, target, metadata)
+        #print_handlers[query_type](results, target, metadata)
+        share_var_quepySender = results
+        #share_var_quepySender = "{0}".format(print_handlers[query_type](results, target, metadata))
         #print
         # share_var_quepySender = outputPython
         #share_var_sparql_queries = results
@@ -127,8 +142,6 @@ def nlQueryEngine():
     logging.warning("nlQueryEngine!")
     global share_var_nlQueryHandler
     outputText = ""
-
-
     try:
         engine = nlquery.NLQueryEngine('localhost', 9000)
         app.logger.warning("Query Engine: %s", engine)
@@ -155,29 +168,35 @@ def nlQueryEngine():
 @app.route('/fraunhoferengine', methods=['GET', 'POST'])
 def LinkedFactoryQuery():
     try:
+        #dynamicQueryResult = {}
+        resultOfConstituentParse = ""
+        #for checkbox
         obj = StanfordCoreNLP.TestConnectionCoreNLP()
-        testLinkedFactory = Utils.questionMarkProcess(request.form['fraunhoferEngine'])
-        #testLinkedFactory = Utils.questionMarkProcess(testLinkedFactory)
-        resultOfConstituentParse = obj.runTest(testLinkedFactory)
-        print(resultOfConstituentParse.pretty_print())
-        print(resultOfConstituentParse.leaves())
-        sparqlQuery = SPARQLGeneratorClass.getInputQuery(testLinkedFactory, resultOfConstituentParse)
-        # for row in sparqlQuery:
-        #     item = row
-        print('sparqlQuery', sparqlQuery)
-        return render_template('fraunhoferengine.html', linkedFactoryQueryResult=resultOfConstituentParse, linkedFactorySparqlQuery = sparqlQuery)
-
+        if request.form['fraunhoferEngine'] == None:
+            return redirect('/', code=302)
+        queryLinkedFactory = Utils.questionMarkProcess(request.form['fraunhoferEngine'])
+        #To control the value of checkbox if selected
+        if bool(request.form.getlist('dynamicQuery')) == True:
+            print("Dynamic Query")
+            resultOfConstituentParse = obj.constituencyParser(queryLinkedFactory)
+            print(resultOfConstituentParse.pretty_print())
+            print(resultOfConstituentParse.leaves())
+            resultofDependencyParser = obj.dependencyParser(queryLinkedFactory)
+            print(resultofDependencyParser.pretty_print())
+            print(resultofDependencyParser.leaves())
+            dynamicQueryResult = SPARQLGeneratorClass.getDynamicQuery(queryLinkedFactory, resultOfConstituentParse)
+            return render_template('fraunhoferengine.html', linkedFactoryQueryResult=resultOfConstituentParse, dynamicResult = dynamicQueryResult)
+        else:
+            resultOfConstituentParse = obj.constituencyParser(queryLinkedFactory)
+            print(resultOfConstituentParse.pretty_print())
+            print(resultOfConstituentParse.leaves())
+            sparqlQuery = SPARQLGeneratorClass.getInputQuery(resultOfConstituentParse)
+            print('sparqlQuery', sparqlQuery)
+            return render_template('fraunhoferengine.html', linkedFactoryQueryResult=resultOfConstituentParse, linkedFactorySparqlQuery = sparqlQuery, dynamicResult = {})
     except (RuntimeError, TypeError, NameError, Exception):
         app.logger.exception("Fraunhofer engine search error")
 
     return redirect('/', code=302)
-
-#Angular JS App Test Purpose
-@app.route('/question/query<string>')
-def evaluateQuery():
-    data = request.args.get('query')
-    print(data)
-    return 'hello world'
 
 
 if __name__ == '__main__':

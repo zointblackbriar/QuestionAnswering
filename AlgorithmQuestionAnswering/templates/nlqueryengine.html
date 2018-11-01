@@ -1,34 +1,33 @@
 <!DOCTYPE html>
- <link rel="stylesheet" href="../static/sender.css" src="{{ url_for('static', filename = 'sender.css') }}">
- <link rel="stylesheet" href="../static/button.css"  src="{{ url_for('static', filename = 'button.css') }}">
+<link rel="stylesheet" href="../static/sender.css" src="{{ url_for('static', filename = 'sender.css') }}">
+<link rel="stylesheet" href="../static/button.css" src="{{ url_for('static', filename = 'button.css') }}">
 
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <script>
-function goBack() {
-    window.history.back()
-}
+    function goBack() {
+        window.history.back()
+    }
 </script>
 
 <body>
-<div class="row-fluid">
+    <div class="row-fluid">
 
-<button class="action-button shadow animate blue" onclick="goBack()">Go Back</button>
+        <button class="action-button shadow animate blue" onclick="goBack()">Go Back</button>
 
-<title>Hello from NLQuery</title>
-{#{% if output %}#}
-{#  <h1>Hello from NLQuery:  {{ output }}!</h1>#}
-{#{% else %}#}
-{#  <h1>Hello, World!</h1>#}
-{#{% endif %}#}
-    <br><br><br><br>
+        <title>Hello from NLQuery</title>
+        {#{% if output %}#} {#
+        <h1>Hello from NLQuery:  {{ output }}!</h1>#} {#{% else %}#} {#
+        <h1>Hello, World!</h1>#} {#{% endif %}#}
+        <br>
+        <br>
+        <br>
+        <br>
 
-    <div class="codeclass">
-        <p> Query Result is here</p>
-        <code class="prettyprint">
+        <div class="codeclass">
+            <p> Query Result is here</p>
+            <code class="prettyprint">
             {{ queryResultNLQuery }}
         </code>
+        </div>
     </div>
-</div>
-

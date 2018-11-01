@@ -1,13 +1,6 @@
 from datetime import datetime
 import arrow
 
-
-
-
-
-
-
-
 def conv_to_str(value):
     if isinstance(value, datetime):
         return arrow.get(value).format("MMMM D, YYYY")

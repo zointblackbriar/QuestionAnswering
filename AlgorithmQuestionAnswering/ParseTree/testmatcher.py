@@ -1,25 +1,44 @@
 from ParseTree.parser import StanfordServerParser
 from ParseTree.matcher import MatcherContext
 
+#It is more likely dependency parser
 parser = StanfordServerParser()
 obj = MatcherContext()
 
+# sents = [
+#     'What Heatmeter contains?'
+# ]
+#
+# rules = {
+#     '(ROOT ( SBARQ ( WHNP/WDT:wh_t ) ( NP ( NN ) ( NN:np_t ) ) ) ': {
+#         'np_t': {
+#             '( NN ( NN:subj-o ) ( PP ( IN:subj_in-o ) ( NP:obj-o ) ) )': {},
+#             '( NN:subj-o )': {},
+#         },
+#         'wh_t': {
+#             '( WHNP:whnp ( WDT ) ( NN:prop-o ) )': {},
+#             '( WHNP/WHADVP:qtype-o )': {},
+#         }
+#     },
+#     '( SBARQ:subj-o ))': {},
+# }
+
 sents = [
-    'What Heatmeter contains?'
+    'What is the average, minimum and maximum values for sensor1?'
 ]
 
 rules = {
-    '(ROOT ( SBARQ ( WHNP/WDT:wh_t ) ( NP ( NN ) ( NN:np_t ) ) ) ': {
+    '( SBARQ ( WHNP/WHADVP:wh_t ) ( SQ ( VBZ ) ( NP:np_t ) ) )': {
         'np_t': {
-            '( NN ( NN:subj-o ) ( PP ( IN:subj_in-o ) ( NP:obj-o ) ) )': {},
-            '( NN:subj-o )': {},
+            '( NP ( NP  ) ( PP ( IN ) ( NP (NN:obj-o ) ) ) )': {},
+            '( NP:subj-o )': {},
         },
         'wh_t': {
             '( WHNP:whnp ( WDT ) ( NN:prop-o ) )': {},
             '( WHNP/WHADVP:qtype-o )': {},
         }
     },
-    '( SBARQ:subj-o ))': {},
+    '( SBARQ:subj-o )': {},
 }
 
 # rules = {'( SBARQ ( WHNP/WHADVP:wh_t ) ( SQ ( VBZ ) ( NP:np_t ) ) )'}

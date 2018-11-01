@@ -6,7 +6,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 import rdflib
 from rdflib.graph import Graph
 from rdflib.plugins import sparql
-from rdflib import URIRef
+from rdflib import URIRef, Literal
 from rdflib.plugin import register, Serializer, Parser
 register('ttl', Parser, 'rdflib.plugins.parsers.notation3', 'TurtleParser')
 import logging
@@ -82,8 +82,8 @@ class SPARQLEndpoint():
             #graph.parse(self._filename, param_format)
             qresult = graph.query(self._setQuery)
             #qresult = graph.serialize(format='ttl')
-            # for row in qresult:
-            #     print(row)
+            for row in qresult:
+                print(str(row))
             # import pprint
             # for statement in graph:
             #     pprint.pprint(statement)

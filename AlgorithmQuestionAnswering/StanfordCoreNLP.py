@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+from __future__ import unicode_literals
 
 #This py file will use Stanford Core NLP Server
 from collections import defaultdict
@@ -60,20 +61,36 @@ class ConnectionCoreNLP(object):
                 'word' : token['word']
             }
 
+nlpCore = ConnectionCoreNLP()
+
 class TestConnectionCoreNLP(object):
-    def runTest(self, param_test):
-        nlpCore = ConnectionCoreNLP()
-        #print('Tokenize', nlpCore.word_tokenize(param_test))
-        #print('Part of Speech Tagger', nlpCore.posTagger(param_test))
-        #print('Named Entities', nlpCore.ner(param_test))
-        #print('ner list: ', param_test)
-        #print('Constituency Parsing:', nlpCore.parse(param_test))
-        constituentParseTree = nlpCore.parse(param_test)
-        #print('Dependency Parsing ', nlpCore.dependency_parser(param_test))
-        #self.getNodes(constituentParseTree)
-        #self.printSubtrees(constituentParseTree)
-        return Tree.fromstring(constituentParseTree)
+    # print('Tokenize', nlpCore.word_tokenize(param_test))
+    # print('Part of Speech Tagger', nlpCore.posTagger(param_test))
+    # print('Named Entities', nlpCore.ner(param_test))
+    # print('ner list: ', param_test)
+    def __init__(self):
+        pass
+
+    def dependencyParser(self, param_depend):
+        try:
+            # print('Dependency Parsing:', nlpCore.parse(param_depend))
+            dependencyParseTree = nlpCore.dependency_parser(param_depend)
+            print(dependencyParseTree)
+            #be careful when you return dependencyParseTree
+            #It is not a tree
+            #It is a unicoded string format
+            #return Tree.fromstring(dependencyParseTree)
+        except Exception as ex:
+            logger.exception("Dependency Parser Error")
+
         #Tested with Server. Stanford CoreNLP server up and running
+    def constituencyParser(self, param_constituent):
+        try:
+            constituentParseTree = nlpCore.parse(param_constituent)
+            # print(constituentParseTree)
+            return Tree.fromstring(constituentParseTree)
+        except Exception as ex:
+            logger.exception("Constituency Parser error")
 
     #Find tree's node with the following method
     #get_node function has been changed with label() function
@@ -81,45 +98,48 @@ class TestConnectionCoreNLP(object):
         try:
             for subtree in tree.subtrees():
                 if subtree.label() == constituentTags or subtree.label() == extraCheckTags:
-                    #print(subtree.leaves())
                     return subtree.leaves()
-
         except Exception as e:
             logger.exception("Subtree parse problem")
 
-    def findSpecificSubtree(self, tree, constituentTags, innerTags):
+    def findSpecificSubtree(self, tree):
+        #print("tree find specific", tree)
         try:
-            for a in tree:
-                if type(a) is nltk.Tree:
-                    if a.label() == constituentTags: # This climbs into my next chunked tree
-                        for b in a:
-                            if type(b) is nltk.Tree and b.node == 'NN':
-                                print b.leaves()
-                            else:
-                                print b
-        except (Exception):
-            logger.exception("Problem with finding specific subtree")
+            NPs = list(tree.subtrees(filter=lambda x: x.label() == 'NP'))
+            NNs_insideNPs = map(lambda x: list(x.subtrees(filter=lambda x: x.label() == 'NN')), NPs)
+            return self.removeDuplicates([noun.leaves()[0] for nouns in NNs_insideNPs for noun in nouns])
+        except Exception as ex:
+            logger.exception("Constituency Parser error")
 
-
-
-
-
+    def removeDuplicates(self, dup_list):
+        assignmentList = []
+        for elem in dup_list:
+            if elem not in assignmentList:
+                assignmentList.append(elem)
+        return assignmentList
 
     #Write all nodes of NLTK Parse Tree
-    def getNodes(self, parent):
-        ROOT = 'ROOT'
-        for node in parent:
-            if type(node) is nltk.Tree:
-                if node.label() == ROOT:
-                    print("=====Sentence=====")
-                    print("Sentence:", ".join(node.leaves()")
-                else:
-                    print("Label:", node.label())
-                    print("Leaves", node.leaves())
+    #This function has some errors it should be fixed.
+    def getNodes(self, tree):
+        output = []
+        try:
+            for node in tree:
+                if type(node) is nltk.Tree:
+                    if node.label() == 'ROOT':
+                        print("=====Sentence=====")
+                        print("Sentence:", ".join(node.leaves()")
+                    elif node.label() == 'NN':
+                        #append all the nodes into the list of python
+                        output.append(node.leaves())
+                    else:
+                        print("Label:", node.label())
+                        print("Leaves", node.leaves())
+                    #print("output", output)
+                    self.getNodes(node)
 
-                self.getNodes(node)
-            else:
-                print ("Word:", node)
+        except Exception as ex:
+                logger.exception("Get node function couldn't parse it")
+        yield output
 
     #with pure nltk to find synonym
     def synonym(self, input):
@@ -127,8 +147,14 @@ class TestConnectionCoreNLP(object):
         lemmas = set(chain.from_iterable([word.lemma_names() for word in synonyms]))
         print(lemmas)
 
+    #n-grams function in NLP
+    #if you want to do bigram, please send a value n=2
+    #Usage is self.ngrams("What is the value of sensor1 in machine1".split(), 2]
+    def ngrams(self, words, n):
+        return [words[i:i+n] for i in range(len(words)-n+1)]
 
-    #Wordnet Latent Semantic Analysis
+
+    #Wordnet Latent Semantic Analysis - To test for synonyms
     def simulation(self, word1, word2, lch_threshold=2.15, verbose=False):
         """Determine if two (already lemmatized) words are similar or not"""
 

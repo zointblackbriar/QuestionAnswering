@@ -1,19 +1,21 @@
- <link rel="stylesheet" href="../static/sender.css" src="{{ url_for('static', filename = 'sender.css') }}">
- <link rel="stylesheet" href="../static/button.css"  src="{{ url_for('static', filename = 'button.css') }}">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/sender.css" src="{{ url_for('static', filename = 'sender.css') }}">
+<link rel="stylesheet" href="../static/button.css" src="{{ url_for('static', filename = 'button.css') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
- <script>
-function goBack() {
-    window.history.back()
-}
+<script>
+    function goBack() {
+        window.history.back()
+    }
 </script>
 
-
 <body>
-<button class="action-button shadow animate blue" onclick="goBack()">Go Back</button>
+    <button class="action-button shadow animate blue" onclick="goBack()">Go Back</button>
 
-<title>Hello from Linked Factory</title>
-    <br><br><br><br>
+    <title>Hello from Linked Factory</title>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <div class="codeclass">
         <p> Constituency Parser's Result is here</p>
@@ -21,17 +23,31 @@ function goBack() {
             {{ linkedFactoryQueryResult }}
         </code>
     </div>
-<br>
+    <br><br><br><br>
     <div>
-        <p>Query's result is here</p>
+        <p>Static Query's Result </p>
         <code class="prettyprint">
             {%  for items in linkedFactorySparqlQuery %}
                 {{ items }}
             {% endfor %}
         </code>
     </div>
+    <br><br><br><br>
+   <div>
+       <p>Dynamic Query's Result </p>
+       <code class="prettyprint">
 
-</div>
+       <table>
+        {% for key, value in dynamicResult.iteritems() %}
+           <tr>
+                <th> {{ key }} </th>
+                <td> {{ value }} </td>
+           </tr>
+        {% endfor %}
+        </table>
+       </code>
+   </div>
 
 </body>
+
 </html>
