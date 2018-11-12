@@ -57,6 +57,6 @@ def dget(d, dkey, default=None):
 
 def questionMarkProcess(query):
     if query[-1] != '?':
-        query = query + '?'
+        query = query + ' ?'
     return query
 

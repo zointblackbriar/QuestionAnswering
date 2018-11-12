@@ -17,10 +17,9 @@ logger = logging.getLogger(__name__)
 
 class ConnectionCoreNLP(object):
     def __init__(self, host="http://localhost", port=9000):
-        self.nlp = StanfordCoreNLP(host, port=port, timeout=3000) # quiet = False, logging_level = logging.DEBUG
-
+        self.nlp = StanfordCoreNLP(host, port=port, timeout=30000) # quiet = False, logging_level = logging.DEBUG
         self.props = {
-            'annotators': 'tokenize,ssplit,pos,lemma,ner,parse,depparse,dcoref,relation',
+            'annotators': 'tokenize,ssplit,pos,lemma,ner,parse,depparse,dcoref,relation','sentiment'
             'pipelineLanguage' : 'en',
             'outputFormat' : 'json'
         }
@@ -58,8 +57,12 @@ class ConnectionCoreNLP(object):
         tokens = defaultdict(dict)
         for token in _tokens:
             tokens[int(token['index'])] = {
-                'word' : token['word']
+                'word' : token['word'],
+                'lemma' : token['lemma'],
+                'pos' : token['pos'],
+                'ner' : token['ner']
             }
+        return tokens
 
 nlpCore = ConnectionCoreNLP()
 
@@ -73,17 +76,29 @@ class TestConnectionCoreNLP(object):
 
     def dependencyParser(self, param_depend):
         try:
-            # print('Dependency Parsing:', nlpCore.parse(param_depend))
             dependencyParseTree = nlpCore.dependency_parser(param_depend)
-            print(dependencyParseTree)
             #be careful when you return dependencyParseTree
             #It is not a tree
             #It is a unicoded string format
-            #return Tree.fromstring(dependencyParseTree)
         except Exception as ex:
             logger.exception("Dependency Parser Error")
+        return dependencyParseTree
 
-        #Tested with Server. Stanford CoreNLP server up and running
+    def namedEntityRecognition(self, param_ner):
+        try:
+            nerResult = nlpCore.ner(param_ner)
+            print(nerResult)
+        except Exception as ex:
+            logger.exception("Named Entity Recognition Error ")
+
+    def posTaggerSender(self, param_posTagger):
+        try:
+            posResult = nlpCore.posTagger(param_posTagger)
+        except Exception as ex:
+            logger.exception("Pos Tagger Error")
+        return posResult
+
+    #Tested with Server. Stanford CoreNLP server up and running
     def constituencyParser(self, param_constituent):
         try:
             constituentParseTree = nlpCore.parse(param_constituent)
@@ -91,6 +106,13 @@ class TestConnectionCoreNLP(object):
             return Tree.fromstring(constituentParseTree)
         except Exception as ex:
             logger.exception("Constituency Parser error")
+
+    def resultSentiment(self, param_sentiment):
+        try:
+            sentiment_analysis = nlpCore.annotate(param_sentiment)
+            print(sentiment_analysis)
+        except Exception as ex:
+            logger.exception("Sentiment Analysis error")
 
     #Find tree's node with the following method
     #get_node function has been changed with label() function
@@ -102,7 +124,7 @@ class TestConnectionCoreNLP(object):
         except Exception as e:
             logger.exception("Subtree parse problem")
 
-    def findSpecificSubtree(self, tree):
+    def findNNSubtree(self, tree):
         #print("tree find specific", tree)
         try:
             NPs = list(tree.subtrees(filter=lambda x: x.label() == 'NP'))
@@ -110,6 +132,16 @@ class TestConnectionCoreNLP(object):
             return self.removeDuplicates([noun.leaves()[0] for nouns in NNs_insideNPs for noun in nouns])
         except Exception as ex:
             logger.exception("Constituency Parser error")
+
+    def findVPSubtree(self, tree):
+        try:
+            VPs = list(tree.subtrees(filter=lambda x: x.label() == 'VP'))
+            VBZs = map(lambda x: list(x.subtrees(filter=lambda x: x.label() == 'VBZ')), VPs)
+            return self.removeDuplicates([verb.leaves()[0] for verbs in VBZs for verb in verbs])
+        except Exception as ex:
+            logger.exception("VPSubtree Parser Error")
+
+
 
     def removeDuplicates(self, dup_list):
         assignmentList = []
@@ -155,7 +187,7 @@ class TestConnectionCoreNLP(object):
 
 
     #Wordnet Latent Semantic Analysis - To test for synonyms
-    def simulation(self, word1, word2, lch_threshold=2.15, verbose=False):
+    def wordnetLatentAnalysis(self, word1, word2, lch_threshold=2.15, verbose=False):
         """Determine if two (already lemmatized) words are similar or not"""
 
         """Call with verbose=True to print the Wordnet senses from each word that are considered similar"""

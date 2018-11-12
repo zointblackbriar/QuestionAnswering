@@ -15,6 +15,10 @@ import pdb
 import json
 import StanfordCoreNLP
 from SPARQLGenerator import  SPARQLGeneratorClass
+import sys, os.path
+import QuestionClassificiation
+
+
 
 app = Flask(__name__)
 app.logger.info('This is a log message')
@@ -27,7 +31,8 @@ share_var_quepySender = None
 share_var_nlQueryHandler = None
 share_var_sparql_queries = None
 
-#Added a thread support before requesting
+#Added a thread pool support before requesting
+#Daemon Threads
 @app.before_first_request
 def activate_job():
     def run_job():
@@ -44,26 +49,42 @@ def my_form():
     return render_template('index.html')
 
 @app.route('/testForWebService', methods=['GET', 'POST'])
-def opcuaWebService():
+def staticQuestion():
     try:
         queryResult = ""
+        statement = [] #It should return as list
         connectNLP = StanfordCoreNLP.TestConnectionCoreNLP()
         queryLinkedFactory = request.data
         print("Posted data : {}".format(request.data))
         resultOfConstituentParse = connectNLP.constituencyParser(str(queryLinkedFactory))
-        print(resultOfConstituentParse.pretty_print())
-        print(resultOfConstituentParse.leaves())
+        print(resultOfConstituentParse)
         resultofDependencyParser = connectNLP.dependencyParser(str(queryLinkedFactory))
         print(resultofDependencyParser)
 
-        queryResult = SPARQLGeneratorClass.getInputQuery(resultOfConstituentParse)
-        print('queryResult', queryResult)
-        print(type(''+str(queryResult)))
+        queryResult = SPARQLGeneratorClass.getInputQuery(resultOfConstituentParse, resultofDependencyParser)
+        for stmt in queryResult:
+            statement.append(stmt)
     except (RuntimeError, TypeError, NameError, Exception):
         app.logger.exception("Fraunhofer engine search error")
     #return ''+str(queryResult)
-    return jsonify(queryResult)
+    return jsonify(result = statement)
 
+@app.route('/testForDynamicQuestion', methods=['GET', 'POST'])
+def dynamicQuestion():
+    try:
+        #Todo you should turn connectNLP object into singleton
+        dynamicQueryResult = {}
+        connectNLP = StanfordCoreNLP.TestConnectionCoreNLP()
+        queryLinkedFactory = request.data
+        resultOfConstituentParse = connectNLP.constituencyParser(queryLinkedFactory)
+        print(resultOfConstituentParse.pretty_print())
+        print(resultOfConstituentParse.leaves())
+        resultofDependencyParser = connectNLP.dependencyParser(queryLinkedFactory)
+        print(resultofDependencyParser)
+        dynamicQueryResult = SPARQLGeneratorClass.getDynamicQuery(queryLinkedFactory, resultOfConstituentParse)
+    except (RuntimeError, TypeError, NameError, Exception):
+        app.logger.exception("Fraunhofer engine search error")
+    return jsonify(result=dynamicQueryResult)
 
 def quepySender(quepyQuestion):
     logging.warning("quepy!")
@@ -175,22 +196,24 @@ def LinkedFactoryQuery():
         if request.form['fraunhoferEngine'] == None:
             return redirect('/', code=302)
         queryLinkedFactory = Utils.questionMarkProcess(request.form['fraunhoferEngine'])
+        resultOfConstituentParse = obj.constituencyParser(queryLinkedFactory)
+        print(resultOfConstituentParse.pretty_print())
+        print(resultOfConstituentParse.leaves())
+        resultofDependencyParser = obj.dependencyParser(queryLinkedFactory)
+        resultofPosTagger = obj.posTaggerSender(queryLinkedFactory)
+        print(resultofDependencyParser)
         #To control the value of checkbox if selected
         if bool(request.form.getlist('dynamicQuery')) == True:
             print("Dynamic Query")
-            resultOfConstituentParse = obj.constituencyParser(queryLinkedFactory)
-            print(resultOfConstituentParse.pretty_print())
-            print(resultOfConstituentParse.leaves())
-            resultofDependencyParser = obj.dependencyParser(queryLinkedFactory)
-            print(resultofDependencyParser.pretty_print())
-            print(resultofDependencyParser.leaves())
-            dynamicQueryResult = SPARQLGeneratorClass.getDynamicQuery(queryLinkedFactory, resultOfConstituentParse)
-            return render_template('fraunhoferengine.html', linkedFactoryQueryResult=resultOfConstituentParse, dynamicResult = dynamicQueryResult)
+            # Test the following line
+            questionAnswering = QuestionClassificiation.QuestionClassifier.QuestionAssigner.encoderPass(queryLinkedFactory)
+            if questionAnswering == 'affirmation' or questionAnswering == 'what':
+                dynamicQueryResult = SPARQLGeneratorClass.getDynamicQuery(queryLinkedFactory, resultOfConstituentParse)
+                return render_template('fraunhoferengine.html', linkedFactoryQueryResult=resultOfConstituentParse, dynamicResult = dynamicQueryResult)
+            else:
+                return redirect('/', code=302)
         else:
-            resultOfConstituentParse = obj.constituencyParser(queryLinkedFactory)
-            print(resultOfConstituentParse.pretty_print())
-            print(resultOfConstituentParse.leaves())
-            sparqlQuery = SPARQLGeneratorClass.getInputQuery(resultOfConstituentParse)
+            sparqlQuery = SPARQLGeneratorClass.getInputQuery(resultOfConstituentParse, resultofDependencyParser, resultofPosTagger)
             print('sparqlQuery', sparqlQuery)
             return render_template('fraunhoferengine.html', linkedFactoryQueryResult=resultOfConstituentParse, linkedFactorySparqlQuery = sparqlQuery, dynamicResult = {})
     except (RuntimeError, TypeError, NameError, Exception):

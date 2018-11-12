@@ -89,7 +89,7 @@
 #     #result = ast.literal_eval(json.dumps(nounTag))
 #     #print("resultsubtree", result)
 #
-#     resultPypi = nlpTask.findSpecificSubtree(treeConstituent)
+#     resultPypi = nlpTask.findNNSubtree(treeConstituent)
 #     print(resultPypi)
 #
 #

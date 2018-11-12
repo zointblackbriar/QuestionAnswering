@@ -5,9 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from StanfordCoreNLP import ConnectionCoreNLP, TestConnectionCoreNLP
 from SparqlEndpoint import SPARQLEndpoint
-import Utils
 import re
-import pdb
 import time
 import logging
 import json, ast
@@ -76,6 +74,7 @@ class SPARQLGeneratorClass():
             headerTag.append(",".join(headerTag))
             print("elements", elements)
             print("headerTag", headerTag)
+            #combine elements and headerTag into a single dictionary
             dictionary = dict(zip(headerTag, elements))
             print("dictionary", dictionary)
             print('Driver quit')
@@ -84,6 +83,7 @@ class SPARQLGeneratorClass():
         except Exception as ex:
             logger.exception("When query sent to selenium, an error occurred")
         return dictionary
+
 
     @staticmethod
     #Switch case
@@ -95,11 +95,12 @@ class SPARQLGeneratorClass():
             "iwu": """linkedfactory/IWU""",
             "fofab": """linkedfactory/IWU/E3-Sim/FoFab""",
             "glt": """linkedfactory/IWU/FoFab/GLT""",
-            "kälte": """linkedfactory/IWU/FoFab/GLT/Kälte""",
+            "kälte" or "kaelte": """linkedfactory/IWU/FoFab/GLT/Kälte""",
             "wärme": """linkedfactory/IWU/FoFab/Wärme""",
             "gmx": """linkedfactory/IWU/FoFab/GMX""",
             "nshv": """linkedfactory/IWU/FoFab/NSHV""",
             "versuchsfeld": """linkedfactory/IWU/FoFab/NSHV/Versuchsfeld""",
+            "elektrische_energie": """linkedfactory/IWU/FoFab/GLT/Elektrische_Energie""",
             "rollex": """linkedfactory/IWU/FoFab/Rollex""",
             "powermeter": """linkedfactory/IWU/FoFab/Rollex/PowerMeter""",
             "solarplant": """linkedfactory/IWU/FoFab/PowerMeter""",
@@ -118,48 +119,87 @@ class SPARQLGeneratorClass():
             "machine8": """linkedfactory/demofactory/machine8""",
             "machine9": """linkedfactory/demofactory/machine9""",
             "machine10": """linkedfactory/demofactory/machine10""",
-
+            #inversed query
+            "Aximus": """linkedfactory/IWU/E3-Sim/FoFab/Aximus""",
+            "BDM2000": """linkedfactory/IWU/E3-Sim/FoFab/BDM2000""",
+            "fliesspressen": "linkedfactory/IWU/E3-Sim/FoFab/Fliesspressen",
+            "gmxentgraten": "linkedfactory/IWU/E3-Sim/FoFab/GMX_Entgraten",
+            "gmxspanen1": "linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen1",
+            "gmxspanen2": "linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen2",
+            "gmxspanen3": "linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen3",
+            "gmxspanen4": "linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen4",
+            "gmxpanen5": "linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen5",
+            "ha100": "linkedfactory/IWU/E3-Sim/FoFab/HA100",
+            "karobau": "linkedfactory/IWU/E3-Sim/FoFab/Karobau",
+            "prd40": "linkedfactory/IWU/E3-Sim/FoFab/PDR40",
+            "pwz": "linkedfactory/IWU/E3-Sim/FoFab/PWZ",
+            "querwalzen": "linkedfactory/IWU/E3-Sim/FoFab/Querwalzen",
+            "nshvbuero" or "nshvbüro": "linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen1",
+            "coolingwater": "linkedfactory/IWU/FoFab/BHKW/CoolingWater",
+            "emergencycooling": "linkedfactory/IWU/FoFab/BHKW/EmergencyCooling",
+            "generator": "linkedfactory/IWU/FoFab/BHKW/Generator",
+            "heatmeter": "linkedfactory/IWU/FoFab/BHKW/HeatMeter",
+            "heatingwater": "linkedfactory/IWU/FoFab/BHKW/HeatingWater",
         }
         return switcher.get(item)
 
         #print(result)
 
     @staticmethod
-    def getInputQuery(param_ConstituencyParser):
-
-        verb = nlpTask.printSubtrees(param_ConstituencyParser, 'VP', None)
+    def getInputQuery(param_ConstituencyParser, param_DependencyParser, param_posTagger):
+        #verb = nlpTask.printSubtrees(param_ConstituencyParser, 'VP', 'VBZ')
+        verb = nlpTask.findVPSubtree(param_ConstituencyParser)[0]
         noun = nlpTask.printSubtrees(param_ConstituencyParser, 'NN', 'NNP')
         verb = ast.literal_eval(json.dumps(verb))
         noun = ast.literal_eval(json.dumps(noun))
         print("verb", verb)
         print("noun", noun)
-        parameterizedQuery = """PREFIX factory: <http://linkedfactory.iwu.fraunhofer.de/vocab#>
+        prefixEdit = """PREFIX factory: <http://linkedfactory.iwu.fraunhofer.de/vocab#>
                                          PREFIX : <http://linkedfactory.iwu.fraunhofer.de/data/>
                                          PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                                          PREFIX owl: <http://www.w3.org/2002/07/owl#>
                                          PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-                                         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                                         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"""
+        parameterizedQuery = prefixEdit + """
                                          SELECT ?s ?o WHERE {
                                           <http://linkedfactory.iwu.fraunhofer.de/"""
 
-        resultSparqlQuery = ""
+        resultOFLocalSource = ""
 
         logger.info("check wordnet synonym analysis")
         #wordnet synonym analysis
         try:
-            if nlpTask.simulation(verb[0], 'contains') == True:
+            #get a verb which has been analyzed and compare with its dependency parse tree against inverse query
+            if (nlpTask.wordnetLatentAnalysis(verb[0], 'contains') == True) and (param_DependencyParser == [(u'ROOT', 0, 3), (u'det', 2, 1), (u'nsubj', 3, 2), (u'punct', 3, 4)]):
                 logger.info("Contains verb analyzed")
-                parameterizedQuery = parameterizedQuery + SPARQLGeneratorClass.selectQueryLevel(noun[0]) + """>""" + """ factory:contains ?o . }"""
+                print("Parameterized Query")
+                parameterizedQuery = parameterizedQuery + str(SPARQLGeneratorClass.selectQueryLevel(noun[0])) + """>""" + """ factory:contains ?o . }"""
                 print('parameterizedQuery', parameterizedQuery)
                 endpointRemote = SPARQLEndpoint("localhost", parameterizedQuery, "ttl", filename="DataSource/FraunhoferData.ttl")
                 time.sleep(3)
                 resultOFLocalSource = endpointRemote.sparqlQueryForLocalSource()
+
+            #The following query has a bug which its first line of condition
+            # elif ([(u'contains', u'VBZ')] == [s for s in param_posTagger if 'VBZ' in s]) and \
+            #         (param_DependencyParser == [(u'ROOT', 0, 2), (u'nsubj', 2, 1), (u'dobj', 2, 3), (u'punct', 2, 4)]) and \
+            #             nlpTask.wordnetLatentAnalysis(ast.literal_eval(json.dumps(nlpTask.findVPSubtree(param_ConstituencyParser)[0])), "contains"):
+            elif (param_DependencyParser == [(u'ROOT', 0, 2), (u'nsubj', 2, 1), (u'dobj', 2, 3), (u'punct', 2, 4)]) and \
+                    nlpTask.wordnetLatentAnalysis(ast.literal_eval(json.dumps(nlpTask.findVPSubtree(param_ConstituencyParser)[0])), "contains"):
+
+                print("Inversed Query")
+                inversedQuery = prefixEdit + """ SELECT ?s ?o WHERE { ?s  factory:contains """
+                inversedQuery = inversedQuery + """<http://linkedfactory.iwu.fraunhofer.de/""" + str(SPARQLGeneratorClass.selectQueryLevel(noun[0])) + """>. }"""
+                print("inversedQuery", inversedQuery)
+                endpointRemote = SPARQLEndpoint("localhost", inversedQuery, "ttl", filename="DataSource/FraunhoferData.ttl")
+                time.sleep(3)
+                resultOFLocalSource = endpointRemote.sparqlQueryForLocalSource()
             else:
                 #noun = ast.literal_eval(json.dumps(noun))
+                print("No specific verb")
                 if noun[0] != None:
                     #noun = nlpTask.printSubtrees(param_ConstituencyParser, 'NNP')
                     #Give me all of members linkedfactory? == linkedfactory - nn
-                    parameterizedQuery = parameterizedQuery + SPARQLGeneratorClass.selectQueryLevel(noun[0]) + """>""" + """ factory:contains ?o . }"""
+                    parameterizedQuery = parameterizedQuery + str(SPARQLGeneratorClass.selectQueryLevel(noun[0])) + """>""" + """ factory:contains ?o . }"""
                     endpointRemote = SPARQLEndpoint("localhost", parameterizedQuery, "ttl",
                                                     filename="DataSource/FraunhoferData.ttl")
                     resultOFLocalSource = endpointRemote.sparqlQueryForLocalSource()
@@ -174,7 +214,7 @@ class SPARQLGeneratorClass():
             #Selenium returns a dictionary
             resultSelenium = {}
             #pattern = '^[a-zA-Z]+\s+\d+\s+[\d\:]+'
-            matchedContext = nlpTask.findSpecificSubtree(parsedTree)
+            matchedContext = nlpTask.findNNSubtree(parsedTree)
             adjectiveFinder = nlpTask.printSubtrees(parsedTree, "JJ", "")
             matchedContext = ast.literal_eval(json.dumps(matchedContext))
             machineIndex = [i for i, item in enumerate(matchedContext) if re.search('.*machine', item)]
