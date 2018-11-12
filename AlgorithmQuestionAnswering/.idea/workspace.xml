@@ -296,11 +296,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StanfordCoreNLP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1573">
-              <caret line="203" column="66" selection-start-line="203" selection-start-column="66" selection-end-line="203" selection-end-column="66" />
+            <state relative-caret-position="145">
+              <caret line="119" column="12" lean-forward="true" selection-start-line="119" selection-start-column="12" selection-end-line="119" selection-end-column="12" />
               <folding>
                 <element signature="e#38#77#0" expanded="true" />
                 <marker date="1541776796870" expanded="true" signature="1527:1532" ph="..." />
@@ -314,11 +314,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestSparqlEndpoint.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="59" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+            <state relative-caret-position="357">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -361,7 +361,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SparqlEndpoint.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
+            <state relative-caret-position="559">
               <caret line="59" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
@@ -793,12 +793,12 @@
     <frame x="1358" y="-8" width="1936" height="1094" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18017058" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18017058" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4969743" weight="0.32608697" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.6226013" visible="true" weight="0.1748401" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6226013" visible="true" weight="0.1748401" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5506808" weight="0.4466403" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1107,13 +1107,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SparqlEndpoint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/QuepyTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="712">
@@ -1128,22 +1121,6 @@
             <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StanfordCoreNLP.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1573">
-          <caret line="203" column="66" selection-start-line="203" selection-start-column="66" selection-end-line="203" selection-end-column="66" />
-          <folding>
-            <element signature="e#38#77#0" expanded="true" />
-            <marker date="1541776796870" expanded="true" signature="1527:1532" ph="..." />
-            <marker date="1541776796870" expanded="true" signature="1673:1678" ph="..." />
-            <marker date="1541776796870" expanded="true" signature="2793:3211" ph="..." />
-            <marker date="1541776796870" expanded="true" signature="3205:3211" ph="..." />
-            <marker date="1541776796870" expanded="true" signature="3849:3855" ph="..." />
-            <marker date="1541776796870" expanded="true" signature="4805:5177" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1170,8 +1147,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestSparqlEndpoint.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="59" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SparqlEndpoint.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StanfordCoreNLP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="119" column="12" lean-forward="true" selection-start-line="119" selection-start-column="12" selection-end-line="119" selection-end-column="12" />
+          <folding>
+            <element signature="e#38#77#0" expanded="true" />
+            <marker date="1541776796870" expanded="true" signature="1527:1532" ph="..." />
+            <marker date="1541776796870" expanded="true" signature="1673:1678" ph="..." />
+            <marker date="1541776796870" expanded="true" signature="2793:3211" ph="..." />
+            <marker date="1541776796870" expanded="true" signature="3205:3211" ph="..." />
+            <marker date="1541776796870" expanded="true" signature="3849:3855" ph="..." />
+            <marker date="1541776796870" expanded="true" signature="4805:5177" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
