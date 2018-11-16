@@ -1,3 +1,5 @@
+"""@reference : https://github.com/ayoungprogrammer/nlquery """
+
 from collections import OrderedDict
 from pattern.text.en import singularize
 

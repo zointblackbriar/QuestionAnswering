@@ -55,13 +55,14 @@ def staticQuestion():
         statement = [] #It should return as list
         connectNLP = StanfordCoreNLP.TestConnectionCoreNLP()
         queryLinkedFactory = request.data
+        queryLinkedFactory = Utils.questionMarkProcess(queryLinkedFactory)
         print("Posted data : {}".format(request.data))
-        resultOfConstituentParse = connectNLP.constituencyParser(str(queryLinkedFactory))
+        resultOfConstituentParse = connectNLP.constituencyParser(queryLinkedFactory)
         print(resultOfConstituentParse)
-        resultofDependencyParser = connectNLP.dependencyParser(str(queryLinkedFactory))
+        resultofDependencyParser = connectNLP.dependencyParser(queryLinkedFactory)
         print(resultofDependencyParser)
 
-        queryResult = SPARQLGeneratorClass.getInputQuery(resultOfConstituentParse, resultofDependencyParser)
+        queryResult = SPARQLGeneratorClass.getInputQuery(resultOfConstituentParse, resultofDependencyParser, param_posTagger=None)
         for stmt in queryResult:
             statement.append(stmt)
     except (RuntimeError, TypeError, NameError, Exception):

@@ -125,7 +125,6 @@ class TestConnectionCoreNLP(object):
             logger.exception("Subtree parse problem")
 
     def findNNSubtree(self, tree):
-        #print("tree find specific", tree)
         try:
             NPs = list(tree.subtrees(filter=lambda x: x.label() == 'NP'))
             NNs_insideNPs = map(lambda x: list(x.subtrees(filter=lambda x: x.label() == 'NN')), NPs)
@@ -135,8 +134,13 @@ class TestConnectionCoreNLP(object):
 
     def findVPSubtree(self, tree):
         try:
-            VPs = list(tree.subtrees(filter=lambda x: x.label() == 'VP'))
-            VBZs = map(lambda x: list(x.subtrees(filter=lambda x: x.label() == 'VBZ')), VPs)
+            VPs = list(tree.subtrees(filter=lambda x: x.label() == 'VP' or x.label() == 'VB'))
+            print("length of VPs", len(VPs))
+            print("VPs", VPs)
+            if len(VPs) == 0:
+                return None
+            VBZs = map(lambda x: list(x.subtrees(filter=lambda x: x.label() == 'VBZ' or x.label() == 'VB')), VPs)
+            print("VBZ", VBZs)
             return self.removeDuplicates([verb.leaves()[0] for verbs in VBZs for verb in verbs])
         except Exception as ex:
             logger.exception("VPSubtree Parser Error")
