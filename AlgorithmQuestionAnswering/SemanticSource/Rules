@@ -1,0 +1,17 @@
+What is the current  voltage of sensor1  of machine1 in demofactory?
+
+('Constituency Parsing:', u'(ROOT\r\n  (SBARQ\r\n    (WHNP (WP What))\r\n    (SQ (VBZ is)\r\n
+ (NP\r\n        (NP (DT the) (JJ current) (NN voltage))\r\n        (PP (IN of)\r\n          (NP\r\
+n            (NP (NN sensor1))\r\n            (PP (IN of)\r\n              (NP\r\n
+(NP (NN machine1))\r\n                (PP (IN in)\r\n                  (NP (NN demofactory))))))))
+)\r\n    (. ?)))')
+
+'What Heatmeter contains?'
+
+('Constituency Parsing:', u'(ROOT\r\n  (SBARQ\r\n    (WHNP (WDT What)\r\n      (NP (NN Heatmeter)))\r\n    (SQ\
+r\n      (VP (VBZ contains)))\r\n    (. ?)))')
+
+'Give me all member of BHKW'
+
+('Constituency Parsing:', u'(ROOT\r\n  (S\r\n    (VP (VB Give)\r\n      (NP (PRP me))\r\n      (NP\r\n        (
+NP (DT all) (NN member))\r\n        (PP (IN of)\r\n          (NP (NN BHKW)))))))')

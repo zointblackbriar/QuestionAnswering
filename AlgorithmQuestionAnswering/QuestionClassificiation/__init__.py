@@ -1,5 +1,0 @@
-from __future__ import absolute_import
-
-from QuestionClassificiation import CreateVector
-from QuestionClassificiation import CreateModel
-from QuestionClassificiation import QuestionClassifier

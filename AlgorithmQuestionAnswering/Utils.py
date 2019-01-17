@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+
 from datetime import datetime
 import arrow
 
@@ -59,4 +63,8 @@ def questionMarkProcess(query):
     if query[-1] != '?':
         query = query + ' ?'
     return query
+
+def contains_word(s, w):
+    return (' ' + w + ' ') in (' ' + s + ' ')
+
 

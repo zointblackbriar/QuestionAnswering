@@ -34,37 +34,124 @@
             <div class="col-md-6">
                 <form method="POST" action="/nlqueryengine">
                     <p> Wikidata Question Engine:
-                        <input type="text" name="nlqueryengine" id="nlqueryInput" class="Input-text" placeholder="Who is Angela Merkel?">
+                        <input contenteditable="true" spellcheck="true" type="text" name="nlqueryengine" id="nlqueryInput" class="Input-text" placeholder="Who is Angela Merkel?">
                     </p>
                     <label for="input" class="Input-label">Please ask a question</label>
                     <button class="action-button shadow animate blue" type="submit" name="wikidataEngine">Wikidata Question</button>
+                    <input class="action-button shadow animate blue" id="btn_query" type="button" onclick="wikidataEngineVoice()" value="VoiceRecognition"
+                           style="font-family: Calibri;" />
+
                 </form>
             </div>
             <div class="col-md-6">
                 <form method="POST" action="/quepy">
                     <p> Quepy Engine:
-                        <input type="text" name="quepyEngine" id="quepyInput" class="Input-text" placeholder="Who is Fraunhofer?">
+                        <input contenteditable="true" spellcheck="true" type="text" name="quepyEngine" id="quepyInput" class="Input-text" placeholder="Who is Fraunhofer?">
                     </p>
                     <label for="input" class="Input-label">Ask a question to quepy</label>
                     <button class="action-button shadow animate blue" type="submit" name="quepyEngine">Quepy</button>
+                    <input class="action-button shadow animate blue" id="btn_query" type="button" onclick="quepyDictation()" value="VoiceRecognition"
+                           style="font-family: Calibri;" />
+
                     <!-- href="/quepy" -->
                 </form>
             </div>
             <div class="col-md-6">
                 <form method="POST" action="/fraunhoferengine">
                     <p> Linked Factory Engine:
-                        <input type="text" name="fraunhoferEngine" id="fraunInput" class="Input-text" placeholder="Give me all of members in linkedfactory?">
+                        <input contenteditable="true" spellcheck="true" type="text" name="fraunhoferEngine" id="fraunInput" class="Input-text" placeholder="Give me all of members in linkedfactory?">
                     </p>
                     <label for="input" class="Input-label">Ask a question to Linked Factory</label>
                     <button class="action-button shadow animate blue" type="submit" name="fraunhoferEngine">Linked Factory</button>
+                    <input class="action-button shadow animate blue" id="btn_query" type="button" onclick="startDictation()" value="VoiceRecognition"
+                           style="font-family: Calibri;" />
                     <input type="checkbox" name="dynamicQuery" value="Dynamic_Query"><bold>ENILINK</bold>
+                    <br>
+                    <input type="checkbox" name="generatedOPCQuery" value = "OPC Generated Query"><bold>OPC Data</bold>
                     </input>
                 </form>
             </div>
-            <br>
-            <br>
+{#            <br>#}
+{#            <br>#}
+{#            <div>#}
+{#                <textarea style="width: 600px;font-family: Calibri;font-size:x-large" name="q" id="transcript"#}
+{#                  placeholder="Your query will appear here after you speak." rows="2" readonly="True"></textarea>#}
+{#            <br>#}
+{#                <input id="btn_query" type="button" onclick="startDictation()" value="VoiceRecognition"#}
+{#                       style="font-family: Calibri;" />#}
+            </div>
         </div>
     </div>
+
+    <script>
+        function wikidataEngineVoice() {
+            document.getElementById('nlqueryInput').value = '';
+            //document.getElementById('output').value = '';
+            if(window.hasOwnProperty('webkitSpeechRecognition')) {
+                var recognition = new webkitSpeechRecognition();
+                recognition.continuous  = false;
+                recognition.interimResults = false;
+                recognition.lang = "en-US";
+                recognition.start();
+                recognition.onresult = function(e) {
+                //document.getElementById('loader').hidden = true;
+                document.getElementById('nlqueryInput').value = e.results[0][0].transcript;
+                //get real data
+                var data = e.results[0][0].transcript;
+                console.log(data)
+                }
+            }
+        }
+
+        function quepyDictation() {
+            document.getElementById('quepyInput').value = '';
+            //document.getElementById('output').value = '';
+            if(window.hasOwnProperty('webkitSpeechRecognition')) {
+                var recognition = new webkitSpeechRecognition();
+                recognition.continuous  = false;
+                recognition.interimResults = false;
+                recognition.lang = "en-US";
+                recognition.start();
+                recognition.onresult = function(e) {
+                //document.getElementById('loader').hidden = true;
+                document.getElementById('quepyInput').value = e.results[0][0].transcript;
+                //get real data
+                var data = e.results[0][0].transcript;
+                console.log(data)
+                }
+            }
+        }
+        function startDictation() {
+            document.getElementById('fraunInput').value = '';
+            //document.getElementById('output').value = '';
+            if(window.hasOwnProperty('webkitSpeechRecognition')) {
+                var recognition = new webkitSpeechRecognition();
+                recognition.continuous  = false;
+                recognition.interimResults = false;
+                recognition.lang = "en-US";
+                recognition.start();
+                recognition.onresult = function(e) {
+                //document.getElementById('loader').hidden = true;
+                document.getElementById('fraunInput').value = e.results[0][0].transcript;
+                recognition.stop();
+                //get real data
+                var data = e.results[0][0].transcript;
+                console.log(data)
+                }
+            }
+        }
+
+        function btnClick() {
+            synth.cancel();
+            var utterThis = new SpeechSynthesisisUtterance(document.getElementById("output").value);
+            utterThis.voice = synth.getVoices()[0];
+            utterThis.pitch = 1.0;
+            utterThis.rate = 0.8;
+            //callback function
+            utterThis.onerror = function(e) { console.log("Something went wrong with utterance"); };
+            synth.speak(utterThis);
+        }
+    </script>
 
 </body>
 

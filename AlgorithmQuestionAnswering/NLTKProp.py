@@ -1,20 +1,24 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+
 import nltk
 from nltk.corpus import wordnet, stopwords
-from nltk import tokenize
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk import CFG, PCFG
-from nltk.parse.generate import generate, demo_grammar
 from nltk.classify import NaiveBayesClassifier
 from nltk.corpus import subjectivity
 from nltk.sentiment import SentimentAnalyzer
 from nltk.sentiment.util import *
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from nltk.stem import WordNetLemmatizer
+from nltk.stem.porter import PorterStemmer
+from nltk.stem.snowball import SnowballStemmer
 import requests
-import json
 import ast
 
 
-class NLTKProp(object):
+class NLTKProp():
     #Calculate word frequency with NLTK
     def nltkWordFreq(self, tokens):
         freq_dist_nltk = nltk.FreqDist(tokens)
@@ -136,6 +140,22 @@ class NLTKProp(object):
             return None
         return True
 
+    @staticmethod
+    def stemmingPorter(item):
+        porter_stemmer = PorterStemmer()
+        return porter_stemmer.stem(item)
+
+    @staticmethod
+    def stemmingSnowball(item):
+        item = str(item).lower()
+        snowball_stemmer = SnowballStemmer("english")
+        return snowball_stemmer.stem(item)
+
+    @staticmethod
+    def lemmatization(item):
+        wordnet_lemmatizer = WordNetLemmatizer()
+        print(wordnet_lemmatizer.lemmatize(item))
+
 # grammarTest = NLTKProp().CFGParser(demo_grammar)
 # print(grammarTest)
 #
@@ -143,6 +163,8 @@ class NLTKProp(object):
 # sentence = "I was getting through this"
 # print(NLTKProp().parsingFunc(sentence))
 
-grammarTest = NLTKProp()
-#grammarTest.trainSentimentAnalysis("Do not give me the value of sensor1 in machine1")
-print(grammarTest.externalSentimentAnalysis("Give me the value of sensor1 in machine1"))
+# grammarTest = NLTKProp()
+# #grammarTest.trainSentimentAnalysis("Do not give me the value of sensor1 in machine1")
+# print(grammarTest.externalSentimentAnalysis("Give me the value of sensor1 in machine1"))
+# NLTKProp.lemmatization("containment")
+# NLTKProp.stemming("containment")

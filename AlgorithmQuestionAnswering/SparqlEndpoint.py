@@ -5,12 +5,12 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 import rdflib
 from rdflib.graph import Graph
-from rdflib.plugins import sparql
-from rdflib import URIRef, Literal
+# from rdflib.plugins import sparql
+# from rdflib import URIRef, Literal
 from rdflib.plugin import register, Serializer, Parser
 register('ttl', Parser, 'rdflib.plugins.parsers.notation3', 'TurtleParser')
 import logging
-import colored_logs
+# import colored_logs
 import time
 from rdflib.plugins.sparql import prepareQuery
 
@@ -52,6 +52,7 @@ class SPARQLEndpoint():
 
 
     def sparqlQueryForLocalSource(self):
+        qresult = []
         try:
             logger.info("sparqlQueryForLocalSource")
             print(self._paramFormat)

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:factory="http://linkedfactory.iwu.fraunhofer.de/vocab#"
+	xmlns="http://linkedfactory.iwu.fraunhofer.de/data/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xml:base="http://linkedfactory.iwu.fraunhofer.de/data/">
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/Rollex"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim">
+	<factory:contains>
+		<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab">
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/Aximus"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/BDM2000"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/Fliesspressen"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/GMX_Entgraten"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen1"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen2"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen3"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/GMX_Spanen4"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/HA100"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/Karobau"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/PRD40"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/PWZ"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/Querwalzen"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/E3-Sim/FoFab/Rollex"/>
+		</rdf:Description>
+	</factory:contains>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/BHKW"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GMX"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV-Buero"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/SolarPlant"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/BHKW">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/BHKW/CoolingWater"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/BHKW/EmergencyCooling"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/BHKW/Generator"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/BHKW/HeatMeter"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/BHKW/HeatingWater"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Elektrische_Energie"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Wärme"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Elektrische_Energie">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Elektrische_Energie/Abgang_MSR"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Elektrische_Energie/Hybrid_KM_Turbocor_560kW"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Elektrische_Energie/Hybrid_KM_Turbocor_600kW"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Elektrische_Energie/Turbocor_560kW"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Elektrische_Energie/Turbocor_600kW"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte/Absorber"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte/Einspeisung_in_Verteiler"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte/Klimakälte-Freie_Kühlung"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte/Prozesskühlung"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte/Prozesskühlung-Freie_Kühlung"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte/Turbocor-1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Kälte/Turbocor-2"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Wärme">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Wärme/Absorber"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Wärme/BHKW"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Wärme/Deckenstrahlheizung"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GLT/Wärme/Statische_Heizung"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GMX">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/GMX/GLT"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV">
+	<factory:contains>
+		<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV/Versuchsfeld">
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV/Versuchsfeld/UV1"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV/Versuchsfeld/UV2"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV/Versuchsfeld/UV3"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV/Versuchsfeld/UV4"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV/Versuchsfeld/UV5"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV/Versuchsfeld/UV6"/>
+		</rdf:Description>
+	</factory:contains>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/NSHV/Versuchsfeld/UV1">
+	<rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unterverteilung 1</rdfs:label>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/GLT"/>
+	<factory:contains>
+		<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter">
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/a"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/a-b"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/a-n"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/b"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/b-c"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/b-n"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/c"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/c-a"/>
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/Rollex/PowerMeter/c-n"/>
+		</rdf:Description>
+	</factory:contains>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/SolarPlant">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/SolarPlant/WRTE5K69:314605750"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/SolarPlant/WRTE5K69:314605751"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/FoFab/SolarPlant/WRTP4675:2110426305"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/Rollex">
+	<factory:contains>
+		<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/Rollex/PowerMeter">
+			<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/IWU/Rollex/PowerMeter/L1"/>
+		</rdf:Description>
+	</factory:contains>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine1/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine10/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine2/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine3/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine4/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine5/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine6/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine7/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine8/sensor9"/>
+</rdf:Description>
+<rdf:Description rdf:about="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9">
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor1"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor10"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor2"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor3"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor4"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor5"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor6"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor7"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor8"/>
+	<factory:contains rdf:resource="http://linkedfactory.iwu.fraunhofer.de/linkedfactory/demofactory/machine9/sensor9"/>
+</rdf:Description>
+<owl:DatatypeProperty rdf:about="http://linkedfactory.iwu.fraunhofer.de/vocab#description"/>
+<owl:DatatypeProperty rdf:about="http://linkedfactory.iwu.fraunhofer.de/vocab#machineType"/>
+<owl:DatatypeProperty rdf:about="http://linkedfactory.iwu.fraunhofer.de/vocab#sensorType"/>
+
+</rdf:RDF>

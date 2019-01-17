@@ -110,5 +110,6 @@ venv.bak/
 dmypy.json
 
 #Local
-data/
+AlgorithmQuestionAnswering/data/
 AlgorithmQuestionAnswering/.idea/workspace.xml
+AlgorithmQuestionAnswering/glove/glove.6B.50d.txt

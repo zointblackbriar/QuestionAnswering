@@ -102,7 +102,9 @@ class ServerExport(object):
 
 
 if __name__ == "__main__":
-    exporter = ServerExport("opc.tcp://desktop-674d0i3:62541/DynamicServer", "DynamicServer.xml")
+    #exporter = ServerExport("opc.tcp://desktop-674d0i3:62541/DynamicServer", "DynamicServer.xml")
+    #exporter = ServerExport("opc.tcp://DESKTOP-674D0I3:26543", "Node-OPCServer.xml")
+    exporter = ServerExport("opc.tcp://desktop-674d0i3:48030", "UANodeServer.xml")
     exporter.import_nodes(server_url=exporter.server_url)
     exporter.statistics()
     exporter.export_xml(exporter.namespaces, exporter.outputFile)
