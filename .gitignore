@@ -113,3 +113,7 @@ dmypy.json
 AlgorithmQuestionAnswering/data/
 AlgorithmQuestionAnswering/.idea/workspace.xml
 AlgorithmQuestionAnswering/glove/glove.6B.50d.txt
+
+# file: ~/.gitignore_global
+.DS_Store
+.idea

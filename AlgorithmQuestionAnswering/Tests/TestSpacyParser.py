@@ -119,11 +119,11 @@ class BaseTestClass(unittest.TestCase):
         statement = "What does linkedfactory contain?"
         self.assertFalse(corenlpObject.spacyDependencyChunk(statement))
 
-    def test_spacy_lemmatizer(self):
-        statement = "What contains linkedfactory?"
-        nlpTask = TestConnectionCoreNLP()
-        verb = nlpTask.spacyArchMatching(statement)
-        self.assertEqual(corenlpObject.spacy_lemmatizer(verb), 'contain')
+    # def test_spacy_lemmatizer(self):
+    #     statement = "What contains linkedfactory?"
+    #     nlpTask = TestConnectionCoreNLP()
+    #     verb = nlpTask.spacyArchMatching(statement)
+    #     self.assertEqual(corenlpObject.spacy_lemmatizer(verb), 'contain')
 
 
     # def test_StanfordCoreferenceResolution(self):

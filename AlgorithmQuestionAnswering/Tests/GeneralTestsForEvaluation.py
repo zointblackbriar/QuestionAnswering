@@ -58,7 +58,7 @@ class BaseTestCase(unittest.TestCase):
         comparison = []
         statement = "I am a customer for this company. Could you tell me please what is the value of sensor1 in machine1?"
         queryLinkedFactory = Utils.questionMarkProcess(statement)
-        sparqlQuery = SPARQLGeneratorClass.static_query_triples(queryLinkedFactory)
+        sparqlQuery = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
         for row in sparqlQuery:
             comparison.append(row)
         self.assertFalse(isinstance(comparison[0], str))
@@ -67,7 +67,7 @@ class BaseTestCase(unittest.TestCase):
         comparison = []
         statement = "Could you tell me please what is the current value of sensor2 in machine2?"
         queryLinkedFactory = Utils.questionMarkProcess(statement)
-        sparqlQuery = SPARQLGeneratorClass.static_query_triples(queryLinkedFactory)
+        sparqlQuery = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
         for row in sparqlQuery:
             comparison.append(row)
         self.assertFalse(isinstance(comparison[0], str))
@@ -93,7 +93,7 @@ class BaseTestCase(unittest.TestCase):
 
     def test_wordnet_similarity_version_second(self):
         comparison = []
-        statement = "What does linkedfactory incorporate?"
+        statement = "What does fofab incorporate?"
         queryLinkedFactory = Utils.questionMarkProcess(statement)
         sparqlQuery = SPARQLGeneratorClass.static_query_triples(queryLinkedFactory)
         for row in sparqlQuery:
@@ -119,28 +119,31 @@ class BaseTestCase(unittest.TestCase):
         self.assertFalse(isinstance(comparison[0], str))
 
     def test_dynamic_system_health_question_version_first(self):
-        statement = "system health for sensor2 in machine1?"
+        comparison = []
+        statement = "system health for sensor2 in machine6?"
         queryLinkedFactory = Utils.questionMarkProcess(statement)
-        list_answer = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
-        resultFlag = list_answer
-        print("resultFlag", resultFlag)
-        self.assertTrue(resultFlag)
+        sparqlQuery = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertFalse(isinstance(comparison[0], str))
 
     def test_dynamic_system_health_question_version_second(self):
+        comparison = []
         statement = "Could you tell me the system health for sensor2 in machine1?"
         queryLinkedFactory = Utils.questionMarkProcess(statement)
-        list_answer = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
-        resultFlag = list_answer
-        print("resultFlag", resultFlag)
-        self.assertTrue(resultFlag)
+        sparqlQuery = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertFalse(isinstance(comparison[0], str))
 
     def test_dynamic_system_health_question_version_third(self):
+        comparison = []
         statement = "health for sensor1 in machine2? "
         queryLinkedFactory = Utils.questionMarkProcess(statement)
-        list_answer = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
-        resultFlag = list_answer
-        print("resultFlag", resultFlag)
-        self.assertTrue(resultFlag)
+        sparqlQuery = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertFalse(isinstance(comparison[0], str))
 
     def test_opc_generated_query(self):
         comparison = []
@@ -244,7 +247,7 @@ class BaseTestCase(unittest.TestCase):
         self.assertEqual(sparqlQuery.get('avg'), '6.33333')
 
     def test_dynamic_average_indicative_question(self):
-        statement = "I need to learn an average for sensor1 in machine1?"
+        statement = "I need to learn an average for sensor5 in machine2?"
         queryLinkedFactory = Utils.questionMarkProcess(statement)
         sparqlQuery = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)
         self.assertEqual(sparqlQuery.get('avg'), '6.33333')
@@ -362,6 +365,66 @@ class BaseTestCase(unittest.TestCase):
         for row in sparqlQuery:
             comparison.append(row)
         self.assertTrue(isinstance(comparison[0], str))
+
+    def test_question_1(self):
+        comparison = []
+        statement = "What fofab contains?"
+        query_generated_data = Utils.questionMarkProcess(statement)
+        sparqlQuery = SPARQLGeneratorClass.static_query_triples(query_generated_data)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertTrue(isinstance(comparison[0], str))
+
+    def test_question_2(self):
+        comparison = []
+        statement = "Give me all members of linkedfactory"
+        query_generated_data = Utils.questionMarkProcess(statement)
+        sparqlQuery = SPARQLGeneratorClass.static_query_triples(query_generated_data)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertTrue(isinstance(comparison[0], str))
+
+    def test_question_3(self):
+        comparison = []
+        statement = "I want to know which one contain fofab"
+        query_generated_data = Utils.questionMarkProcess(statement)
+        sparqlQuery = SPARQLGeneratorClass.static_query_triples(query_generated_data)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertTrue(isinstance(comparison[0], str))
+
+    def test_question_4(self):
+        comparison = []
+        statement = "There is a member named fofab. Please give me all of its members"
+        query_generated_data = Utils.questionMarkProcess(statement)
+        sparqlQuery = SPARQLGeneratorClass.static_query_triples(query_generated_data)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertTrue(isinstance(comparison[0], str))
+
+    def test_question_5(self):
+        comparison = []
+        statement = "Could you tell me please what is the value of sensor3 in machine7"
+        query_generated_data = Utils.questionMarkProcess(statement)
+        sparqlQuery = SPARQLGeneratorClass.dynamic_query_triples(query_generated_data)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertTrue(isinstance(comparison[0], str))
+
+    def test_question_6(self):
+        comparison = []
+        statement = "I need to learn an average for sensor1 in machine8"
+        query_generated_data = Utils.questionMarkProcess(statement)
+        sparqlQuery = SPARQLGeneratorClass.dynamic_query_triples(query_generated_data)
+        for row in sparqlQuery:
+            comparison.append(row)
+        self.assertTrue(isinstance(comparison[0], str))
+
+
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()

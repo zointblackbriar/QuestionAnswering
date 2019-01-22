@@ -249,7 +249,12 @@ class SPARQLGeneratorClass():
 
         #stemmed_verb = NLTKProp.stemmingSnowball(str(verb[-1]))
         logger.info("check wordnet synonym analysis")
-        wordnetLatentAnalysis = nlpTask.wordnetLatentAnalysis(str(verb[-1]), 'contains')
+        if(verb != None):
+            lemmatized_verb = stanford_parser.spacy_verb_lemmatizer(str(verb[-1]))
+            print("lemmatized verb: ", lemmatized_verb)
+            #wordnetLatentAnalysis = nlpTask.wordnetLatentAnalysis(str(verb[-1]), 'contains')
+            print("type of lemmatized verb: ", type(lemmatized_verb))
+            wordnetLatentAnalysis = nlpTask.wordnetLatentAnalysis(str(lemmatized_verb[0]), 'contain')
         indirect_dependency = nlpTask.spacyDependencyChunk(input_text)
 
         prefixEdit = """PREFIX factory: <http://linkedfactory.iwu.fraunhofer.de/vocab#>
@@ -487,7 +492,7 @@ class SPARQLGeneratorClass():
                 lemmatized_verb = stanford_parser.spacy_verb_lemmatizer(str(verb[0]))
                 print("lemmatized verb", lemmatized_verb)
                 print("type of lemmatized verb: ", type(lemmatized_verb))
-                wordnetLatentAnalysis = nlpTask.wordnetLatentAnalysis(str(verb[0]), 'browse')
+                wordnetLatentAnalysis = nlpTask.wordnetLatentAnalysis(str(lemmatized_verb[0]), 'browse')
 
             noun = nlpTask.findNNSubtree(constituent_parse)
             matchedContext = ast.literal_eval(json.dumps(noun))
@@ -513,7 +518,7 @@ class SPARQLGeneratorClass():
             if ('node' and 'id' in noun) or filter(node_id_test.match, matchedContext):
                 node_id_query = prefix_query + """ SELECT DISTINCT ?object
                                 WHERE {
-                                  ?s :BrowseName ?object .
+                                  ?s :NodeId ?object .
                                    OPTIONAL { ?s :NodeId ?o. }
                                 } 
                             """

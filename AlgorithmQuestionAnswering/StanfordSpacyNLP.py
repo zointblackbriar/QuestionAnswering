@@ -161,17 +161,15 @@ class TestConnectionCoreNLP(object):
             return False
 
     def similarity_levenshtein(self, first_input, second_input):
-
         print("text similarity with levenshtein")
         similarity_level = similarity.levenshtein(str(first_input), str(second_input))
         print("similarity_level: ", similarity_level)
-        if similarity_level > 0.55:
+        if similarity_level >= 0.53:
             return True
         else:
             return False
 
     def similarity_word_levensthein(self, first_input, second_input):
-
         print("text similarity with levenshtein")
         similarity_level = similarity.levenshtein(str(first_input), str(second_input))
         print("similarity_level: ", similarity_level)
@@ -248,38 +246,20 @@ class TestConnectionCoreNLP(object):
 
         for chunk in doc.noun_chunks:
             #u'dobj' or u'advmod'
-            if u'nsubj' in str(chunk.root.dep_):
-                indirectDependency = False
-            elif (u'dobj' and u'nsubj') or u'advmod' in str(chunk.root.dep_):
+            chunk_root_dep = [chunk.root.dep_ for chunk in doc.noun_chunks]
+            # if (u'dobj' and u'nsubj') or u'advmod' in str(chunk.root.dep_):
+            #     indirectDependency = True
+            # elif u'nsubj' in str(chunk.root.dep_):
+            #     indirectDependency = False
+
+        print("chunk root dep: ", chunk_root_dep)
+        if chunk_root_dep[-1] == u'nsubj' and len(chunk_root_dep) == 1:
+            indirectDependency = False
+        elif len(chunk_root_dep) > 1:
+            if chunk_root_dep[-2] == u'nsubj' and chunk_root_dep[-1] == u'dobj':
                 indirectDependency = True
-
-        # for possible_subject in doc:
-        #     if possible_subject.dep == nsubj and possible_subject.dep == dobj and possible_subject.head.pos == VERB:
-        #         indirectDependency = False
-        #     elif possible_subject.dep == dobj  and possible_subject.head.pos == VERB and possible_subject.dep != nsubj:
-        #         indirectDependency = True
-
-        # token_head_pos = [token.head.pos_ for token in doc]
-        # token_dep = [token.dep_ for token in doc]
-        # token_head_text = [token.head.text for token in doc]
-        # token_text = [token.text for token in doc]
-        # print("token head pos", token_head_pos)
-        # print("token dep:", token_dep)
-        # print("token head text: ", token_head_text)
-        # print("token text:", token_text)
-        # print("token dep type: ", type(token_dep))
-        # print("")
-        #
-        # for possible_verb in doc:
-        #     if possible_verb.pos == VERB:
-        #         for possible_subject in possible_verb.children:
-        #             if possible_subject.dep == nsubj or possible_subject.dep == dobj :
-        #                 indirectDependency = True
-
-
-        # if( token_dep.index(u'dobj') < token_dep.index(u'VERB')):
-        #     pass
-
+            elif chunk_root_dep[-2] == u'dobj' and chunk_root_dep[-1] == u'nsubj':
+                indirectDependency = False
 
         print("indirectDependency: ", indirectDependency)
 
