@@ -8,13 +8,11 @@ from QuestionClassification import QuestionClassifier
 from SparqlEndpoint import SPARQLEndpoint
 from NLTKProp import NLTKProp
 from QuestionClassification import QuestionClassificationSVM
-import Utils
-#import StanfordSpacyNLP
+import QuestionClassification
 import re
 import time
 import logging
 import json, ast
-import os
 
 logging.info('Starting logger for ...') #or call logging.basicConfig
 # Set log name
@@ -38,21 +36,16 @@ nlpTask = TestConnectionCoreNLP()
 #        (MAX(?value) AS ?max)
 # WHERE {
 # service <kvin:> {  <http://localhost:10080/""" + path + """/""" + matchedContext[machineIndex[0]] + """/""" +  matchedContext[sensorIndex[0]] + """> <http://example.org/value> ?v . ?v <kvin:limit> 10000; <kvin:value> ?value} }"""
-
-
-#os.chdir(r'../')
-#print(os.getcwd())
 EN_MODEL_MD = "en_core_web_md"
 
 class SPARQLGeneratorClass():
 
-    def __init__(self):
-        pass
+    # def __init__(self):
+    #     pass
 
-    def SPARQLGenerate(self, input):
-        listOfPostTagger = obj.parse(input)
-        print("list of Post Tagger", listOfPostTagger)
-
+    # def SPARQLGenerate(self, input):
+    #     listOfPostTagger = obj.parse(input)
+    #     print("list of Post Tagger", listOfPostTagger)
 
 
     def sampleTestChromeDriver(self):
@@ -269,6 +262,13 @@ class SPARQLGeneratorClass():
 
         resultOFLocalSource = ""
 
+        # The following code will be tested again
+        questionAnswering = QuestionClassification.QuestionClassifier.QuestionAssigner.predictQuestion(input_text)
+        if questionAnswering == 'unknown' or questionAnswering == 'who' or questionAnswering == 'when':
+            print("question classification: ", questionAnswering)
+            resultOFLocalSource =  ["Question Classification Failed"]
+            return resultOFLocalSource
+
         try:
             #get a verb which has been analyzed and compare with its dependency parse tree against inverse query
             #stemmed_verb == 'contains'
@@ -312,7 +312,6 @@ class SPARQLGeneratorClass():
                 time.sleep(3)
                 resultOFLocalSource = endpointRemote.sparqlQueryForLocalSource()
 
-
             else:
                 #noun = ast.literal_eval(json.dumps(noun))
                 print("No specific verb - Affirmation Statement")
@@ -335,11 +334,6 @@ class SPARQLGeneratorClass():
     @staticmethod
     def dynamic_query_triples(input):
         try:
-            #The following code will be tested again
-            # import QuestionClassification
-            # questionAnswering = QuestionClassification.QuestionClassifier.QuestionAssigner.predictQuestion(input)
-            # if questionAnswering is 'unknown' or questionAnswering is 'who' or questionAnswering is 'when':
-            #     return
 
             queryDynamicValue = ""
             #Selenium returns a dictionary
@@ -349,19 +343,23 @@ class SPARQLGeneratorClass():
             import spacy
             nlp_loader = spacy.load(EN_MODEL_MD)
             doc = nlp_loader(u'' + str(input))
-            # if classification_object.classify_question(doc)[0] is not 'HUM' or 'DESC' or 'ENTY':
-            #     print("question classification: ", classification_object.classify_question(doc)[0])
-            #     resultSelenium = {"Status": "Question Classification Failed"}
-            #     return resultSelenium
+            if classification_object.classify_question(doc)[0] != 'HUM' and classification_object.classify_question(doc)[0] != 'DESC' and classification_object.classify_question(doc)[0] != 'ENTY':
+                print("question classification: ", classification_object.classify_question(doc)[0])
+                resultSelenium = {"Status": "Question Classification Failed"}
+                return resultSelenium
+
 
             systemHealthFlag = False
             stanford_parser = TestConnectionCoreNLP()
             resultOfConstituentParse = stanford_parser.constituencyParser(input)
             print(resultOfConstituentParse.pretty_print())
             print(resultOfConstituentParse.leaves())
-            similarityFlag = stanford_parser.similarity_levenshtein("Is the system health good?", input)
+            similarityFlag = stanford_parser.similarity_levenshtein("Is the system health good sensor1 machine1?", input)
             if(similarityFlag == False):
-                similarityFlag = stanford_parser.similarity_levenshtein("How is the system status?", input)
+                similarityFlag = stanford_parser.similarity_levenshtein("How is the system status sensor1 machine1?", input)
+            if(similarityFlag == False):
+                similarityFlag = stanford_parser.similarity_levenshtein("system health status sensor1 machine1", input)
+
             matchedContext = nlpTask.findNNSubtree(resultOfConstituentParse)
             #adjective_finder = nlpTask.printSubtrees(resultOfConstituentParse, 'ADJP', 'JJ')
             adjective_finder = nlpTask.printSubtrees(resultOfConstituentParse,'NP', 'JJ')
@@ -514,6 +512,14 @@ class SPARQLGeneratorClass():
                 result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
                 # else:
                 #     result_of_local_source = {"Status": "Query Wordnet Analysis is not correct"}
+            if ('parent' and 'node' and 'id') in noun or filter(parent_node_test.match, matchedContext):
+                parent_node_id_query = prefix_query + """ SELECT DISTINCT ?object
+                                WHERE {
+                                  ?s :ParentNodeId ?object . }
+                            """
+                endpointRemote = SPARQLEndpoint("localhost", parent_node_id_query, "ttl", filename="SemanticSource/OPCGeneratedData.ttl")
+                time.sleep(3)
+                result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
 
             if ('node' and 'id' in noun) or filter(node_id_test.match, matchedContext):
                 node_id_query = prefix_query + """ SELECT DISTINCT ?object
@@ -526,14 +532,6 @@ class SPARQLGeneratorClass():
                 time.sleep(3)
                 result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
 
-            if ('parent' and 'node' and 'id') in noun or filter(parent_node_test.match, matchedContext):
-                parent_node_id_query = prefix_query + """ SELECT DISTINCT ?object
-                                WHERE {
-                                  ?s :ParentNodeId ?object . }
-                            """
-                endpointRemote = SPARQLEndpoint("localhost", parent_node_id_query, "ttl", filename="SemanticSource/OPCGeneratedData.ttl")
-                time.sleep(3)
-                result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
 
             if 'datablock' or 'data block' in noun or filter(datablock_test.match, matchedContext):
                 query_data_block = prefix_query + """ SELECT DISTINCT ?object

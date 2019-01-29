@@ -156,15 +156,3 @@ class NLTKProp():
         wordnet_lemmatizer = WordNetLemmatizer()
         print(wordnet_lemmatizer.lemmatize(item))
 
-# grammarTest = NLTKProp().CFGParser(demo_grammar)
-# print(grammarTest)
-#
-#
-# sentence = "I was getting through this"
-# print(NLTKProp().parsingFunc(sentence))
-
-# grammarTest = NLTKProp()
-# #grammarTest.trainSentimentAnalysis("Do not give me the value of sensor1 in machine1")
-# print(grammarTest.externalSentimentAnalysis("Give me the value of sensor1 in machine1"))
-# NLTKProp.lemmatization("containment")
-# NLTKProp.stemming("containment")

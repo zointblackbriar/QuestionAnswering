@@ -3,7 +3,7 @@ import os
 os.chdir(r'../')
 import StanfordSpacyNLP
 
-corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
+#corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
 
 
 

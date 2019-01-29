@@ -85,7 +85,6 @@ class ConnectionCoreNLP(object):
             }
         return tokens
 
-nlpCore = ConnectionCoreNLP()
 
 class TestConnectionCoreNLP(object):
     # print('Tokenize', nlpCore.word_tokenize(param_test))
@@ -97,6 +96,7 @@ class TestConnectionCoreNLP(object):
 
     def dependencyParser(self, param_depend):
         try:
+            nlpCore = ConnectionCoreNLP()
             dependencyParseTree = nlpCore.dependency_parser(param_depend)
             #be careful when you return dependencyParseTree
             #It is not a tree
@@ -106,6 +106,7 @@ class TestConnectionCoreNLP(object):
         return dependencyParseTree
 
     def coreferenceSolutionStanford(self, sentence):
+        nlpCore = ConnectionCoreNLP()
         coreference = nlpCore.deterministic_coreference(sentence)
         return coreference
 
@@ -213,9 +214,9 @@ class TestConnectionCoreNLP(object):
 
     def spacyArchMatching(self, sentence):
         verbs = []
-        nlp = spacy.load("en_core_web_md")
+        #
+        nlp = spacy.load("en_core_web_sm", disable=['ner', 'textcat'])
         doc = nlp(sentence.decode('utf-8'))
-
 
         for possible_verb in doc:
             if possible_verb.pos == VERB:
@@ -230,19 +231,11 @@ class TestConnectionCoreNLP(object):
     def spacyDependencyChunk(self, sentence):
         listChunk = []
         indirectDependency = False
-        #A medium English model based on spacy -- Size 161 Mo -- Recommended
-        nlp = spacy.load('en_core_web_md')
+        #A medium English model based on spacy -- Size 161 Mo -- Not Recommended en_core_web_md
+
+        nlp = spacy.load('en_core_web_md', disable=['ner'])
         doc = nlp(sentence.decode('utf-8'))
-        # for chunk in doc.noun_chunks:
-        #     chunk_root_dep = [chunk.root.dep_ for chunk in doc.noun_chunks]
-        #     chunk_root = [chunk.root.text for chunk in doc.noun_chunks]
-        #     chunk_root_head = [chunk.root.head.text for chunk in doc.noun_chunks]
-        #     chunk_text = [chunk.text for chunk in doc.noun_chunks]
-        # print("chunk root dep: ", chunk_root_dep)
-        # print("chunk root:", chunk_root)
-        # print("chunk_root_head: ", chunk_root_head)
-        # print("chunk_text:", chunk_text)
-        # print(" ")
+        print("nlp meta", nlp.meta)
 
         for chunk in doc.noun_chunks:
             #u'dobj' or u'advmod'
@@ -307,6 +300,7 @@ class TestConnectionCoreNLP(object):
 
     def namedEntityRecognition(self, param_ner):
         try:
+            nlpCore = ConnectionCoreNLP()
             nerResult = nlpCore.ner(param_ner)
             print(nerResult)
         except Exception as ex:
@@ -324,6 +318,7 @@ class TestConnectionCoreNLP(object):
 
     def posTaggerSender(self, param_posTagger):
         try:
+            nlpCore = ConnectionCoreNLP()
             posResult = nlpCore.posTagger(param_posTagger)
         except Exception as ex:
             logger.exception("Pos Tagger Error")
@@ -332,6 +327,7 @@ class TestConnectionCoreNLP(object):
     #Tested with Server. Stanford CoreNLP server up and running
     def constituencyParser(self, param_constituent):
         try:
+            nlpCore = ConnectionCoreNLP()
             constituentParseTree = nlpCore.parse(param_constituent)
             # print(constituentParseTree)
             return Tree.fromstring(constituentParseTree)
@@ -340,6 +336,7 @@ class TestConnectionCoreNLP(object):
 
     def resultSentiment(self, param_sentiment):
         try:
+            nlpCore = ConnectionCoreNLP()
             sentiment_analysis = nlpCore.annotate(param_sentiment)
             print(sentiment_analysis)
         except Exception as ex:
