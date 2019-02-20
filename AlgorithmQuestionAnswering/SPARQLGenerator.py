@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import Select
 from StanfordSpacyNLP import ConnectionCoreNLP, TestConnectionCoreNLP
 from QuestionClassification import QuestionClassifier
 from SparqlEndpoint import SPARQLEndpoint
+import spacy
 from NLTKProp import NLTKProp
 from QuestionClassification import QuestionClassificationSVM
 import QuestionClassification
@@ -36,7 +37,8 @@ nlpTask = TestConnectionCoreNLP()
 #        (MAX(?value) AS ?max)
 # WHERE {
 # service <kvin:> {  <http://localhost:10080/""" + path + """/""" + matchedContext[machineIndex[0]] + """/""" +  matchedContext[sensorIndex[0]] + """> <http://example.org/value> ?v . ?v <kvin:limit> 10000; <kvin:value> ?value} }"""
-EN_MODEL_MD = "en_core_web_md"
+EN_MODEL_MD = "en_core_web_lg"
+nlp_loader = spacy.load(EN_MODEL_MD)
 
 class SPARQLGeneratorClass():
 
@@ -205,9 +207,6 @@ class SPARQLGeneratorClass():
 
         print("input text: ", type(input_text))
         input_text = str(input_text)
-        # questionAnswering = QuestionClassifier.QuestionAssigner.predictQuestion(input_text)
-        # if questionAnswering is 'unknown':
-        #     return
 
         verb = []
         noun = []
@@ -248,6 +247,7 @@ class SPARQLGeneratorClass():
             #wordnetLatentAnalysis = nlpTask.wordnetLatentAnalysis(str(verb[-1]), 'contains')
             print("type of lemmatized verb: ", type(lemmatized_verb))
             wordnetLatentAnalysis = nlpTask.wordnetLatentAnalysis(str(lemmatized_verb[0]), 'contain')
+        #indirect_dependency = False
         indirect_dependency = nlpTask.spacyDependencyChunk(input_text)
 
         prefixEdit = """PREFIX factory: <http://linkedfactory.iwu.fraunhofer.de/vocab#>
@@ -281,7 +281,7 @@ class SPARQLGeneratorClass():
                 time.sleep(3)
                 resultOFLocalSource = endpointRemote.sparqlQueryForLocalSource()
 
-            elif wordnetLatentAnalysis == True and len(noun) > 1:
+            elif wordnetLatentAnalysis == False and len(noun) > 1 and indirect_dependency == False:
                 print("Union Query")
                 parameterizedQuery = prefixEdit + """
                                                  SELECT ?s ?o WHERE {
@@ -341,7 +341,7 @@ class SPARQLGeneratorClass():
 
             classification_object = QuestionClassificationSVM.SVMClassifier()
             import spacy
-            nlp_loader = spacy.load(EN_MODEL_MD)
+            #nlp_loader = spacy.load(EN_MODEL_MD)
             doc = nlp_loader(u'' + str(input))
             if classification_object.classify_question(doc)[0] != 'HUM' and classification_object.classify_question(doc)[0] != 'DESC' and classification_object.classify_question(doc)[0] != 'ENTY':
                 print("question classification: ", classification_object.classify_question(doc)[0])
@@ -356,9 +356,7 @@ class SPARQLGeneratorClass():
             print(resultOfConstituentParse.leaves())
             similarityFlag = stanford_parser.similarity_levenshtein("Is the system health good sensor1 machine1?", input)
             if(similarityFlag == False):
-                similarityFlag = stanford_parser.similarity_levenshtein("How is the system status sensor1 machine1?", input)
-            if(similarityFlag == False):
-                similarityFlag = stanford_parser.similarity_levenshtein("system health status sensor1 machine1", input)
+                similarityFlag = stanford_parser.similarity_levenshtein("Is the system in trouble for sensor1 machine1?", input)
 
             matchedContext = nlpTask.findNNSubtree(resultOfConstituentParse)
             #adjective_finder = nlpTask.printSubtrees(resultOfConstituentParse, 'ADJP', 'JJ')
@@ -370,28 +368,23 @@ class SPARQLGeneratorClass():
                 matchedContext.append(adjective[0])
                 print("changed noun", matchedContext[-1])
 
+            string_check = ''.join(matchedContext)
             matchedContext = ast.literal_eval(json.dumps(matchedContext))
             machineIndex = [i for i, item in enumerate(matchedContext) if re.search('.*machine', item)]
             sensorIndex = [i for i, item in enumerate(matchedContext) if re.search('.*sensor', item)]
             machineTest = re.compile(".*machine")
-            averageTest = re.compile(".*average")
-            minimumKeyword = re.compile(".*minimum")
-            maximumKeyword = re.compile(".*maximum")
-            #filter creates a list in python 2.7
-            #and filter(averageTest.match, matchedContext) == None
-            if filter(machineTest.match, matchedContext) and 'value' in matchedContext and len(filter(averageTest.match, matchedContext)) == 0:
-                print("filter dynamic query")
-                path = SPARQLGeneratorClass.add_path_to_IRI('demofactory')
-                queryDynamicValue = """select * where
-                               { service <kvin:> { <http://localhost:10080/""" + path + """/""" + matchedContext[machineIndex[0]] + """/""" + matchedContext[sensorIndex[0]] + """> <http://example.org/""" + matchedContext[0] + """> ?v . ?v <kvin:limit> 1 ;
-                               <kvin:value> ?value}} """
+            # averageTest = re.compile(".*average")
+            # minimumKeyword = re.compile(".*minimum")
+            # maximumKeyword = re.compile(".*maximum")
+            regex_min = [re.compile(".*minimum"), re.compile(".*minimum value"), re.compile(".*value of minimum")]
+            regex_max = [re.compile(".*maximum"), re.compile(".*maximum value"), re.compile(".*value of maximum")]
+            regex_average = [re.compile(".*average"), re.compile(".*average value"), re.compile(".*value of average")]
 
-                print("queryDynamicValue", queryDynamicValue)
-                resultSelenium = SPARQLGeneratorClass.queryTestingSelenium(queryDynamicValue)
-                print("resultSelenium", resultSelenium)
+
 
             # and 'average' in matchedContext)
-            elif filter(averageTest.match, matchedContext) and filter(machineTest.match, matchedContext) or similarityFlag == True:
+            #filter(averageTest.match, matchedContext)
+            if any(regex.match(string_check) for regex in regex_average) and filter(machineTest.match, matchedContext) or similarityFlag == True:
                 print("filter average query")
                 path = SPARQLGeneratorClass.add_path_to_IRI('demofactory')
                 queryDynamicAverage = """SELECT (AVG(?value) AS ?avg)
@@ -410,7 +403,8 @@ class SPARQLGeneratorClass():
                 elif similarityFlag == True:
                     resultSelenium = {"Status": "System in an error state"}
 
-            elif filter(minimumKeyword.match, matchedContext) and filter(machineTest.match, matchedContext) or 'minimum' in matchedContext:
+            #filter(minimumKeyword.match, matchedContext)
+            elif any(regex.match(string_check) for regex in regex_min) and filter(machineTest.match, matchedContext) or 'minimum' in matchedContext:
                 path = SPARQLGeneratorClass.add_path_to_IRI('demofactory')
 
                 #a question for minimum value
@@ -420,7 +414,8 @@ class SPARQLGeneratorClass():
                 resultSelenium = SPARQLGeneratorClass.queryTestingSelenium(queryDynamicMinimum)
                 print("resultSelenium", resultSelenium)
 
-            elif filter(maximumKeyword.match, matchedContext) and filter(machineTest.match, matchedContext) or 'maximum' in matchedContext:
+            #filter(maximumKeyword.match, matchedContext)
+            elif any(regex.match(string_check) for regex in regex_max) and filter(machineTest.match, matchedContext) or 'maximum' in matchedContext:
                 path = SPARQLGeneratorClass.add_path_to_IRI('demofactory')
                 #A question for maxumum value
                 queryDynamicMaximum = """ SELECT (MAX(?value) AS ?max)
@@ -429,6 +424,21 @@ class SPARQLGeneratorClass():
                 resultSelenium = SPARQLGeneratorClass.queryTestingSelenium(queryDynamicMaximum)
                 print("resultSelenium", resultSelenium)
 
+            #filter creates a list in python 2.7
+            #and filter(averageTest.match, matchedContext) == None
+            #and len(filter(averageTest.match, matchedContext)) == 0
+            #and any(regex.match(string_check) for regex in regex_average)
+            #and 'value' in matchedContext
+            elif filter(machineTest.match, matchedContext) and 'value' in matchedContext:
+                print("filter dynamic query")
+                path = SPARQLGeneratorClass.add_path_to_IRI('demofactory')
+                queryDynamicValue = """select * where
+                               { service <kvin:> { <http://localhost:10080/""" + path + """/""" + matchedContext[machineIndex[0]] + """/""" + matchedContext[sensorIndex[0]] + """> <http://example.org/""" + matchedContext[0] + """> ?v . ?v <kvin:limit> 1 ;
+                               <kvin:value> ?value}} """
+
+                print("queryDynamicValue", queryDynamicValue)
+                resultSelenium = SPARQLGeneratorClass.queryTestingSelenium(queryDynamicValue)
+                print("resultSelenium", resultSelenium)
             else:
                 logger.info("This situation will be considered for other parts of linked factory")
                 print("This situation will be considered for other parts of linked factory")
@@ -447,31 +457,18 @@ class SPARQLGeneratorClass():
         try:
             stanford_parser = TestConnectionCoreNLP()
             #The following is a tuple assignment
-            #noun, verb = []
             noun = verb = []
-            result_of_local_source = {}
+            result_of_local_source = ""
             constituent_parse = stanford_parser.constituencyParser(input)
             print(constituent_parse.pretty_print())
             print(constituent_parse.leaves())
-            #matchedContext = nlpTask.findNNSubtree(constituent_parse)
-            parent_node_test = re.compile(".*parentnodeid")
-            node_id_test = re.compile(".*nodeid")
-            datablock_test = re.compile(".*datablock")
-            station_test = re.compile(".*station")
-            reference_test = re.compile(".*reference")
 
-            # questionAnswering = QuestionClassifier.QuestionAssigner.predictQuestion(text_input)
-            # if questionAnswering is 'unknown' or questionAnswering is 'who':
-            #     return
+            questionAnswering = QuestionClassification.QuestionClassifier.QuestionAssigner.predictQuestion(input)
+            if questionAnswering == 'unknown' or questionAnswering == 'who' or questionAnswering == 'when':
+                print("question classification: ", questionAnswering)
+                result_of_local_source = "Question Classification Failed"
+                return result_of_local_source
 
-            classification_object = QuestionClassificationSVM.SVMClassifier()
-            import spacy
-            nlp_loader = spacy.load(EN_MODEL_MD)
-            doc = nlp_loader(u'' + str(input))
-            question_classification = classification_object.classify_question(doc)[0]
-            if question_classification != 'HUM' and question_classification != 'DESC' and question_classification != 'ENTY':
-                resultSelenium = {"Status": "Question Classification Failed"}
-                return resultSelenium
 
             prefix_query = """PREFIX factory: <http://linkedfactory.iwu.fraunhofer.de/vocab#>
                                              PREFIX : <http://opcfoundation.org/UA/2011/03/UANodeSet.xsd#> 
@@ -492,11 +489,17 @@ class SPARQLGeneratorClass():
                 print("type of lemmatized verb: ", type(lemmatized_verb))
                 wordnetLatentAnalysis = nlpTask.wordnetLatentAnalysis(str(lemmatized_verb[0]), 'browse')
 
-            noun = nlpTask.findNNSubtree(constituent_parse)
-            matchedContext = ast.literal_eval(json.dumps(noun))
-            print("noun", noun)
+            parent_regex = [ re.compile(".*parentnode id"), re.compile(".*parent nodeid"), re.compile(".*parent node id"), re.compile(".*parentnodeid")]
+            datablock_regex = [re.compile(".*datablock"), re.compile(".*data block")]
+            nodeid_regex = [re.compile(".*node id"), re.compile(".*nodeid")]
+            reference_regex = [re.compile(".*reference")]
+            station_regex = [re.compile(".*station")]
 
-            #matched_verb = ast.literal_eval(json.dumps(verb[0]))
+
+            noun = nlpTask.findNNSubtree(constituent_parse)
+            print("noun", noun)
+            string_comparison = ''.join(noun)
+
             # similarity_flag = False
             # similarity_flag = stanford_parser.similarity_jaro_winkler("Can you browse for me on generated data?", input)
 
@@ -512,7 +515,9 @@ class SPARQLGeneratorClass():
                 result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
                 # else:
                 #     result_of_local_source = {"Status": "Query Wordnet Analysis is not correct"}
-            if ('parent' and 'node' and 'id') in noun or filter(parent_node_test.match, matchedContext):
+                #('parent' and 'node' and 'id') in noun
+
+            elif any(regex.match(string_comparison) for regex in parent_regex):
                 parent_node_id_query = prefix_query + """ SELECT DISTINCT ?object
                                 WHERE {
                                   ?s :ParentNodeId ?object . }
@@ -521,7 +526,7 @@ class SPARQLGeneratorClass():
                 time.sleep(3)
                 result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
 
-            if ('node' and 'id' in noun) or filter(node_id_test.match, matchedContext):
+            elif any(regex.match(string_comparison) for regex in nodeid_regex):
                 node_id_query = prefix_query + """ SELECT DISTINCT ?object
                                 WHERE {
                                   ?s :NodeId ?object .
@@ -532,19 +537,9 @@ class SPARQLGeneratorClass():
                 time.sleep(3)
                 result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
 
-
-            if 'datablock' or 'data block' in noun or filter(datablock_test.match, matchedContext):
-                query_data_block = prefix_query + """ SELECT DISTINCT ?object
-                                WHERE {
-                                  ?s lf-plc:dataBlock ?object . }
-                            """
-                endpointRemote = SPARQLEndpoint("localhost", query_data_block, "ttl", filename="SemanticSource/OPCGeneratedData.ttl")
-                time.sleep(3)
-                result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
-
-            if filter(station_test.match, matchedContext):
+            elif any(regex.match(string_comparison) for regex in station_regex):
                 """The following query might have changed with UNION"""
-                query_station_identify = prefix_query +  """ SELECT DISTINCT *
+                query_station_identify = prefix_query + """ SELECT DISTINCT *
                                 WHERE { {SELECT ?object WHERE {
                                   ?s rdf:type ?o .
                                   ?s lf-plc:Station ?object . 
@@ -553,15 +548,27 @@ class SPARQLGeneratorClass():
                                   WHERE {
                                   ?s rdf:type ?o .
                                   ?s lf-plc:CPU ?object . 
-                                  
+
                                   } }
                                 }
                             """
-                endpointRemote = SPARQLEndpoint("localhost", query_station_identify, "ttl", filename="SemanticSource/OPCGeneratedData.ttl")
+                endpointRemote = SPARQLEndpoint("localhost", query_station_identify, "ttl",
+                                                filename="SemanticSource/OPCGeneratedData.ttl")
+                time.sleep(3)
+                result_of_local_source = endpointRemote.sparqlQueryForLocalSource()#
+
+            elif any(regex.match(string_comparison) for regex in datablock_regex):
+                """The following query is used for fetching datablocks of nodes"""
+
+                query_data_block = prefix_query + """ SELECT DISTINCT ?object
+                                WHERE {
+                                  ?s lf-plc:dataBlock ?object . }
+                            """
+                endpointRemote = SPARQLEndpoint("localhost", query_data_block, "ttl", filename="SemanticSource/OPCGeneratedData.ttl")
                 time.sleep(3)
                 result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
 
-            if filter(reference_test.match, matchedContext):
+            elif any(regex.match(string_comparison) for regex in reference_regex):
                 """The following query is used for fetching references of nodes"""
                 query_station_references = prefix_query + """ SELECT DISTINCT ?object 
                                 WHERE {
@@ -571,9 +578,11 @@ class SPARQLGeneratorClass():
                                                 filename="SemanticSource/OPCGeneratedData.ttl")
                 time.sleep(3)
                 result_of_local_source = endpointRemote.sparqlQueryForLocalSource()
+            else:
+                result_of_local_source = "Query could not be formulated"
+
         except:
             print("An error happened while sending a result")
-
 
         return result_of_local_source
 

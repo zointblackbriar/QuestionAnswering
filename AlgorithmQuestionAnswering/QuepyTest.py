@@ -11,6 +11,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 
 sparql = SPARQLWrapper("http://dbpedia.org/sparql")
 dbpedia = quepy.install("PropertyMapper")
+#dbpedia = quepy.install('dbpedia')
 print("dbpedia endpoint", dbpedia)
 
 class QuepyMain():

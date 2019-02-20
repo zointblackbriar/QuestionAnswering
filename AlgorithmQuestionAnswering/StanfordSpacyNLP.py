@@ -16,7 +16,7 @@ import nltk
 from textblob import TextBlob
 from textblob.parsers import PatternParser
 from nltk.corpus import wordnet
-from nltk import word_tokenize
+#from nltk import word_tokenize
 from itertools import chain
 from stanfordcorenlp import StanfordCoreNLP
 from textblob.sentiments import NaiveBayesAnalyzer
@@ -28,11 +28,13 @@ import json
 import logging
 from nltk.tree import *
 import spacy
-import pandas as pd
+#import pandas as pd
 from spacy.symbols import  *
 
 #import en_coref_md
-import en_coref_lg
+#import en_coref_lg
+nlp = spacy.load('en_core_web_md', disable=['ner', 'textcat'])
+nlp_sm = spacy.load("en_core_web_sm", disable=['ner', 'textcat'])
 
 logger = logging.getLogger(__name__)
 
@@ -118,7 +120,7 @@ class TestConnectionCoreNLP(object):
 
 
     def spacy_verb_finder(self, sentence):
-        nlp = spacy.load('en_core_web_md')
+        #nlp = spacy.load('en_core_web_md')
         doc = nlp(sentence.decode('utf-8'))
         for chunk in doc.noun_chunks:
             chunk_root = [chunk.root.text for chunk in doc.noun_chunks]
@@ -214,9 +216,8 @@ class TestConnectionCoreNLP(object):
 
     def spacyArchMatching(self, sentence):
         verbs = []
-        #
-        nlp = spacy.load("en_core_web_sm", disable=['ner', 'textcat'])
-        doc = nlp(sentence.decode('utf-8'))
+        #nlp = spacy.load("en_core_web_sm", disable=['ner', 'textcat'])
+        doc = nlp_sm(sentence.decode('utf-8'))
 
         for possible_verb in doc:
             if possible_verb.pos == VERB:
@@ -233,17 +234,11 @@ class TestConnectionCoreNLP(object):
         indirectDependency = False
         #A medium English model based on spacy -- Size 161 Mo -- Not Recommended en_core_web_md
 
-        nlp = spacy.load('en_core_web_md', disable=['ner'])
+        #nlp = spacy.load('en_core_web_md', disable=['ner'])
         doc = nlp(sentence.decode('utf-8'))
         print("nlp meta", nlp.meta)
 
-        for chunk in doc.noun_chunks:
-            #u'dobj' or u'advmod'
-            chunk_root_dep = [chunk.root.dep_ for chunk in doc.noun_chunks]
-            # if (u'dobj' and u'nsubj') or u'advmod' in str(chunk.root.dep_):
-            #     indirectDependency = True
-            # elif u'nsubj' in str(chunk.root.dep_):
-            #     indirectDependency = False
+        chunk_root_dep = [chunk.root.dep_ for chunk in doc.noun_chunks]
 
         print("chunk root dep: ", chunk_root_dep)
         if chunk_root_dep[-1] == u'nsubj' and len(chunk_root_dep) == 1:
@@ -255,30 +250,29 @@ class TestConnectionCoreNLP(object):
                 indirectDependency = False
 
         print("indirectDependency: ", indirectDependency)
-
         return indirectDependency
 
     #Install en_coref_md
     #pip install en_coref_sm-3.0.0.tar.gz
-    def spacyCoreferenceResolution(self, sentence):
-        #nlp = spacy.load('en_coref_md')
-        nlp = en_coref_lg.load()
-        doc = nlp(unicode(sentence, encoding="utf-8"))
-        #doc = unicode_(sentence)
-        if doc._.has_coref is True:
-            print(doc._.coref_clusters)
-            mentions = [{'start': mention.start_char,
-                         'end': mention.end_char,
-                         'text': mention.text,
-                         'resolved': cluster.main.text
-                         }
-                        for cluster in doc._.coref_clusters
-                        for mention in cluster.mentions]
-            clusters = list(list(span.text for span in cluster)
-                            for cluster in doc._.coref_clusters)
-            resolved = doc._.coref_resolved
-
-        return doc._.has_coref
+    # def spacyCoreferenceResolution(self, sentence):
+    #     #nlp = spacy.load('en_coref_md')
+    #     nlp = en_coref_lg.load()
+    #     doc = nlp(unicode(sentence, encoding="utf-8"))
+    #     #doc = unicode_(sentence)
+    #     if doc._.has_coref is True:
+    #         print(doc._.coref_clusters)
+    #         mentions = [{'start': mention.start_char,
+    #                      'end': mention.end_char,
+    #                      'text': mention.text,
+    #                      'resolved': cluster.main.text
+    #                      }
+    #                     for cluster in doc._.coref_clusters
+    #                     for mention in cluster.mentions]
+    #         clusters = list(list(span.text for span in cluster)
+    #                         for cluster in doc._.coref_clusters)
+    #         resolved = doc._.coref_resolved
+    #
+    #     return doc._.has_coref
 
     def textblobPatternParser(self, sentence):
         blob = TextBlob(sentence, parser=PatternParser())

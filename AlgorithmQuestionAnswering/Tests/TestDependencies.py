@@ -6,7 +6,17 @@ class BaseTestClass(unittest.TestCase):
 
     def test_first_dependency(self):
         corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
-        self.assertTrue(corenlpObject.spacyDependencyChunk("What contains fofab?"))
+        self.assertTrue(corenlpObject.spacyDependencyChunk("what contains fofab?"))
+
+    def test_last_dependency(self):
+        corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
+        self.assertTrue(corenlpObject.spacyDependencyChunk("What contains coolingwater?"))
+
+    def test_last_but_least_dependency(self):
+        corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
+        self.assertTrue(corenlpObject.spacyDependencyChunk("What holds BHKW?"))
+
+
 
     def test_second_dependency(self):
         corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
@@ -16,11 +26,9 @@ class BaseTestClass(unittest.TestCase):
         corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
         self.assertTrue(corenlpObject.spacyDependencyChunk("Could you give me please what contains linkedfactory?"))
 
-
     def test_fourth_dependency(self):
         corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
         self.assertFalse(corenlpObject.spacyDependencyChunk("Would you give me what does rollex incorporate?"))
-
 
     def test_fifth_dependency(self):
         corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
@@ -33,9 +41,6 @@ class BaseTestClass(unittest.TestCase):
     def test_keyword_dependency(self):
         corenlpObject = StanfordSpacyNLP.TestConnectionCoreNLP()
         self.assertFalse(corenlpObject.spacyDependencyChunk("linkedfactory contains"))
-
-
-
 
 
 if __name__ == '__main__':

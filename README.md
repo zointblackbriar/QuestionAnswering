@@ -16,3 +16,14 @@ Screenshots
 
 
 ![Question Answering Static Result](https://github.com/zointblackbriar/QuestionAnswering/blob/master/img/Question_Answering_Static_Result.PNG)
+
+
+# How install
+
+We need a rabbitmq server that you can install from the following link:
+
+https://www.rabbitmq.com/install-windows.html
+
+Before installation, you need to be sure whether Erlang is already installed or not.
+
+https://www.erlang.org/downloads

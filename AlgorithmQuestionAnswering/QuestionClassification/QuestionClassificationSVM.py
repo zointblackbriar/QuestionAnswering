@@ -7,8 +7,8 @@ sys.setdefaultencoding('utf-8')
 
 """@Reference: https://github.com/5hirish/adam_qas/blob/master/qas/classifier/question_classifier.py"""
 
-import spacy
-import csv
+#import spacy
+#import csv
 import logging
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
@@ -64,6 +64,7 @@ class SVMClassifier():
 
         #send into a list of oolumns
         question_train_columns = list(question_train.columns)
+        print("size of dataset:", len(question_train_columns))
         question_predict_columns = list(question_predict.columns)
 
         #clear duplicates with set
@@ -169,6 +170,7 @@ class SVMClassifier():
             question_predict = self.get_question_predict_data(question_test=question_test)
 
         question_train = self.pre_process(question_train)
+        print("size of training question:", len(question_train))
         question_predict = self.pre_process(question_predict)
 
         question_train, question_predict = self.transform_data_matrix(question_train, question_predict)

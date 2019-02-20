@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 from flask  import Flask, request, render_template, redirect, url_for, jsonify
+from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 #from flask_debugtoolbar import DebugToolbarExtension
+from celery import Celery
+
 import Utils
 import QuepyTest
 import nlquery
@@ -14,7 +17,20 @@ import requests
 
 
 app = Flask(__name__)
+print("module name:", __name__)
+print("app name:", app.name)
+print("app extended name:", app)
+
+celery = Celery('MainFlask', broker='amqp://guest:guest@localhost/test')
+celery.conf.update(app.config)
+#app.config['JWT_TOKEN_LOCATION'] = ['headers']
+app.config['JWT_SECRET_KEY'] = "Fraunhofer is the best"  # Change this!
+app.config['JWT_HEADER_NAME'] = "Authorization"  # Change this!
+app.config['JWT_HEADER_TYPE'] = "Bearer"  # Change this!
+
+jwt = JWTManager(app)
 app.logger.info('This is a log message')
+
 # app.debug = True
 # app.config['SECRET_KEY'] = 'development key'
 # toolbar = DebugToolbarExtension(app)
@@ -36,17 +52,29 @@ share_var_sparql_queries = None
 #     thread = threading.Thread(target=run_job)
 #     thread.start()
 
+@app.route('/protected', methods=['GET'])
+#@jwt_required
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
+
+#@celery.task(bind=True)
 @app.route('/')
 def my_form():
     logging.warning("See this message in Flask Debug Toolbar!")
     return render_template('index.html')
 
+#@celery.task(bind=True)
 @app.route('/integratedstaticmessage', methods=['GET', 'POST'])
+#@jwt_required
 def staticQuestion():
     try:
         queryResult = ""
         statement = [] #It should return as list
         queryLinkedFactory = request.get_data()
+        queryLinkedFactory = queryLinkedFactory.lower()
         queryLinkedFactory = Utils.questionMarkProcess(queryLinkedFactory)
         print("Posted data : {}".format(request.data))
 
@@ -60,12 +88,16 @@ def staticQuestion():
     print("queryResult", queryResult)
     return jsonify(result = statement)
 
+#@celery.task(bind=True)
 @app.route('/integrateddynamicmessage', methods=['GET', 'POST'])
+#@jwt_required
 def dynamicQuestion():
     try:
         #Todo you should turn connectNLP object into singleton
         dynamicQueryResult = {}
         queryLinkedFactory = request.get_data()
+        queryLinkedFactory = queryLinkedFactory.lower()
+        queryLinkedFactory = Utils.questionMarkProcess(queryLinkedFactory)
         """dynamicQueryResult, constituent_parser, health_flag"""
         dynamicQueryResult = SPARQLGeneratorClass.dynamic_query_triples(queryLinkedFactory)[0]
     except (RuntimeError, TypeError, NameError, Exception):
@@ -73,6 +105,7 @@ def dynamicQuestion():
     """jsonify(result=dynamicQueryResult)"""
     return jsonify(result=dynamicQueryResult)
 
+@celery.task()
 def quepySender(quepyQuestion):
     handler_quepy = QuepyTest.QuepyMain()
     logging.warning("quepy!")
@@ -115,23 +148,23 @@ def quepySender(quepyQuestion):
             QuepyTest.sparql.setQuery(query)
             QuepyTest.sparql.setReturnFormat(QuepyTest.JSON)
             results = QuepyTest.sparql.query().convert()
-            with open('data.json', 'w+') as outfile:
-                json.dump(results["results"]["bindings"], outfile)
-
             if not results["results"]["bindings"]:
-                share_var_quepySender = "No answer from wikidata"
+                share_var_quepySender = "No Answer found"
+
+        for result in results["results"]["bindings"]:
+            print("target", target)
+            share_var_quepySender = result[target]["value"]
+
+        for result in results["results"]["bindings"]:
+            if result[target]["type"] == u"literal":
+                if result[target]["xml:lang"] == "en":
+                    share_var_quepySender = result[target]["value"]
 
 
-        #print_handlers[query_type](results, target, metadata)
-        #share_var_quepySender = results
-        share_var_quepySender = "{0}".format(print_handlers[query_type](results, target, metadata))
-        #share_var_quepySender = print_handlers
-        #quepy_test_result = results['results']['bindings']
-        quepy_test_result = "{0}".format(print_handlers[query_type](results, target, metadata))
+
+        print_handlers[query_type](results, target, metadata)
         print("share_var_quepySender", type(share_var_quepySender))
-        #print
-        # share_var_quepySender = outputPython
-        #share_var_sparql_queries = results
+        print("quepy_test_result", (share_var_quepySender))
 
     except Exception as ex:
         app.logger.error("Handler is not working correctly: ", str(ex))
@@ -150,10 +183,9 @@ def quepyForm():
         return render_template('quepy.html', queryResult = share_var_sparql_queries, answer = share_var_quepySender), 200
     return redirect('/', code=302)
 
-
 @app.route('/nlqueryengine', methods=['GET', 'POST'])
-def nlQueryEngine():
 
+def nlQueryEngine():
     logging.warning("nlQueryEngine!")
     global share_var_nlQueryHandler
     outputText = ""
@@ -184,6 +216,7 @@ def nlQueryEngine():
 def LinkedFactoryQuery():
     try:
         #dynamicQueryResult = {}
+        list_generated_opc_ua = []
         systemHealth = False
         resultOfConstituentParse = ""
         if request.form['fraunhoferEngine'] == None:
@@ -201,7 +234,10 @@ def LinkedFactoryQuery():
             return render_template('fraunhoferengine.html', linkedFactoryQueryResult=list_answer[1], dynamicResult = list_answer[0])
         elif bool(request.form.getlist('generatedOPCQuery')) == True:
             list_answer = SPARQLGeneratorClass.generated_data_query_OPC(queryLinkedFactory)
-            return render_template('fraunhoferengine.html', linkedFactoryQueryResult=list_answer[1], dynamicResult = list_answer[0])
+            for row in list_answer:
+                list_generated_opc_ua.append(row)
+            print('sparqlQuery', list_generated_opc_ua)
+            return render_template('fraunhoferengine.html', linkedFactorySparqlQuery=list_generated_opc_ua, dynamicResult = {})
         else:
             list_answer = SPARQLGeneratorClass.static_query_triples(queryLinkedFactory)
             print('sparqlQuery', list_answer[0])
@@ -211,31 +247,31 @@ def LinkedFactoryQuery():
 
     return redirect('/', code=302)
 
-def start_runner():
-    def start_loop():
-        not_started = True
-        while not_started:
-            print('In start loop')
-            try:
-                r = requests.get('http://127.0.0.1:5000/')
-                if r.status_code == 200:
-                    print('Server started, quiting start_loop')
-                    not_started = False
-                print(r.status_code)
-            except:
-                print('Server not yet started')
-            time.sleep(2)
-
-    print('Started runner')
-    thread = threading.Thread(target=start_loop)
-    thread.start()
+# def start_runner():
+#     def start_loop():
+#         not_started = True
+#         while not_started:
+#             print('In start loop')
+#             try:
+#                 r = requests.get('http://127.0.0.1:5000/')
+#                 if r.status_code == 200:
+#                     print('Server started, quiting start_loop')
+#                     not_started = False
+#                 print(r.status_code)
+#             except:
+#                 print('Server not yet started')
+#             time.sleep(2)
+#
+#     print('Started runner')
+#     thread = threading.Thread(target=start_loop)
+#     thread.start()
 
 
 
 if __name__ == '__main__':
     #app.jinja_env.cache = {}
     #start_runner()
-    app.run(debug = True, host='0.0.0.0', port=8999, threaded=True)
+    app.run(debug = False, host='0.0.0.0', port=8999, threaded=True, use_reloader=False)
     # Alternately
     # app.run(processes=3)
 

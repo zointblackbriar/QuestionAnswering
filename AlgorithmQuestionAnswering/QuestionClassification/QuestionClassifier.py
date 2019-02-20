@@ -1,3 +1,5 @@
+"""@Reference https://github.com/swapkh91/Question-Classification"""
+
 from sklearn.preprocessing import LabelEncoder
 from sklearn import metrics
 from sklearn.externals import joblib
@@ -48,6 +50,8 @@ class QuestionAssigner():
     @staticmethod
     def predictQuestion(question):
         model_loader = joblib.load('model/LogisticRegressionNew.pkl')
+        #model_loader = None
+        print("model loaded")
         encoder = LabelEncoder()
         encoder.fit(ALL_TYPES)
         if(model_loader == None):

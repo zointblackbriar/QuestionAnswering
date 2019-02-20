@@ -1,14 +1,12 @@
+import os
+os.chdir(r'../')
+
+
 import SparqlEndpoint
 import unittest
 from io import StringIO
 import sys
 import time
-import os
-
-#os.chdir(r'G:\AllFiles\Projeler\Python_Projeler\V2AlgorithmQuestionAnswering\QuestionAnswering\AlgorithmQuestionAnswering')
-#os.chdir(r'../')
-
-# print(os.getcwd())
 
 # Todo write a test suite
 parameterizedQuery = """PREFIX factory: <http://linkedfactory.iwu.fraunhofer.de/vocab#>
@@ -172,6 +170,7 @@ class BaseTestClass(unittest.TestCase):
             comparison.append(row)
         self.assertFalse(isinstance(comparison[0], str))
 
+    @unittest.skip("Last query will be tested")
     def test_complex_browse_name_query_generated_data(self):
         selectOptional = """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                               PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -193,6 +192,7 @@ class BaseTestClass(unittest.TestCase):
             comparison.append(row)
         self.assertFalse(isinstance(comparison[0], str))
 
+    @unittest.skip("Last query will be tested")
     def test_lf_contains_browse_query_generated_data(self):
         combinedQuery = """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                               PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -207,6 +207,41 @@ class BaseTestClass(unittest.TestCase):
                                 ?s lf:contains ?object . 
                                 }
                                 """
+        comparison = []
+        endpoint = SparqlEndpoint.SPARQLEndpoint("localhost", combinedQuery, "ttl", filename = "SemanticSource/OPCGeneratedData.ttl")
+        results = endpoint.sparqlQueryForLocalSource()
+        time.sleep(3)
+        for row in results:
+            comparison.append(row)
+        self.assertFalse(isinstance(comparison[0], str))
+
+    def test_station_data(self):
+        #?s rdf:type ?o .
+        #                                   } } UNION
+        #                          { SELECT ?object
+        #                           WHERE
+        #                           {
+        #                               ?s rdf:type ?o .
+        #                                lf-plc:CPU ?object .
+        #                           } }
+        #                         }
+        #                                  ?s rdf:type ?o;
+
+        combinedQuery = """PREFIX factory: <http://linkedfactory.iwu.fraunhofer.de/vocab#>
+                                             PREFIX : <http://opcfoundation.org/UA/2011/03/UANodeSet.xsd#> 
+                                             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                                             PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                                             PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                                             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                                             PREFIX lf: <http://linkedfactory.org/vocab/> 
+                                             PREFIX lf-plc: <http://linkedfactory.org/vocab/plc/> 
+                                             SELECT DISTINCT *
+                                WHERE { 
+                                    ?s rdf:type ?o .
+                                    ?s lf-plc:Station ?o .
+                                UNION {
+                                     SELECT * WHERE { ?s rdfs:label ?o . } 
+                                    }"""
         comparison = []
         endpoint = SparqlEndpoint.SPARQLEndpoint("localhost", combinedQuery, "ttl", filename = "SemanticSource/OPCGeneratedData.ttl")
         results = endpoint.sparqlQueryForLocalSource()
