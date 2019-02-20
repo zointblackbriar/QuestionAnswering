@@ -37,7 +37,7 @@ nlpTask = TestConnectionCoreNLP()
 #        (MAX(?value) AS ?max)
 # WHERE {
 # service <kvin:> {  <http://localhost:10080/""" + path + """/""" + matchedContext[machineIndex[0]] + """/""" +  matchedContext[sensorIndex[0]] + """> <http://example.org/value> ?v . ?v <kvin:limit> 10000; <kvin:value> ?value} }"""
-EN_MODEL_MD = "en_core_web_lg"
+EN_MODEL_MD = "en_core_web_md"
 nlp_loader = spacy.load(EN_MODEL_MD)
 
 class SPARQLGeneratorClass():
