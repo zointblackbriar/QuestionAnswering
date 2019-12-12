@@ -8,6 +8,11 @@ Screenshots
 
 ![Stanford Core NLP](https://github.com/zointblackbriar/QuestionAnswering/blob/master/img/stanford_core_nlp.PNG)
 
+The question answering is a balancing exchange between natural language understanding, information retrieval, and information extraction
+theories.The description of question answering, though appearing so easy, in essence, is a broad field of research with categorized 
+several headlines. Principally, a question answering enables simple query reqwrites without explicitly the use of a query language. Stanford CORENLP 
+is one of the advanced server side tool for natural language understanding steps. 
+
 
 ![Question Answering Intro](https://github.com/zointblackbriar/QuestionAnswering/blob/master/img/Question_Answering_Intro.PNG)
 
